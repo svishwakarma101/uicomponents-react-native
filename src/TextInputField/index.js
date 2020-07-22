@@ -5,7 +5,7 @@ import {
     View,
     Platform,
     TouchableOpacity,
-    ViewPropTypes, 
+    ViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { TextField } from 'react-native-material-textfield';
@@ -28,7 +28,7 @@ export function TextInputField(props) {
     const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] = useState(false);
     const inputRef = React.createRef();
 
-    getMaxLength = type => {
+    function getMaxLength(type) {
         let length = 0;
         switch (type) {
             case TEXTFIELD_TYPES.date:
@@ -50,7 +50,7 @@ export function TextInputField(props) {
         return length;
     };
 
-    handleChange = text => {
+    function handleChange(text) {
         var { type } = props;
         let textTemp = text;
         let singleSeperatorRequired =
@@ -75,7 +75,7 @@ export function TextInputField(props) {
         return textTemp;
     };
 
-    getTextFieldStyle = () => {
+    function getTextFieldStyle() {
         return StyleSheet.flatten([
             styles.containerView,
             props.shape === TEXTFIELD_SHAPES.rounded
@@ -115,7 +115,7 @@ export function TextInputField(props) {
         return null;
     }
 
-    getAccessoryView = () => {
+    function getAccessoryView() {
         if (props.showClearButton && props.showShowHideButton) {
             return <View style={{ flexDirection: 'row' }}>
                 {getRightSideShowButton()}
@@ -131,7 +131,7 @@ export function TextInputField(props) {
         }
     };
 
-    getRightSideClearButton = () => {
+    function getRightSideClearButton() {
         const { input, theme } = props;
         const textFieldNotEmpty = input.value && input.value !== '';
         if (props.showClearButton) {
@@ -151,7 +151,7 @@ export function TextInputField(props) {
         return null;
     };
 
-    getRightSideShowButton = () => {
+    function getRightSideShowButton() {
         const { input, theme } = props;
         const textFieldNotEmpty = input.value && input.value !== '';
 
@@ -176,7 +176,7 @@ export function TextInputField(props) {
         return null;
     };
 
-    getLeftSearchButton = () => {
+    function getLeftSearchButton() {
         const { input, theme } = props;
         const textFieldNotEmpty = input.value && input.value !== '';
 
@@ -196,14 +196,14 @@ export function TextInputField(props) {
         return null;
     };
 
-    onFocus = () => {
+    function onFocus() {
         if (props.onFocus) {
             props.onFocus();
         } else {
             setShowPlaceHolderForFloating(true);
         }
     };
-    onBlur = () => {
+    function onBlur() {
         if (props.onBlur) {
             props.onBlur();
         } else {
@@ -220,7 +220,7 @@ export function TextInputField(props) {
         }
     }
 
-    clearText = () => {
+    function clearText() {
         if (props.showClearButton !== 1 && !props.disabledClear) { // If the entered text is valid then avoid the text clear action. 
             clear()
             if (props.onChangeText) {
@@ -229,121 +229,121 @@ export function TextInputField(props) {
         }
     };
 
-    clear = () => {
+    function clear() {
         inputRef.current.clear();
     }
 
-    focus = () => {
+    function focus() {
         inputRef.current.focus();
     };
 
-    showHideSecureText = () => {
+    function showHideSecureText() {
         setShouldEncryptedTextBeVisible(!shouldEncryptedTextBeVisible)
         if (props.onSecureTextModeChange) {
             props.onSecureTextModeChange(shouldEncryptedTextBeVisible);
         }
     };
 
-        const {
-            theme,
-            floatingLabel,
-            placeholder,
-            placeholderColor,
-            multiline,
-            numberOfLines,
-            returnKeyType,
-            isFloating,
-            textColor,
-            underlineType,
-            descriptionMessage,
-            errorMessage,
-            descriptionStyle,
-            textStyle,
-            labelPadding,
-            labelHeight,
-            inputContainerPadding,
-            blurOnSubmit,
-            labelColor,
-            isStaticLabel,
-            labelFontSize,
-            labelTextStyle,
-            labelOffset,
-            showLeftSearchButton,
-            errorMessageStyle,
-            disabled,
-            tintColor,
-            input: { value: preProcessedValue },
-        } = props;
+    const {
+        theme,
+        floatingLabel,
+        placeholder,
+        placeholderColor,
+        multiline,
+        numberOfLines,
+        returnKeyType,
+        isFloating,
+        textColor,
+        underlineType,
+        descriptionMessage,
+        errorMessage,
+        descriptionStyle,
+        textStyle,
+        labelPadding,
+        labelHeight,
+        inputContainerPadding,
+        blurOnSubmit,
+        labelColor,
+        isStaticLabel,
+        labelFontSize,
+        labelTextStyle,
+        labelOffset,
+        showLeftSearchButton,
+        errorMessageStyle,
+        disabled,
+        tintColor,
+        input: { value: preProcessedValue },
+    } = props;
 
-        const value = preProcessedValue && preProcessedValue.toString();
-        let isTintedUnderlineRequired =
-            underlineType === TEXTFIELD_UNDERLINESTYLE.textMatch &&
-            props.shape === TEXTFIELD_SHAPES.rectangular;
+    const value = preProcessedValue && preProcessedValue.toString();
+    let isTintedUnderlineRequired =
+        underlineType === TEXTFIELD_UNDERLINESTYLE.textMatch &&
+        props.shape === TEXTFIELD_SHAPES.rectangular;
 
-        return (
-            <View style={[getTextFieldStyle()]}>
-                <View style={styles.underlineContainerView}>
-                    <View style={[styles.textInputContainerView]}>
+    return (
+        <View style={[getTextFieldStyle()]}>
+            <View style={styles.underlineContainerView}>
+                <View style={[styles.textInputContainerView]}>
 
-                        <TextField
-                            {...props}
-                            labelTextStyle={[styles.text, textStyle, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle]}
-                            style={[styles.text, textStyle]}
-                            labelPadding={!isFloating ? 0 : labelPadding || 4}
-                            labelHeight={!isFloating ? 0 : labelHeight || 32}
-                            inputContainerPadding={
-                                !isFloating ? inputContainerPadding || 0 : inputContainerPadding || 8
-                            }
-                            titleTextStyle={[styles.descriptionStyle, errorMessage ? errorMessageStyle : descriptionStyle]}
-                            label={isFloating ? floatingLabel || '' : null}
-                            labelFontSize={labelFontSize || 12}
-                            labelOffset={labelOffset || null}
-                            textColor={textColor || theme.TextField.textColor}
-                            tintColor={tintColor || theme.TextField.tintColor || theme.TextField.placeholderTextColor}
-                            labelColor={!disabled ? labelColor || theme.TextField.textColor : placeholderColor || theme.TextField.placeholderTextColor}
-                            baseColor={
-                                placeholderColor || theme.TextField.placeholderTextColor
-                            }
-                            lineWidth={isTintedUnderlineRequired ? 1 : 0}
-                            activeLineWidth={isTintedUnderlineRequired ? 1 : 0}
-                            placeholder={
-                                !isFloating || isStaticLabel ||
-                                    (isFloating && showPlaceHolderForFloating)
-                                    ? placeholder
-                                    : null
-                            }
-                            error={errorMessage || null}
-                            title={descriptionMessage || null}
-                            renderRightAccessory={() => getAccessoryView()}
-                            renderLeftAccessory={() => getLeftSearchButton()}
-                            ref={inputRef}
-                            placeholderTextColor={!isFloating ? placeholderColor || '' : placeholderColor || null}
-                            underlineColorAndroid='transparent'
-                            multiline={multiline}
-                            disabledLineType={'solid'}
-                            secureTextEntry={shouldEncryptedTextBeVisible}
-                            numberOfLines={multiline ? numberOfLines : 1}
-                            returnKeyType={returnKeyType}
-                            onChangeText={onTextChanged.bind(this)}
-                            value={value}
-                            onFocus={onFocus.bind(this)}
-                            onBlur={onBlur.bind(this)}
-                            responsive={false}
-                            blurOnSubmit={blurOnSubmit}
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            autoCompleteType={'off'}
-                            maxLength={
-                                props.maxLength || getMaxLength(props.type)
-                            }
-                        >
-                            {props.children}
-                        </TextField>
-                    </View>
-                    {getTextFieldUnderline()}
+                    <TextField
+                        {...props}
+                        labelTextStyle={[styles.text, textStyle, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle]}
+                        style={[styles.text, textStyle]}
+                        labelPadding={!isFloating ? 0 : labelPadding || 4}
+                        labelHeight={!isFloating ? 0 : labelHeight || 32}
+                        inputContainerPadding={
+                            !isFloating ? inputContainerPadding || 0 : inputContainerPadding || 8
+                        }
+                        titleTextStyle={[styles.descriptionStyle, errorMessage ? errorMessageStyle : descriptionStyle]}
+                        label={isFloating ? floatingLabel || '' : null}
+                        labelFontSize={labelFontSize || 12}
+                        labelOffset={labelOffset || null}
+                        textColor={textColor || theme.TextField.textColor}
+                        tintColor={tintColor || theme.TextField.tintColor || theme.TextField.placeholderTextColor}
+                        labelColor={!disabled ? labelColor || theme.TextField.textColor : placeholderColor || theme.TextField.placeholderTextColor}
+                        baseColor={
+                            placeholderColor || theme.TextField.placeholderTextColor
+                        }
+                        lineWidth={isTintedUnderlineRequired ? 1 : 0}
+                        activeLineWidth={isTintedUnderlineRequired ? 1 : 0}
+                        placeholder={
+                            !isFloating || isStaticLabel ||
+                                (isFloating && showPlaceHolderForFloating)
+                                ? placeholder
+                                : null
+                        }
+                        error={errorMessage || null}
+                        title={descriptionMessage || null}
+                        renderRightAccessory={() => getAccessoryView()}
+                        renderLeftAccessory={() => getLeftSearchButton()}
+                        ref={inputRef}
+                        placeholderTextColor={!isFloating ? placeholderColor || '' : placeholderColor || null}
+                        underlineColorAndroid='transparent'
+                        multiline={multiline}
+                        disabledLineType={'solid'}
+                        secureTextEntry={shouldEncryptedTextBeVisible}
+                        numberOfLines={multiline ? numberOfLines : 1}
+                        returnKeyType={returnKeyType}
+                        onChangeText={(value) => onTextChanged(value)}
+                        value={value}
+                        onFocus={onFocus.bind(this)}
+                        onBlur={onBlur.bind(this)}
+                        responsive={false}
+                        blurOnSubmit={blurOnSubmit}
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        autoCompleteType={'off'}
+                        maxLength={
+                            props.maxLength || getMaxLength(props.type)
+                        }
+                    >
+                        {props.children}
+                    </TextField>
                 </View>
+                {getTextFieldUnderline()}
             </View>
-        );
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
