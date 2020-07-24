@@ -3,7 +3,7 @@ import { StyleSheet, View, Animated } from 'react-native';
 import { Colors } from '../utils/StyleSheet';
 import { CIRCLE_SIZES as TICK_SIZES } from '../utils/Constants';
 
-export default class AnimatedTick extends Component {
+export default class UIAnimatedTick extends Component {
   static defaultProps = {
     height: 10,
     borderColor: Colors.White,

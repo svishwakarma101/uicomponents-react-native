@@ -21,11 +21,11 @@ import {
   APPLIED_THEME as Theme
 } from '../utils/Constants';
 import { Colors, Fonts, FontSize } from '../utils/StyleSheet';
-import Button from '../Button';
+import UIButton from '../UIButton';
 import cancelImage from '../../assets/images/button/cancelIcon.png';
-import CircleWithTick from '../CircleWithTick';
+import UICircleWithTick from '../UICircleWithTick';
 
-export default class Alert extends Component {
+export default class UIAlert extends Component {
   static proptypes = {
     theme: PropTypes.object,
     isIconRequired: PropTypes.bool,
@@ -112,7 +112,7 @@ export default class Alert extends Component {
       );
     } else {
       return (
-        <CircleWithTick
+        <UICircleWithTick
           {...this.props}
           color={
             headerIconColor || isIconPrimary
@@ -192,7 +192,7 @@ export default class Alert extends Component {
 
           <View style={styles.buttonContainer}>
             {renderIf(secondaryButtonTitle !== undefined)(
-              <Button
+              <UIButton
                 theme={theme}
                 buttonType={secondaryButtonType}
                 buttonShape={secondaryButtonShape}
@@ -208,7 +208,7 @@ export default class Alert extends Component {
               />
             )}
 
-            <Button
+            <UIButton
               theme={theme}
               buttonType={primaryButtonType}
               buttonShape={primaryButtonShape}

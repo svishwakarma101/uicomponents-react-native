@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow} from 'enzyme';
-import TextInputField from '.';
+import UITextField from '.';
 
 import searchIcon from '../../assets/images/button/searchIcon.png';
 
@@ -13,55 +13,55 @@ const props = {
   
 
   it('renders', ()=>{
-    let field = renderer.create(<TextInputField {...props} autoFocus={false} />).toJSON();
+    let field = renderer.create(<UITextField {...props} autoFocus={false} />).toJSON();
     expect(field).toMatchSnapshot()
   })
 
   it('renders value', () => {
-    let field = shallow(<TextInputField {...props} value='text' onFocus={jest.fn()} />);
+    let field = shallow(<UITextField {...props} value='text' onFocus={jest.fn()} />);
     expect(field).toMatchSnapshot();
   });
 
   it('renders type date', () => {
-    let field = shallow(<TextInputField {...props} type='date' underlineType='custom' />);
+    let field = shallow(<UITextField {...props} type='date' underlineType='custom' />);
     expect(field).toMatchSnapshot();
   });
 
   it('renders type shortDate', () => {
-    let field = shallow(<TextInputField {...props} type='shortDate' />);
+    let field = shallow(<UITextField {...props} type='shortDate' />);
     expect(field).toMatchSnapshot();
     field.find('TextField').simulate('focus', 'test search text');
   });
 
   it('renders type monthYearShortDate', () => {
-    let field = shallow(<TextInputField {...props} type='monthYearShortDate' />);
+    let field = shallow(<UITextField {...props} type='monthYearShortDate' />);
     expect(field).toMatchSnapshot();
     field.find('TextField').simulate('blur', 'test search text');
   });
 
   it('renders type monthYearDate', () => {
-    let field = shallow(<TextInputField {...props} type='monthYearDate' />);
+    let field = shallow(<UITextField {...props} type='monthYearDate' />);
     expect(field).toMatchSnapshot();
   });
 
   it('renders disabled value', () => {
-    let field = shallow(<TextInputField {...props} value='text' disabled />);
+    let field = shallow(<UITextField {...props} value='text' disabled />);
     expect(field)
       .toMatchSnapshot();
   });
   
   it('renders label', () => {
-    let field = shallow(<TextInputField {...props} floatingLabel={'Name'} isFloating={true} />)  
+    let field = shallow(<UITextField {...props} floatingLabel={'Name'} isFloating={true} />)  
     expect(field).toMatchSnapshot();
   });
   
   it('renders multiline value', () => {
-    let field = shallow(<TextInputField {...props} value='text' multiline />)  
+    let field = shallow(<UITextField {...props} value='text' multiline />)  
     expect(field).toMatchSnapshot();
   });
 
   it('renders error message', () => {
-    let field = shallow(<TextInputField {...props} errorMessage='Something went wrong' />)  
+    let field = shallow(<UITextField {...props} errorMessage='Something went wrong' />)  
     expect(field).toMatchSnapshot();
   });
 
@@ -70,32 +70,32 @@ const props = {
       <Image />
     );
   
-    let field = shallow(<TextInputField {...props} renderRightAccessory={render} />)
+    let field = shallow(<UITextField {...props} renderRightAccessory={render} />)
     expect(field).toMatchSnapshot();
   });
 
   it('renders Clear Button', () => {
-    let field = shallow(<TextInputField {...props} showClearButton={true} />)  
+    let field = shallow(<UITextField {...props} showClearButton={true} />)  
     expect(field).toMatchSnapshot();
   });
 
   it('renders show Button', () => {
-    let field = shallow(<TextInputField {...props} showShowHideButton={true} />)  
+    let field = shallow(<UITextField {...props} showShowHideButton={true} />)  
     expect(field).toMatchSnapshot();
   });
 
   it('renders show and clear Button', () => {
-    let field = shallow(<TextInputField {...props} showShowHideButton={true} showClearButton={true} />)  
+    let field = shallow(<UITextField {...props} showShowHideButton={true} showClearButton={true} />)  
     expect(field).toMatchSnapshot();
   });
 
   it('renders search Button', () => {
-    let field = shallow(<TextInputField {...props} showLeftSearchButton={true} />)  
+    let field = shallow(<UITextField {...props} showLeftSearchButton={true} />)  
     expect(field).toMatchSnapshot();
   });
 
   it('renders round shape', ()=>{
-    let field = renderer.create(<TextInputField {...props} shape={"round"}/>).toJSON();
+    let field = renderer.create(<UITextField {...props} shape={"round"}/>).toJSON();
     expect(field).toMatchSnapshot()
   })
 
@@ -103,7 +103,7 @@ const props = {
     // Arrange
     const mockOnFocus = jest.fn();      // 1. mock function
     const mockOnBlur = jest.fn();
-    const wrapper = shallow(<TextInputField {...props} onFocus={mockOnFocus} onBlur={mockOnBlur} />);
+    const wrapper = shallow(<UITextField {...props} onFocus={mockOnFocus} onBlur={mockOnBlur} />);
     wrapper.find('TextField').simulate('focus', 'test search text');
     expect(mockOnFocus).toHaveBeenCalled();
     wrapper.find('TextField').simulate('blur', 'test search text');

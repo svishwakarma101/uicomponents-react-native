@@ -8,7 +8,7 @@ import {
 } from '../utils/Constants';
 import { Colors } from '../utils/StyleSheet';
 
-class StreamInputField extends React.Component {
+class UIStreamInputField extends React.Component {
   static propTypes = {
     theme: PropTypes.object,
     length: PropTypes.number,
@@ -238,4 +238,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default StreamInputField;
+export default UIStreamInputField;

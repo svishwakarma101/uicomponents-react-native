@@ -10,6 +10,7 @@ exports[`renders 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -158,7 +159,7 @@ exports[`renders 1`] = `
                 rejectResponderTermination={true}
                 returnKeyType="done"
                 secureTextEntry={false}
-                selectionColor="#8FA3C1"
+                selectionColor="#E6E9F0"
                 style={
                   Array [
                     Object {
@@ -224,6 +225,7 @@ exports[`renders Clear Button 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -422,8 +424,10 @@ exports[`renders Clear Button 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -437,7 +441,7 @@ exports[`renders Clear Button 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -468,6 +472,7 @@ exports[`renders disabled value 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -666,8 +671,10 @@ exports[`renders disabled value 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -681,7 +688,7 @@ exports[`renders disabled value 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -712,6 +719,7 @@ exports[`renders error message 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -911,8 +919,10 @@ exports[`renders error message 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -926,7 +936,7 @@ exports[`renders error message 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -957,6 +967,7 @@ exports[`renders label 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -1156,8 +1167,10 @@ exports[`renders label 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -1171,7 +1184,7 @@ exports[`renders label 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -1202,6 +1215,7 @@ exports[`renders left accessory 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -1400,8 +1414,10 @@ exports[`renders left accessory 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -1415,7 +1431,7 @@ exports[`renders left accessory 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -1446,6 +1462,7 @@ exports[`renders multiline value 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -1645,8 +1662,10 @@ exports[`renders multiline value 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -1660,7 +1679,7 @@ exports[`renders multiline value 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -1691,6 +1710,7 @@ exports[`renders round shape 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -1839,7 +1859,7 @@ exports[`renders round shape 1`] = `
                 rejectResponderTermination={true}
                 returnKeyType="done"
                 secureTextEntry={false}
-                selectionColor="#8FA3C1"
+                selectionColor="#E6E9F0"
                 style={
                   Array [
                     Object {
@@ -1905,6 +1925,7 @@ exports[`renders search Button 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -2105,8 +2126,10 @@ exports[`renders search Button 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -2120,7 +2143,7 @@ exports[`renders search Button 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -2151,6 +2174,7 @@ exports[`renders show Button 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -2349,8 +2373,10 @@ exports[`renders show Button 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -2364,7 +2390,7 @@ exports[`renders show Button 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -2395,6 +2421,7 @@ exports[`renders show and clear Button 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -2593,8 +2620,10 @@ exports[`renders show and clear Button 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -2608,7 +2637,7 @@ exports[`renders show and clear Button 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -2639,6 +2668,7 @@ exports[`renders type date 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -2837,8 +2867,10 @@ exports[`renders type date 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -2852,7 +2884,7 @@ exports[`renders type date 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -2899,6 +2931,7 @@ exports[`renders type monthYearDate 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -3097,8 +3130,10 @@ exports[`renders type monthYearDate 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -3112,7 +3147,7 @@ exports[`renders type monthYearDate 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -3143,6 +3178,7 @@ exports[`renders type monthYearShortDate 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -3341,8 +3377,10 @@ exports[`renders type monthYearShortDate 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -3356,7 +3394,7 @@ exports[`renders type monthYearShortDate 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -3387,6 +3425,7 @@ exports[`renders type shortDate 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -3585,8 +3624,10 @@ exports[`renders type shortDate 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -3600,7 +3641,7 @@ exports[`renders type shortDate 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [
@@ -3631,6 +3672,7 @@ exports[`renders value 1`] = `
         "borderColor": "#E6E9F0",
         "flex": 0,
         "flexDirection": "column",
+        "height": 60,
         "justifyContent": "center",
         "paddingHorizontal": 20,
       },
@@ -3829,8 +3871,10 @@ exports[`renders value 1`] = `
             "TextField": Object {
               "backgroundColor": "rgba(0,0,0,0)",
               "borderColor": "#E6E9F0",
+              "errorColor": "#FE0000",
               "placeholderTextColor": "#8FA3C1",
               "textColor": "#354087",
+              "tintColor": "#E6E9F0",
               "underLineColor": "#E6E9F0",
               "underLineColorFocus": "#E6E9F0",
             },
@@ -3844,7 +3888,7 @@ exports[`renders value 1`] = `
             },
           }
         }
-        tintColor="#8FA3C1"
+        tintColor="#E6E9F0"
         title={null}
         titleTextStyle={
           Array [

@@ -21,7 +21,7 @@ import showButton from '../../assets/images/button/hideIconGray.png';
 import hideButton from '../../assets/images/button/hideIconGray.png';
 import searchIcon from '../../assets/images/button/searchIcon.png';
 
-export function TextInputField(props) {
+export function UITextField(props) {
 
     const [autoFocusEnabled, setAutoFocusEnabled] = useState(props.autoFocus || false);
     const [shouldEncryptedTextBeVisible, setShouldEncryptedTextBeVisible] = useState(props.isSecureText || false);
@@ -414,7 +414,7 @@ const styles = StyleSheet.create({
     }
 });
 
-TextInputField.defaultProps = {
+UITextField.defaultProps = {
     theme: Theme,
     type: TEXTFIELD_TYPES.default,
     shape: TEXTFIELD_SHAPES.rectangular,
@@ -437,7 +437,7 @@ TextInputField.defaultProps = {
     blurOnSubmit: false
 };
 
-TextInputField.propTypes = {
+UITextField.propTypes = {
     theme: PropTypes.object,
     type: PropTypes.oneOf(TEXTFIELD_TYPES),
     shape: PropTypes.oneOf(TEXTFIELD_SHAPES),
@@ -494,4 +494,4 @@ TextInputField.propTypes = {
 
 };
 
-export default TextInputField;
+export default UITextField;

@@ -28,22 +28,22 @@ react-native-material-textfield
 ## Usage
 
 ```bash
-import { TextInputField, Button } from 'uicomponents-react-native';
+import { UITextField, Button } from 'uicomponents-react-native';
 ```
 
 ## Components
 
 ```bash
-TextInputField
-Swiper
-Button
-CircleWithTick
-Overlay
-Alert
-AttributedText
-StreamInputField
-SnackBar
-NetworkSnackBar
+UITextField
+UISwiper
+UIButton
+UICircleWithTick
+UIOverlay
+UIAlert
+UIAttributedText
+UIStreamInputField
+UISnackBar
+UINetworkSnackBar
 ```
 
 ## License
