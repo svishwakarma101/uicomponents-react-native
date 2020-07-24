@@ -4,8 +4,7 @@
   "description": "UI Component Library for React-Native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jest": "jest"
+    "test": "jest"
   },
   "keywords": [
     "ui",
@@ -36,7 +35,7 @@
     "prop-types": "15.6.2",
     "react-native-linear-gradient": "2.5.4",
     "react-native-snap-carousel": "3.8.0",
-    "react-native-material-textfield": "0.12.0",
+    "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
     "@react-native-community/netinfo": "^4.2.1"
   },
   "jest": {
