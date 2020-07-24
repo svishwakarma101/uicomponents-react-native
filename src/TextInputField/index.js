@@ -162,7 +162,7 @@ export function TextInputField(props) {
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={showHideSecureText}>
                     <Image
-                        style={[styles.image, props.clearButtonStyle]}
+                        style={[styles.image, props.rightButtonStyle]}
                         source={
                             shouldEncryptedTextBeVisible
                                 ? hideButtonSource
@@ -349,7 +349,7 @@ export function TextInputField(props) {
 const styles = StyleSheet.create({
     containerView: {
         flex: 0,
-        // height: 60,
+        height: 60,
         flexDirection: 'column',
         paddingHorizontal: 20,
         justifyContent: 'center',
@@ -485,6 +485,7 @@ TextInputField.propTypes = {
     showShowHideButton: PropTypes.bool,
     showLeftSearchButton: PropTypes.bool,
     clearButtonStyle: PropTypes.shape({}),
+    rightButtonStyle: PropTypes.shape({}),
     autoFocus: PropTypes.bool,
     clearButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     showButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
