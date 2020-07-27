@@ -21,7 +21,7 @@ import showIcon from '../../assets/images/button/hideIconGray.png';
 import hideIcon from '../../assets/images/button/hideIconGray.png';
 import searchIcon from '../../assets/images/button/searchIcon.png';
 
-export function UITextField(props) {
+export default function UITextField(props) {
 
     const [autoFocusEnabled, setAutoFocusEnabled] = useState(props.autoFocus || false);
     const [shouldEncryptedTextBeVisible, setShouldEncryptedTextBeVisible] = useState(props.isSecureText || false);
@@ -532,5 +532,3 @@ UITextField.propTypes = {
     leftButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
 
 };
-
-export default UITextField;
