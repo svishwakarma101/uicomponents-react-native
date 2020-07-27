@@ -1,11 +1,11 @@
 import React from 'react';
 import { Linking, Platform, NativeModules } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import SnackBar from './index';
+import UISnackBar from './index';
 
 const errorMessage = 'Unable to connect to the internet';
 
-export default class NetworkSnackBar extends React.Component {
+export default class UINetworkSnackBar extends React.Component {
   state = { position: 'bottom', isConnected: true };
 
   componentWillMount() {
@@ -40,7 +40,7 @@ export default class NetworkSnackBar extends React.Component {
 
   render() {
     return (
-      <SnackBar
+      <UISnackBar
         {...this.props}
         visible={!this.state.isConnected}
         actionHandler={this.actionHandler}

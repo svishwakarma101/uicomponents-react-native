@@ -23,7 +23,7 @@ import {
 } from '../utils/Constants';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default class Button extends Component {
+export default class UIButton extends Component {
   static propTypes = {
     theme: PropTypes.object,
     disabled: PropTypes.bool,

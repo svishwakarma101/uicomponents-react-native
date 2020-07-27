@@ -1,23 +1,23 @@
-import TextField from './src/TextField';
-import Swiper from './src/Swiper';
-import Button from './src/Button';
-import CircleWithTick from './src/CircleWithTick';
-import Overlay from './src/Overlay';
-import Alert from './src/Alert';
-import AttributedText from './src/AttributedText';
-import StreamInputField from './src/StreamInputField';
-import SnackBar from './src/SnackBar';
-import NetworkSnackBar from './src/SnackBar/NetworkSnackBar';
+import UITextField from './src/UITextField';
+import UISwiper from './src/UISwiper';
+import UIButton from './src/UIButton';
+import UICircleWithTick from './src/UICircleWithTick';
+import UIOverlay from './src/UIOverlay';
+import UIAlert from './src/UIAlert';
+import UIAttributedText from './src/UIAttributedText';
+import UIStreamInputField from './src/UIStreamInputField';
+import UISnackBar from './src/UISnackBar';
+import UINetworkSnackBar from './src/UISnackBar/UINetworkSnackBar';
 
 export {
-  TextField,
-  Swiper,
-  Button,
-  CircleWithTick,
-  Overlay,
-  Alert,
-  AttributedText,
-  StreamInputField,
-  SnackBar,
-  NetworkSnackBar
+  UITextField,
+  UISwiper,
+  UIButton,
+  UICircleWithTick,
+  UIOverlay,
+  UIAlert,
+  UIAttributedText,
+  UIStreamInputField,
+  UISnackBar,
+  UINetworkSnackBar
 };

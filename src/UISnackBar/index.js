@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
-import NativeSnackBar from './NativeSnackBar';
-import CustomSnackBar from './CustomSnackBar';
+import UINativeSnackBar from './UINativeSnackBar';
+import UICustomSnackBar from './UICustomSnackBar';
 
-export default class SnackBar extends Component {
+export default class UISnackBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,14 +42,14 @@ export default class SnackBar extends Component {
     const { type } = this.props;
     if (type === 'native') {
       return (
-        <NativeSnackBar
+        <UINativeSnackBar
           {...this.props}
           position={this.state.position}
         />
       );
     } else {
       return (
-        <CustomSnackBar
+        <UICustomSnackBar
           {...this.props}
           position={this.state.position}
         />

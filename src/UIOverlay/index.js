@@ -3,7 +3,7 @@ import { Modal, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { APPLIED_THEME as Theme } from '../utils/Constants';
 
-export default class Overlay extends Component {
+export default class UIOverlay extends Component {
   static propTypes = {
     theme: PropTypes.object,
     overlayColor: PropTypes.string,

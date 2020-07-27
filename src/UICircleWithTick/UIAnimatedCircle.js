@@ -4,7 +4,7 @@ import { Colors } from '../utils/StyleSheet';
 import PropTypes from 'prop-types';
 import { CIRCLE_SIZES } from '../utils/Constants';
 
-export default class AnimatedCircle extends Component {
+export default class UIAnimatedCircle extends Component {
   static propTypes = {
     isPrimary: PropTypes.bool,
     isBorderRequired: PropTypes.bool,

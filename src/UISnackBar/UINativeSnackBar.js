@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { getAdjustedFontSize } from '../utils/Fonts';
 import { Fonts, FontSize } from '../utils/StyleSheet';
 import { APPLIED_THEME as Themes } from '../utils/Constants';
-import { Touchable, noop } from './Touchable';
+import { UITouchable, noop } from './UITouchable';
 
 const easing_values = {
   entry: Easing.bezier(0.0, 0.0, 0.2, 1),
   exit: Easing.bezier(0.4, 0.0, 1, 1)
 };
 
-export default class NativeSnackBar extends Component {
+export default class UINativeSnackBar extends Component {
   constructor(props) {
     super(props);
     this.animation = new Animated.Value(-100);
@@ -88,7 +88,7 @@ export default class NativeSnackBar extends Component {
             {message}
           </Text>
           {this.props.actionButtonTitle && (
-            <Touchable
+            <UITouchable
               style={actionButtonStyle}
               onPress={() => {
                 this.actionHandler();
@@ -103,7 +103,7 @@ export default class NativeSnackBar extends Component {
               >
                 {this.props.actionButtonTitle.toUpperCase()}
               </Text>
-            </Touchable>
+            </UITouchable>
           )}
         </Animated.View>
       </Animated.View>
@@ -111,7 +111,7 @@ export default class NativeSnackBar extends Component {
   }
 }
 
-NativeSnackBar.propTypes = {
+UINativeSnackBar.propTypes = {
   theme: PropTypes.object,
   visible: PropTypes.bool,
   isSelfDismiss: PropTypes.bool,
@@ -128,7 +128,7 @@ NativeSnackBar.propTypes = {
   position: PropTypes.string // bottom (default), top
 };
 
-NativeSnackBar.defaultProps = {
+UINativeSnackBar.defaultProps = {
   theme: Themes,
   visible: false,
   isSelfDismiss: false,
