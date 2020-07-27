@@ -155,7 +155,10 @@ export const Colors = {
   brandPurple: '#752EFF',
   brandGreen: '#00DBD8',
   brandYellow: '#FED931',
-  brandPink: '#00DBD8'
+  brandPink: '#00DBD8',
+
+  errorRedColor: '#FE0000',
+
 };
 
 export const Themes = {
@@ -261,7 +264,9 @@ export const Themes = {
       underLineColor: Colors.blueGrayBorderLight,
       underLineColorFocus: Colors.blueGrayBorderLight,
       placeholderTextColor: Colors.blueGray,
-      textColor: Colors.instaremDenimBlue
+      textColor: Colors.DenimBlue,
+      tintColor: Colors.blueGrayBorderLight,
+      errorColor: Colors.errorRedColor
     },
     Alert: {
       textColor: Colors.blueGradientMid,
@@ -370,7 +375,9 @@ export const Themes = {
       underLineColor: Colors.blueGrayBorderLight,
       underLineColorFocus: Colors.blueGrayBorderLight,
       placeholderTextColor: Colors.blueGray,
-      textColor: Colors.blueGradientMid
+      textColor: Colors.blueGradientMid,
+      tintColor: Colors.blueGrayBorderLight,
+      errorColor: Colors.errorRedColor
     },
     Alert: {
       textColor: Colors.blueGradientMid,

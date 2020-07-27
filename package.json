@@ -4,7 +4,7 @@
   "description": "UI Component Library for React-Native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "ui",
@@ -13,13 +13,46 @@
   "author": "Instarem",
   "license": "ISC",
   "devDependencies": {
-    "metro-react-native-babel-preset": "0.51.1"
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^26.1.0",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "react": "16.10.2",
+    "react-native": "0.61.2",
+    "react-native-linear-gradient": "2.5.4",
+    "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
+    "react-native-snap-carousel": "3.8.0",
+    "prop-types": "15.6.2"
   },
   "peerDependencies": {
     "prop-types": "15.6.2",
     "react-native-linear-gradient": "2.5.4",
     "react-native-snap-carousel": "3.8.0",
-    "react-native-material-textfield": "0.12.0",
+    "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
     "@react-native-community/netinfo": "^4.2.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "./setupTests.js"
+    ],
+    "collectCoverage": true,
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "./node_modules/jest-enzyme/lib/index.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|parse|react-navigation|react-native-firebase)"
+    ]
   }
 }

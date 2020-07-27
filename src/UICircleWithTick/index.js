@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
-import AnimatedCircle from './AnimatedCircle';
-import AnimatedTick from './AnimatedTick';
+import UIAnimatedCircle from './UIAnimatedCircle';
+import UIAnimatedTick from './UIAnimatedTick';
 import { CIRCLE_SIZES } from '../utils/Constants';
 import { Colors } from '../utils/StyleSheet';
 
-export default class CircleWithTick extends Component {
+export default class UICircleWithTick extends Component {
   static propTypes = {
     isPrimary: PropTypes.bool,
     isBorderRequired: PropTypes.bool,
@@ -54,7 +54,7 @@ export default class CircleWithTick extends Component {
   render() {
     const { thickness, unfilledColor, color, size } = this.props;
     return (
-      <AnimatedCircle
+      <UIAnimatedCircle
         {...this.props}
         value={this.animatedValue}
         size={size}
@@ -63,14 +63,14 @@ export default class CircleWithTick extends Component {
         unfilledColor={unfilledColor}
         animationConfig={{ speed: 4 }}
       >
-        <AnimatedTick
+        <UIAnimatedTick
           height={thickness}
           barColor={color}
           size={size}
           progress={this.animatedValue}
           duration={100}
         />
-      </AnimatedCircle>
+      </UIAnimatedCircle>
     );
   }
 }

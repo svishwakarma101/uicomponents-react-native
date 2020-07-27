@@ -9,7 +9,7 @@ import {
   PAGINATION_DOT_POSITION
 } from '../utils/Constants';
 
-export default class Swiper extends Component {
+export default class UISwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {

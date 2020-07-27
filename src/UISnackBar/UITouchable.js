@@ -14,7 +14,7 @@ const IS_LT_LOLLIPOP = Version < 21;
 
 export const noop = () => {};
 
-export const Touchable = ({ onPress, style, children }) => {
+export const UITouchable = ({ onPress, style, children }) => {
   if (IS_ANDROID && !IS_LT_LOLLIPOP) {
     return (
       <TouchableNativeFeedback
@@ -38,13 +38,13 @@ export const Touchable = ({ onPress, style, children }) => {
   }
 };
 
-Touchable.propTypes = {
+UITouchable.propTypes = {
   onPress: PropTypes.func.isRequired,
   style: ViewPropTypes.style,
   children: PropTypes.node.isRequired
 };
 
-Touchable.defaultProps = {
+UITouchable.defaultProps = {
   onPress: noop,
   style: {}
 };

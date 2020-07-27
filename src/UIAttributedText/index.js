@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { APPLIED_THEME as Theme } from '../utils/Constants';
-export default class AttributedText extends Component {
+export default class UIAttributedText extends Component {
   constructor(props) {
     super(props);
     this.endString = '';
