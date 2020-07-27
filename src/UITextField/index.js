@@ -17,8 +17,8 @@ import {
     TEXTFIELD_UNDERLINESTYLE
 } from '../utils/Constants';
 import cancelIcon from '../../assets/images/button/cancelIcon.png';
-import showButton from '../../assets/images/button/hideIconGray.png';
-import hideButton from '../../assets/images/button/hideIconGray.png';
+import showIcon from '../../assets/images/button/hideIconGray.png';
+import hideIcon from '../../assets/images/button/hideIconGray.png';
 import searchIcon from '../../assets/images/button/searchIcon.png';
 
 export function UITextField(props) {
@@ -116,35 +116,46 @@ export function UITextField(props) {
     }
 
     function getAccessoryView() {
-        if (props.showClearButton && props.showShowHideButton) {
-            return <View style={{ flexDirection: 'row' }}>
-                {getRightSideShowButton()}
-                {getRightSideClearButton()}
-            </View>
-        } else if (props.showClearButton) {
-            return getRightSideClearButton();
-        } else if (props.showShowHideButton) {
-            return getRightSideShowButton();
+        if (props.rightAccessoryView && typeof props.rightAccessoryView === 'function') {
+            return props.rightAccessoryView()
         }
         else {
-            return null;
+            if (props.showClearButton && props.showShowHideButton) {
+                return <View style={{ flexDirection: 'row' }}>
+                    {getRightSideShowButton()}
+                    {getRightSideClearButton()}
+                </View>
+            } else if (props.showClearButton) {
+                return getRightSideClearButton();
+            } else if (props.showShowHideButton) {
+                return getRightSideShowButton();
+            }
+            else {
+                return null;
+            }
         }
     };
 
     function getRightSideClearButton() {
-        const { input, theme } = props;
+        const { input, theme, showClearButton, clearButton } = props;
         const textFieldNotEmpty = input.value && input.value !== '';
-        if (props.showClearButton) {
+        const isClearButton = clearButton && typeof clearButton === 'function';
+
+        if ( showClearButton || isClearButton ) {
             let clearButtonSource = props.clearButtonImage || cancelIcon;
 
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={clearText}>
-                    <Image
-                        style={[styles.image, props.clearButtonStyle,
-                        { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
-                        source={clearButtonSource}
-                        resizeMode='contain'
-                    />
+                    {
+                        isClearButton ? clearButton() :
+                        <Image
+                            style={[styles.image, props.clearButtonStyle,
+                            { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
+                            source={clearButtonSource}
+                            resizeMode='contain'
+                        />          
+                    }
+                    
                 </TouchableOpacity>
             );
         }
@@ -152,49 +163,69 @@ export function UITextField(props) {
     };
 
     function getRightSideShowButton() {
-        const { input, theme } = props;
+        const { input, theme, showButton, hideButton } = props;
         const textFieldNotEmpty = input.value && input.value !== '';
 
-        if (props.showShowHideButton) {
-            let hideButtonSource = props.hideButtonImage || hideButton;
-            let showButtonSource = props.showButtonImage || showButton;
+        const isShowButton = showButton && typeof showButton === 'function';
+        const isHideButton = hideButton && typeof hideButton === 'function';
+
+
+        if (props.showShowHideButton || (isShowButton && isHideButton )) {
+            let hideButtonSource = props.hideButtonImage || hideIcon;
+            let showButtonSource = props.showButtonImage || showIcon;
 
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={showHideSecureText}>
-                    <Image
-                        style={[styles.image, props.rightButtonStyle]}
-                        source={
-                            shouldEncryptedTextBeVisible
-                                ? hideButtonSource
-                                : showButtonSource
-                        }
-                        resizeMode='contain'
-                    />
+                    {
+                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButtonImage() :
+                        <Image
+                            style={[styles.image, props.clearButtonStyle,
+                                { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
+                            source={
+                                shouldEncryptedTextBeVisible
+                                    ? hideButtonSource
+                                    : showButtonSource
+                            }
+                            resizeMode='contain'
+                        />
+                    }
+                    
                 </TouchableOpacity>
             );
         }
         return null;
     };
 
-    function getLeftSearchButton() {
-        const { input, theme } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+    function getLeftAccessoryView(){
+        if (props.leftAccessoryView && typeof props.leftAccessoryView === 'function') {
+            return props.leftAccessoryView()
+        }
+        else  return getLeftButton()
+    }
 
-        if (props.showLeftSearchButton) {
+    function getLeftButton() {
+        const { input, theme , showLeftSearchButton, leftButton } = props;
+        const textFieldNotEmpty = input.value && input.value !== '';
+        const isleftButton = leftButton && typeof leftButton === 'function';
+
+        if (showLeftSearchButton || isleftButton) {
             let showLeftSearchButton = props.leftButtonImage || searchIcon;
             return (
                 <TouchableOpacity style={[styles.rightAccessory, styles.leftAccessory, props.rightAccessoryStyle]} onPress={() => { }}>
-                    <Image
-                        style={[styles.image, props.clearButtonStyle,
-                        { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
-                        source={showLeftSearchButton}
-                        resizeMode='contain'
-                    />
+                    {  isleftButton ? leftButton() :
+                        <Image
+                            style={[styles.image, props.leftButtonStyle,
+                            { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
+                            source={showLeftSearchButton}
+                            resizeMode='contain'
+                        />
+                    }
                 </TouchableOpacity>
             );
         }
         return null;
     };
+
 
     function onFocus() {
         if (props.onFocus) {
@@ -315,7 +346,7 @@ export function UITextField(props) {
                         error={errorMessage || null}
                         title={descriptionMessage || null}
                         renderRightAccessory={() => getAccessoryView()}
-                        renderLeftAccessory={() => getLeftSearchButton()}
+                        renderLeftAccessory={() => getLeftAccessoryView()}
                         ref={inputRef}
                         placeholderTextColor={!isFloating ? placeholderColor || '' : placeholderColor || null}
                         underlineColorAndroid='transparent'
@@ -465,6 +496,14 @@ UITextField.propTypes = {
     returnKeyType: PropTypes.string,
     onChangeText: PropTypes.func,
     onSecureTextModeChange: PropTypes.func,
+
+    leftAccessoryView: PropTypes.func,
+    rightAccessoryView: PropTypes.func,
+    leftButton: PropTypes.func,
+    clearButton: PropTypes.func,
+    showButton: PropTypes.func,
+    hideButton: PropTypes.func,
+
     containerStyle: PropTypes.shape({
         ...ViewPropTypes.style
     }),
