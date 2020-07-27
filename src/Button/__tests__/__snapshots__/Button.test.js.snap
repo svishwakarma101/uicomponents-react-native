@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UIButton  Renders UIButton for default scenarios correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of shape Rounded correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 30,
+        "borderWidth": 1,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of shape RoundedEdge correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of shape Square correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 0,
+        "borderWidth": 1,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of type Disabled correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#E2E2E2",
+        "borderColor": "#E2E2E2",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 0.5,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of type Gradient correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#2974D2",
+        "borderRadius": 4,
+        "height": 60,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  >
+    <BVLinearGradient
+      colors={
+        Array [
+          4280906962,
+          4280628372,
+          4280233088,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 1,
+          "y": 0,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "backgroundColor": "#2974D2",
+            "borderRadius": 4,
+            "height": 60,
+            "justifyContent": "center",
+          },
+          Object {
+            "borderRadius": 4,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`UIButton  renders UIButton of type Primary correctly 1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 4,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of type Secondary correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#FE0095",
+        "borderRadius": 4,
+        "borderWidth": 2,
+        "height": 46,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;
+
+exports[`UIButton  renders UIButton of type Transparent correctly  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#FE0095",
+        "borderColor": "#FE0095",
+        "borderRadius": 4,
+        "borderWidth": 0,
+        "flex": 0,
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+    testID="icon_button"
+  />
+</View>
+`;

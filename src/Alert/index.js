@@ -21,7 +21,7 @@ import {
   APPLIED_THEME as Theme
 } from '../utils/Constants';
 import { Colors, Fonts, FontSize } from '../utils/StyleSheet';
-import Button from '../Button';
+import UIButton from '../Button';
 import cancelImage from '../../assets/images/button/cancelIcon.png';
 import CircleWithTick from '../CircleWithTick';
 
@@ -192,7 +192,7 @@ export default class Alert extends Component {
 
           <View style={styles.buttonContainer}>
             {renderIf(secondaryButtonTitle !== undefined)(
-              <Button
+              <UIButton
                 theme={theme}
                 buttonType={secondaryButtonType}
                 buttonShape={secondaryButtonShape}
@@ -208,7 +208,7 @@ export default class Alert extends Component {
               />
             )}
 
-            <Button
+            <UIButton
               theme={theme}
               buttonType={primaryButtonType}
               buttonShape={primaryButtonShape}

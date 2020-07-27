@@ -1,7 +1,3 @@
-/**
- *
- */
-
 export const Fonts = {
   Roman: 'AvenirLTStd-Roman',
   Heavy: 'AvenirLTStd-Heavy',
@@ -51,18 +47,19 @@ export const Colors = {
   darkGray: '#6a6c6e',
 
   /* button style */
-  buttonBgColor: '#202859',
-  buttonTextColor: '#fff',
+  buttonBgColor: '#FE0095',
+  buttonTextColor: '#FFFFFF',
+  disabledBtnBgColor: '#E2E2E2',
+  disabledSecondaryBtnTextColor: '#A9A9A9',
+  disabledBtnTextColor: '#bfbfc0',
 
   /* link text style */
   linkColor: '#70cff3',
+  linkTextColor: '#007AFF',
 
   noteColor: '#888888',
 
   formTitleColor: '#000',
-
-  disabledBtnBgColor: '#f2f2f2',
-  disabledBtnTextColor: '#bfbfc0',
 
   errMessageColor: '#d40000',
 
@@ -84,38 +81,38 @@ export const Colors = {
   /*Login and Sign Up screen*/
   disabledGray: '#f8f8f8',
   normalTextColor: '#a2a0a0',
-  Red: '#f92929',
-  LightestGray: '#f5f5f5',
-  LightGray: '#b6b6b6',
-  Green: '#57b578',
-  Blue: '#202859',
-  BlueLight: '#52a8dd',
-  grayMedium: '#e4e4e4',
-  Disable: '#9b9b9b',
-  White: '#ffffff',
-  DenimBlue: '#354087',
-  TextBg: '#46aeee',
-  DarkBlue: '#354087',
-  SkyBlue: '#46aeee',
-  Black: '#000',
-  PageTitle: '#354087',
-  BtnBgColor: '#354087',
-  BorderSeparatorColor: '#bfbfbf',
+  instaremRed: '#f92929',
+  instaremLightestGray: '#f5f5f5',
+  instaremLightGray: '#b6b6b6',
+  instaremGreen: '#57b578',
+  instaremBlue: '#202859',
+  instaremBlueLight: '#52a8dd',
+  instaremGray: '#e4e4e4',
+  instaremDisable: '#9b9b9b',
+  instaremWhite: '#ffffff',
+  instaremDenimBlue: '#354087',
+  instaremTextBg: '#46aeee',
+  instaremDarkBlue: '#354087',
+  instaremSkyBlue: '#46aeee',
+  instaremBlack: '#000',
+  instaremPageTitle: '#354087',
+  instaremBtnBgColor: '#354087',
+  instaremBorderSeparatorColor: '#bfbfbf',
   currencyConverterTextColor: '#46aeee',
-  SecondaryButtonBg: '#fff',
-  SecondaryButtonText: '#46aeee',
-  CurrencyText: '#354087',
-  SuccessMsg: '#57b578',
+  instaremSecondaryButtonBg: '#fff',
+  instaremSecondaryButtonText: '#46aeee',
+  instaremCurrencyText: '#354087',
+  instaremSuccessMsg: '#57b578',
   textFieldValue: '#354087',
   labelColor: '#202859',
   overlay: 'rgba(0, 0, 0, 0.5)',
   activityIndicator: '#b6b6b6',
-  Orange: '#f7a454',
-  ErrRed: '#f77961',
-  FieldBlueColor: '#46aeee',
-  TextColor: '#a7a7a7',
+  instaremOrange: '#f7a454',
+  instaremErrRed: '#f77961',
+  instaremFieldBlueColor: '#46aeee',
+  instaremTextColor: '#a7a7a7',
   timelineDotLight: '#08abdf',
-  LightText: '#c1c1c1',
+  instaLightText: '#c1c1c1',
   timeLineBorderColor: '#ebebeb',
   transactionSummarySeparator: '#efefef',
   cardBorder: '#efefef',
@@ -164,37 +161,65 @@ export const Colors = {
 export const Themes = {
   Light: {
     PrimaryButton: {
-      textColor: Colors.White,
+      textColor: Colors.buttonTextColor,
       backgroundColor: Colors.buttonBgColor,
       borderColor: Colors.buttonBgColor,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.buttonTextColor,
       activeBackgroundColor: Colors.buttonBgColor,
-      activeBorderColor: Colors.buttonBgColor
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonTextColor
     },
     SecondaryButton: {
       textColor: Colors.buttonBgColor,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.buttonTextColor,
       borderColor: Colors.buttonBgColor,
       activeTextColor: Colors.buttonBgColor,
-      activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.buttonBgColor
+      activeBackgroundColor: Colors.buttonTextColor,
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonBgColor
     },
     DisabledButton: {
-      textColor: Colors.greyMid,
-      backgroundColor: Colors.transparent,
-      borderColor: Colors.greyMid,
-      activeTextColor: Colors.greyMid,
-      activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.greyMid
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor
+    },
+    DisabledPrimaryButton: {
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.buttonTextColor
+    },
+    DisabledSecondaryButton: {
+      textColor: Colors.disabledSecondaryBtnTextColor,
+      backgroundColor: Colors.buttonTextColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.disabledSecondaryBtnTextColor,
+      activeBackgroundColor: Colors.buttonTextColor,
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.disabledSecondaryBtnTextColor
     },
     GradientButton: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColorGradientStart: Colors.blueGradientStart,
       backgroundColorGradientMid: Colors.blueGradientMid,
       backgroundColorGradientEnd: Colors.blueGradientEnd,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.instaremWhite,
       activeBackgroundColor: Colors.buttonBgColor,
       activeBorderColor: Colors.buttonBgColor
+    },
+    LinkButton: {
+      textColor: Colors.linkTextColor,
+      backgroundColor: Colors.transparent,
+      borderColor: Colors.transparent,
+      activeTextColor: Colors.linkTextColor,
+      activeBackgroundColor: Colors.transparent,
+      activeBorderColor: Colors.transparent,
     },
     TransparentButton: {
       textColor: Colors.buttonBgColor,
@@ -205,12 +230,12 @@ export const Themes = {
       activeBorderColor: Colors.transparent
     },
     DefaultButton: {
-      textColor: Colors.DenimBlue,
-      backgroundColor: Colors.White,
-      borderColor: Colors.White,
-      activeTextColor: Colors.DenimBlue,
-      activeBackgroundColor: Colors.White,
-      activeBorderColor: Colors.White
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.buttonBgColor,
+      borderColor: Colors.buttonBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.buttonBgColor,
+      activeBorderColor: Colors.buttonBgColor
     },
     Overlay: {
       backgroundColor: Colors.cardOverlay
@@ -220,15 +245,15 @@ export const Themes = {
       currentPageIndicatorTintColor: Colors.blueGradientMid
     },
     TabBar: {
-      backgroundColor: Colors.White,
+      backgroundColor: Colors.instaremWhite,
       inactiveTintColor: Colors.greyMid,
       activeTintColor: Colors.blueGradientMid
     },
     Onboarding: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColor: Colors.blueGradientMid,
-      pageIndicatorTintColor: Colors.White,
-      currentPageIndicatorTintColor: Colors.White
+      pageIndicatorTintColor: Colors.instaremWhite,
+      currentPageIndicatorTintColor: Colors.instaremWhite
     },
     TextField: {
       backgroundColor: Colors.transparent,
@@ -236,7 +261,7 @@ export const Themes = {
       underLineColor: Colors.blueGrayBorderLight,
       underLineColorFocus: Colors.blueGrayBorderLight,
       placeholderTextColor: Colors.blueGray,
-      textColor: Colors.DenimBlue
+      textColor: Colors.instaremDenimBlue
     },
     Alert: {
       textColor: Colors.blueGradientMid,
@@ -246,62 +271,62 @@ export const Themes = {
       secondaryTickBackgroundColor: Colors.blueGradientMid
     },
     StreamInputField: {
-      backgroundColor: Colors.LightestGray,
+      backgroundColor: Colors.instaremLightestGray,
       activeBackgroundColor: Colors.blueGradientMid,
       borderColor: Colors.grayShadeText,
       activeBorderColor: Colors.blueGradientMid,
       placeholderTextColor: Colors.grayShadeText,
       textColor: Colors.blueGradientMid,
-      secondaryTextColor: Colors.White
+      secondaryTextColor: Colors.instaremWhite
     },
     AttributedText: {
       textColor: Colors.blueGray,
       attributedTextColor: Colors.blueGradientMid
     },
     SnackBar: {
-      backgroundColor: Colors.White,
+      backgroundColor: Colors.instaremWhite,
       buttonBackgroundColor: Colors.blueGradientMid,
-      buttonTitleColor: Colors.White,
+      buttonTitleColor: Colors.instaremWhite,
       textColor: Colors.blueGradientMid,
       borderColor: Colors.blueGradientMid,
-      shadowColor: Colors.LightGray,
+      shadowColor: Colors.instaremLightGray,
       nativeBackgroundColor: Colors.grayDark,
-      nativeTextColor: Colors.White,
-      nativeButtonTitleColor: Colors.Orange
+      nativeTextColor: Colors.instaremWhite,
+      nativeButtonTitleColor: Colors.instaremOrange
     }
   },
 
   Dark: {
     PrimaryButton: {
       textColor: Colors.blueGradientMid,
-      backgroundColor: Colors.White,
-      borderColor: Colors.White,
+      backgroundColor: Colors.instaremWhite,
+      borderColor: Colors.instaremWhite,
       activeTextColor: Colors.blueGradientMid,
-      activeBackgroundColor: Colors.White,
-      activeBorderColor: Colors.White
+      activeBackgroundColor: Colors.instaremWhite,
+      activeBorderColor: Colors.instaremWhite
     },
     SecondaryButton: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColor: Colors.transparent,
-      borderColor: Colors.White,
-      activeTextColor: Colors.White,
+      borderColor: Colors.instaremWhite,
+      activeTextColor: Colors.instaremWhite,
       activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.White
+      activeBorderColor: Colors.instaremWhite
     },
     DisabledButton: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColor: Colors.transparent,
       borderColor: Colors.greyMid,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.instaremWhite,
       activeBackgroundColor: Colors.transparent,
       activeBorderColor: Colors.greyMid
     },
     GradientButton: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColorGradientStart: Colors.blueGradientStart,
       backgroundColorGradientMid: Colors.blueGradientMid,
       backgroundColorGradientEnd: Colors.blueGradientEnd,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.instaremWhite,
       activeBackgroundColor: Colors.buttonBgColor,
       activeBorderColor: Colors.buttonBgColor
     },
@@ -314,10 +339,10 @@ export const Themes = {
       activeBorderColor: Colors.transparent
     },
     DefaultButton: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColor: Colors.blueGradientMid,
       borderColor: Colors.blueGradientMid,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.instaremWhite,
       activeBackgroundColor: Colors.blueGradientMid,
       activeBorderColor: Colors.blueGradientMid
     },
@@ -329,15 +354,15 @@ export const Themes = {
       currentPageIndicatorTintColor: Colors.blueGradientMid
     },
     TabBar: {
-      backgroundColor: Colors.Black,
+      backgroundColor: Colors.instaremBlack,
       inactiveTintColor: Colors.greyMid,
-      activeTintColor: Colors.White
+      activeTintColor: Colors.instaremWhite
     },
     Onboarding: {
-      textColor: Colors.White,
+      textColor: Colors.instaremWhite,
       backgroundColor: Colors.blueGradientMid,
-      pageIndicatorTintColor: Colors.White,
-      currentPageIndicatorTintColor: Colors.White
+      pageIndicatorTintColor: Colors.instaremWhite,
+      currentPageIndicatorTintColor: Colors.instaremWhite
     },
     TextField: {
       backgroundColor: Colors.transparent,
@@ -355,28 +380,28 @@ export const Themes = {
       secondaryTickBackgroundColor: Colors.blueGradientMid
     },
     StreamInputField: {
-      backgroundColor: Colors.LightestGray,
+      backgroundColor: Colors.instaremLightestGray,
       activeBackgroundColor: Colors.blueGradientMid,
       borderColor: Colors.grayShadeText,
       activeBorderColor: Colors.blueGradientMid,
       placeholderTextColor: Colors.grayShadeText,
       textColor: Colors.purpleMild,
-      secondaryTextColor: Colors.White
+      secondaryTextColor: Colors.instaremWhite
     },
     AttributedText: {
       textColor: Colors.blueGray,
       attributedTextColor: Colors.blueGradientMid
     },
     SnackBar: {
-      backgroundColor: Colors.White,
+      backgroundColor: Colors.instaremWhite,
       buttonBackgroundColor: Colors.blueGradientMid,
-      buttonTitleColor: Colors.White,
+      buttonTitleColor: Colors.instaremWhite,
       textColor: Colors.blueGradientMid,
       borderColor: Colors.blueGradientMid,
-      shadowColor: Colors.LightGray,
+      shadowColor: Colors.instaremLightGray,
       nativeBackgroundColor: Colors.grayDark,
-      nativeTextColor: Colors.White,
-      nativeButtonTitleColor: Colors.Orange
+      nativeTextColor: Colors.instaremWhite,
+      nativeButtonTitleColor: Colors.instaremOrange
     }
   }
 };

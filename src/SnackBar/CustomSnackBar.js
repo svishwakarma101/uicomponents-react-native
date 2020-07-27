@@ -3,7 +3,7 @@ import { Text, Animated, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { getAdjustedFontSize } from '../utils/Fonts';
 import { Fonts, FontSize } from '../utils/StyleSheet';
-import Button from '../Button';
+import UIButton from '../Button';
 import { BUTTON_TYPES, APPLIED_THEME as Themes, SNACK_BAR_ACTION } from '../utils/Constants';
 
 export default class CustomSnackBar extends Component {
@@ -70,7 +70,7 @@ export default class CustomSnackBar extends Component {
           {message}
         </Text>
         {!isSelfDismiss && (
-          <Button
+          <UIButton
             theme={theme}
             buttonType={BUTTON_TYPES.primary}
             accessibilityLabel={'ok-button'}
@@ -86,7 +86,7 @@ export default class CustomSnackBar extends Component {
             >
               {actionButtonTitle || 'Ok'}
             </Text>
-          </Button>
+          </UIButton>
         )}
       </Animated.View>
     ) : null;
