@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import LinearGradient from 'react-native-linear-gradient'
 import { replaceSpaceWithUnderscore, accessibilityId } from '../utils/index'
 
-const UIButton = props => {
+function UIButton(props) {
   var { content,
     buttonType,
     style,
