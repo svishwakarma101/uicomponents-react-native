@@ -311,6 +311,8 @@ export default function UITextField(props) {
         disabled,
         tintColor,
         errorColor,
+        accessibilityLabel,
+        testID,
         input: { value: preProcessedValue },
     } = props;
 
@@ -376,10 +378,10 @@ export default function UITextField(props) {
                         maxLength={
                             props.maxLength || getMaxLength(props.type)
                         }
-                        accessibilityLabel={accessibilityId(
-                            getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
+                        accessibilityLabel={ accessibilityLabel ? accessibilityLabel: accessibilityId(
+                            testID ? testID :getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
                           )}
-                        testID={getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
+                        testID={testID ? testID: getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
                     >
                         {props.children}
                     </TextField>
@@ -542,6 +544,7 @@ UITextField.propTypes = {
     clearButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     showButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     hideButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    leftButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
-
+    leftButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    accessibilityLabel: PropTypes.string,
+    testID: PropTypes.string
 };
