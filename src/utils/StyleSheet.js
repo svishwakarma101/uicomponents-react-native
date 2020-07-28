@@ -3,21 +3,8 @@
  */
 
 export const Fonts = {
-  Roman: 'AvenirLTStd-Roman',
-  Heavy: 'AvenirLTStd-Heavy',
-  Light: 'AvenirLTStd-Light',
-  Medium: 'AvenirLTStd-Medium',
-  Black: 'AvenirLTStd-Black',
-  Book: 'AvenirLTStd-Book',
-
-  BrandBlack: 'Averta-Black',
-  BrandBold: 'Averta-Bold',
-  BrandExtrabold: 'Averta-Extrabold',
-  BrandSemibold: 'Averta-Semibold',
-  BrandLight: 'Averta-Light',
-  BrandRegular: 'Averta-Regular',
-  BrandThin: 'Averta-Thin',
-  BrandExtraThin: 'Averta-ExtraThin'
+  Bold: 'Hellix-Bold',
+  Regular: 'Hellix-Regular'
 };
 
 export const FontSize = {

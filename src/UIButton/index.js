@@ -315,7 +315,7 @@ const ButtonStyles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontFamily: Fonts.Heavy,
+    fontFamily: Fonts.Bold,
     fontSize: FontSize.Large2,
     backgroundColor: 'transparent'
   }

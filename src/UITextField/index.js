@@ -137,8 +137,8 @@ export default function UITextField(props) {
     };
 
     function getRightSideClearButton() {
-        const { input, theme, showClearButton, clearButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme, showClearButton, clearButton } = props;
+        const textFieldNotEmpty = value && value !== '';
         const isClearButton = clearButton && typeof clearButton === 'function';
 
         if ( showClearButton || isClearButton ) {
@@ -163,8 +163,8 @@ export default function UITextField(props) {
     };
 
     function getRightSideShowButton() {
-        const { input, theme, showButton, hideButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme, showButton, hideButton } = props;
+        const textFieldNotEmpty = value && value !== '';
 
         const isShowButton = showButton && typeof showButton === 'function';
         const isHideButton = hideButton && typeof hideButton === 'function';
@@ -204,8 +204,8 @@ export default function UITextField(props) {
     }
 
     function getLeftButton() {
-        const { input, theme , showLeftSearchButton, leftButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme , showLeftSearchButton, leftButton } = props;
+        const textFieldNotEmpty = value && value !== '';
         const isleftButton = leftButton && typeof leftButton === 'function';
 
         if (showLeftSearchButton || isleftButton) {
@@ -243,9 +243,10 @@ export default function UITextField(props) {
     };
 
     function onTextChanged(text) {
-        const { input: { onChange } } = props;
+        const { input } = props;
         let refinedText = handleChange(text);
-        onChange(text);
+        if(input.onChange && typeof input.onChange === 'function')
+            input.onChange(text);
         if (props.onChangeText) {
             props.onChangeText(refinedText);
         }
@@ -403,7 +404,7 @@ const styles = StyleSheet.create({
         alignContent: 'flex-end'
     },
     text: {
-        fontFamily: Fonts.Light,
+        fontFamily: Fonts.Regular,
         fontSize: FontSize.Large1,
         ...Platform.select({
             android: {
@@ -414,7 +415,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 2
     },
     descriptionStyle: {
-        fontFamily: Fonts.Light,
+        fontFamily: Fonts.Regular,
         fontSize: FontSize.Mini,
         ...Platform.select({
             android: {
