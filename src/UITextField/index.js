@@ -304,6 +304,7 @@ export default function UITextField(props) {
         errorMessageStyle,
         disabled,
         tintColor,
+        errorColor,
         input: { value: preProcessedValue },
     } = props;
 
@@ -345,6 +346,7 @@ export default function UITextField(props) {
                                 : null
                         }
                         error={errorMessage || null}
+                        errorColor={errorColor || theme.TextField.errorColor}
                         title={descriptionMessage || null}
                         renderRightAccessory={() => getAccessoryView()}
                         renderLeftAccessory={() => getLeftAccessoryView()}
