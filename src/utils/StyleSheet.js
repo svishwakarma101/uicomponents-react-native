@@ -303,28 +303,48 @@ export const Themes = {
 
   Dark: {
     PrimaryButton: {
-      textColor: Colors.blueGradientMid,
-      backgroundColor: Colors.White,
-      borderColor: Colors.White,
-      activeTextColor: Colors.blueGradientMid,
-      activeBackgroundColor: Colors.White,
-      activeBorderColor: Colors.White
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.buttonBgColor,
+      borderColor: Colors.buttonBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.buttonBgColor,
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonTextColor
     },
     SecondaryButton: {
-      textColor: Colors.White,
+      textColor: Colors.buttonBgColor,
       backgroundColor: Colors.transparent,
-      borderColor: Colors.White,
-      activeTextColor: Colors.White,
+      borderColor: Colors.buttonBgColor,
+      activeTextColor: Colors.buttonBgColor,
       activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.White
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonBgColor
     },
     DisabledButton: {
-      textColor: Colors.White,
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor
+    },
+    DisabledPrimaryButton: {
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.buttonTextColor
+    },
+    DisabledSecondaryButton: {
+      textColor: Colors.disabledSecondaryBtnTextColor,
       backgroundColor: Colors.transparent,
-      borderColor: Colors.greyMid,
-      activeTextColor: Colors.White,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.disabledSecondaryBtnTextColor,
       activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.greyMid
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.disabledSecondaryBtnTextColor
     },
     GradientButton: {
       textColor: Colors.White,
@@ -334,6 +354,14 @@ export const Themes = {
       activeTextColor: Colors.White,
       activeBackgroundColor: Colors.buttonBgColor,
       activeBorderColor: Colors.buttonBgColor
+    },
+    LinkButton: {
+      textColor: Colors.linkTextColor,
+      backgroundColor: Colors.transparent,
+      borderColor: Colors.transparent,
+      activeTextColor: Colors.linkTextColor,
+      activeBackgroundColor: Colors.transparent,
+      activeBorderColor: Colors.transparent,
     },
     TransparentButton: {
       textColor: Colors.buttonBgColor,
