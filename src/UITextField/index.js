@@ -20,6 +20,7 @@ import cancelIcon from '../../assets/images/button/cancelIcon.png';
 import showIcon from '../../assets/images/button/hideIconGray.png';
 import hideIcon from '../../assets/images/button/hideIconGray.png';
 import searchIcon from '../../assets/images/button/searchIcon.png';
+import { replaceSpaceWithUnderscore, accessibilityId } from '../utils/index'
 
 export default function UITextField(props) {
 
@@ -275,6 +276,11 @@ export default function UITextField(props) {
             props.onSecureTextModeChange(shouldEncryptedTextBeVisible);
         }
     };
+    function getAccessibilityLabel(name) {
+        let label = ''
+        label = `${replaceSpaceWithUnderscore(name)}`
+        return label
+    }
 
     const {
         theme,
@@ -370,6 +376,10 @@ export default function UITextField(props) {
                         maxLength={
                             props.maxLength || getMaxLength(props.type)
                         }
+                        accessibilityLabel={accessibilityId(
+                            getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
+                          )}
+                        testID={getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
                     >
                         {props.children}
                     </TextField>
