@@ -178,7 +178,7 @@ export default function UITextField(props) {
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={showHideSecureText}>
                     {
-                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButtonImage() :
+                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButton() :
                         <Image
                             style={[styles.image, props.clearButtonStyle,
                                 { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}

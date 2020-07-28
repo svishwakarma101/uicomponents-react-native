@@ -206,7 +206,7 @@ function UIButton(props) {
               contentStyle && contentStyle,
             { flexDirection: isIconLeftPositioned ? 'row-reverse' : 'row' }]}>
               {renderIf(content)(
-              <View style={[buttonType === 'link' ? null : ButtonStyles.titleView]}>
+              <View style={[props.buttonType === 'link' ? null : ButtonStyles.titleView]}>
                 <Text
                   style={[
                     ButtonStyles.title,
