@@ -5,7 +5,7 @@ import {getAdjustedFontSize} from '../utils/Fonts'
 
 export const ButtonStyles = StyleSheet.create({
     primaryButton: {
-      height: 46,
+      height: 44,
       backgroundColor: Theme.PrimaryButton.backgroundColor,
       borderRadius: 4,
       alignSelf: 'stretch',
@@ -13,7 +13,7 @@ export const ButtonStyles = StyleSheet.create({
       borderColor: Theme.PrimaryButton.borderColor,
     },
     secondaryButton: {
-      height: 46,
+      height: 44,
       backgroundColor: Theme.SecondaryButton.backgroundColor,
       borderWidth: 2,
       borderColor: Theme.SecondaryButton.borderColor,
@@ -22,7 +22,7 @@ export const ButtonStyles = StyleSheet.create({
       justifyContent: 'center',
     },
     disabledButton: {
-      height: 46,
+      height: 44,
       backgroundColor: Theme.DisabledPrimaryButton.backgroundColor,
       borderWidth: 1,
       borderColor: Theme.DisabledPrimaryButton.borderColor,
@@ -31,7 +31,7 @@ export const ButtonStyles = StyleSheet.create({
       justifyContent: 'center',
     },
     disabledSecondaryButton: {
-      height: 46,
+      height: 44,
       backgroundColor: Theme.DisabledSecondaryButton.backgroundColor,
       borderColor: Theme.DisabledSecondaryButton.borderColor,
       borderRadius: 4,
@@ -57,7 +57,7 @@ export const ButtonStyles = StyleSheet.create({
       justifyContent: 'center'
     },
     defaultButtonType: {
-      height: 46,
+      height: 44,
       backgroundColor: Theme.DefaultButton.backgroundColor,
       borderWidth: 1,
       borderColor: Theme.DefaultButton.borderColor,
@@ -65,10 +65,8 @@ export const ButtonStyles = StyleSheet.create({
       justifyContent: 'center'
     },
     linkButtonStyle: {
-      height: 44,
       alignItems: 'center',
       alignSelf: 'center',
-      paddingHorizontal: 20,
       backgroundColor: Colors.transparent,
       borderColor: Colors.transparent,
       borderWidth: 0,
@@ -101,10 +99,13 @@ export const ButtonStyles = StyleSheet.create({
       justifyContent: 'center',
       marginHorizontal: '10%'
     },
+    buttonContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     contentWithIcon: {
       alignItems: 'center',
       justifyContent: 'center',
-      marginLeft: '10%',
-      marginRight: '10%'
+      marginHorizontal: '10%',
     }
   })

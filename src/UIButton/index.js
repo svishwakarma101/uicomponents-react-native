@@ -32,19 +32,6 @@ function UIButton(props) {
   var buttonBackgroundColor
   var buttonBorderColor
 
-  const propTypes = {
-    theme: PropTypes.object,
-    disabled: PropTypes.bool,
-    buttonType: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
-    buttonShape: PropTypes.oneOf(Object.keys(BUTTON_SHAPES)),
-    titleStyle: PropTypes.shape({
-      ...ViewPropTypes.style
-    }),
-    gradientStyle: PropTypes.shape({
-      ...ViewPropTypes.style
-    })
-  };
-
   const isGradient = buttonType === BUTTON_TYPES.gradient;
 
   switch (buttonType) {
@@ -156,6 +143,7 @@ function UIButton(props) {
               renderIf(content || iconWithBtnText)(
                 <View style={[ButtonStyles.contentWithIcon, contentStyle && contentStyle,
                 { flexDirection: isIconLeftPositioned ? 'row-reverse' : 'row' }]}>
+                  {renderIf(content)(
                   <View style={[ButtonStyles.titleView]}>
                     <Text
                       style={[ButtonStyles.title,
@@ -166,6 +154,7 @@ function UIButton(props) {
                     > {content}
                     </Text>
                   </View>
+                  )}
                   <View style={{ justifyContent: 'center' }}>
                     <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
                   </View>
@@ -212,9 +201,12 @@ function UIButton(props) {
           testID={getButtonAccessibilityLabel(content || 'icon')}
         >
           {renderIf(content || iconWithBtnText)(
-            <View style={[ButtonStyles.contentWithIcon, contentStyle && contentStyle,
+            <View style={[ButtonStyles.buttonContainer, 
+              iconWithBtnText && iconWithBtnText ? ButtonStyles.contentWithIcon : null, 
+              contentStyle && contentStyle,
             { flexDirection: isIconLeftPositioned ? 'row-reverse' : 'row' }]}>
-              <View style={[ButtonStyles.titleView]}>
+              {renderIf(content)(
+              <View style={[buttonType === 'link' ? null : ButtonStyles.titleView]}>
                 <Text
                   style={[
                     ButtonStyles.title,
@@ -229,6 +221,7 @@ function UIButton(props) {
                   {content}
                 </Text>
               </View>
+              )}
               <View style={{ justifyContent: 'center' }}>
                 <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
               </View>
@@ -312,6 +305,30 @@ function getButtonAccessibilityLabel(content) {
   label = `${replaceSpaceWithUnderscore(content)}_button`
   return label
 }
+UIButton.propTypes = {
+  theme: PropTypes.object,
+  disabled: PropTypes.bool,
+  buttonType: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+  buttonShape: PropTypes.oneOf(Object.keys(BUTTON_SHAPES)),
+  titleStyle: PropTypes.shape({
+    ...ViewPropTypes.style
+  }),
+  gradientStyle: PropTypes.shape({
+    ...ViewPropTypes.style
+  }),
+  linkStyle: PropTypes.shape({
+    ...ViewPropTypes.style
+  }),
+  contentStyle: PropTypes.shape({
+    ...ViewPropTypes.style
+  }),
+  iconStyle: PropTypes.shape({
+    ...ViewPropTypes.style
+  }),
+  iconLeftPositioned: PropTypes.bool,
+  onPressIn: PropTypes.func,
+  onPressOut: PropTypes.func
+};
 
 UIButton.defaultProps = {
   theme: Theme
