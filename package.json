@@ -54,5 +54,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|parse|react-navigation|react-native-firebase)"
     ]
+  },
+  "dependencies": {
+    "sinon": "^9.0.2"
   }
 }

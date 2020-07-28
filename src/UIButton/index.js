@@ -1,30 +1,38 @@
-/**
- * A basic button component that should render nicely on any platform.
- * Supports some level of customization since it is based on Touchable Opacity,
- * hence props from Touchable Opacity class can be used as is.
- * By default, the button state is enabled. To disable button action, you need to set disbaled prop.
- */
+import React, { useState } from 'react'
+import { View, Text, TouchableOpacity, ViewPropTypes, Image } from 'react-native'
+import { BUTTON_TYPES, BUTTON_SHAPES } from '../utils/Constants'
+import { APPLIED_THEME as Theme } from '../utils/Constants'
+import renderIf from '../utils/RenderIf'
+import { ButtonStyles } from './ButtonStyles'
+import PropTypes from 'prop-types'
+import LinearGradient from 'react-native-linear-gradient'
+import { replaceSpaceWithUnderscore, accessibilityId } from '../utils/index'
 
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ViewPropTypes,
-  Platform
-} from 'react-native';
-import PropTypes from 'prop-types';
-import renderIf from '../utils/RenderIf';
-import { Fonts, FontSize } from '../utils/StyleSheet';
-import {
-  BUTTON_TYPES,
-  BUTTON_SHAPES,
-  APPLIED_THEME as Theme
-} from '../utils/Constants';
-import LinearGradient from 'react-native-linear-gradient';
+function UIButton(props) {
+  var { content,
+    buttonType,
+    style,
+    buttonShape,
+    disabled,
+    gradientStyle,
+    iconLeftPositioned,
+    onPressIn,
+    iconWithBtnText,
+    titleStyle,
+    iconStyle,
+    contentStyle,
+    onPressOut,
+  linkStyle } = props
+  const [buttonPressedIn, setButtonPressedIn] = useState(false)
+  var buttonStyle
+  var buttonShape = buttonShape || 'default'
+  var buttonType = buttonType || 'default'
+  var isDisabled = disabled || false
+  var isIconLeftPositioned = iconLeftPositioned || false
+  var buttonBackgroundColor
+  var buttonBorderColor
 
-export default class UIButton extends Component {
-  static propTypes = {
+  const propTypes = {
     theme: PropTypes.object,
     disabled: PropTypes.bool,
     buttonType: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
@@ -37,286 +45,276 @@ export default class UIButton extends Component {
     })
   };
 
-  static defaultProps = {
-    theme: Theme
-  };
+  const isGradient = buttonType === BUTTON_TYPES.gradient;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      buttonPressedIn: false,
-      isDisabled: this.props.disabled || false
+  switch (buttonType) {
+    case BUTTON_TYPES.primary:
+      buttonStyle = ButtonStyles.primaryButton;
+      break;
+    case BUTTON_TYPES.secondary:
+      buttonStyle = ButtonStyles.secondaryButton;
+      break;
+    case BUTTON_TYPES.disabled:
+      buttonStyle = ButtonStyles.disabledButton;
+      break;
+    case BUTTON_TYPES.gradient:
+      buttonStyle = ButtonStyles.gradientButton;
+      break;
+    case BUTTON_TYPES.transparent:
+      buttonStyle = ButtonStyles.transparentButton;
+      break;
+    default:
+      buttonStyle = ButtonStyles.defaultButtonType;
+      break;
+  }
+
+  switch (buttonShape) {
+    case BUTTON_SHAPES.square:
+      buttonShape = ButtonStyles.squareButton;
+      break;
+    case BUTTON_SHAPES.rounded:
+      buttonShape = ButtonStyles.roundButton;
+      break;
+    case BUTTON_SHAPES.roundedEdge:
+      buttonShape = ButtonStyles.roundedEdgeButton;
+      break;
+    default:
+      buttonShape = ButtonStyles.defaultShapeButton;
+      break;
+  }
+
+  var textColor = getTextColor(buttonPressedIn, buttonType, isDisabled);
+  var iconColor = getImageColor(buttonType, isDisabled)
+  let buttonAttributes = { buttonStyle, buttonShape, textColor };
+
+  if (!isGradient) {
+    buttonBackgroundColor = getButtonBackgroundColor(buttonType, isDisabled);
+    buttonBorderColor = getButtonBorderColor(buttonType, isDisabled);
+    buttonAttributes = {
+      ...buttonAttributes,
+      buttonBackgroundColor,
+      buttonBorderColor,
     };
   }
 
-  render() {
-    let buttonStyle;
-    let buttonShape;
-    const isGradient = this.props.buttonType === BUTTON_TYPES.gradient;
-
-    switch (this.props.buttonType) {
-      case BUTTON_TYPES.primary:
-        buttonStyle = ButtonStyles.primaryButton;
-        break;
-      case BUTTON_TYPES.secondary:
-        buttonStyle = ButtonStyles.secondaryButton;
-        break;
-      case BUTTON_TYPES.disabled:
-        buttonStyle = ButtonStyles.secondaryButton;
-        break;
-      case BUTTON_TYPES.gradient:
-        buttonStyle = ButtonStyles.gradientButton;
-        break;
-      case BUTTON_TYPES.transparent:
-        buttonStyle = ButtonStyles.transparentButton;
-        break;
-      default:
-        buttonStyle = ButtonStyles.defaultButtonType;
-        break;
+  if (buttonType === BUTTON_TYPES.link) {
+    buttonAttributes = {
+      buttonStyle: ButtonStyles.linkButtonStyle,
+      buttonShape: null,
+      textColor: ButtonStyles.linkButtonTextStyle.color,
+      buttonBackgroundColor: 'transparent',
+      buttonBorderColor: 'transparent',
+      linkTextStyle: ButtonStyles.linkButtonTextStyle,
+      linkStyle: linkStyle
     }
-
-    switch (this.props.buttonShape) {
-      case BUTTON_SHAPES.square:
-        buttonShape = ButtonStyles.squareButton;
-        break;
-      case BUTTON_SHAPES.rounded:
-        buttonShape = ButtonStyles.roundButton;
-        break;
-      case BUTTON_SHAPES.roundedEdge:
-        buttonShape = ButtonStyles.roundedEdgeButton;
-        break;
-      default:
-        buttonShape = ButtonStyles.defaultShapeButton;
-        break;
-    }
-
-    const textColor = this.getTextColor();
-    let buttonAttributes = { buttonStyle, buttonShape, textColor };
-
-    if (!isGradient) {
-      const buttonBackgroundColor = this.getButtonBackgroundColor();
-      const buttonBorderColor = this.getButtonBorderColor();
-      buttonAttributes = {
-        ...buttonAttributes,
-        buttonBackgroundColor,
-        buttonBorderColor
-      };
-    }
-
-    return isGradient
-      ? this.getGradientButton(buttonAttributes)
-      : this.getNormalButton(buttonAttributes);
   }
 
-  getThemeForButtonType() {
-    let { theme, buttonType } = this.props;
-    if (buttonType === BUTTON_TYPES.primary) {
-      return theme.PrimaryButton;
-    } else if (buttonType === BUTTON_TYPES.secondary) {
-      return theme.SecondaryButton;
-    } else if (buttonType === BUTTON_TYPES.disabled) {
-      return theme.DisabledButton;
-    } else if (buttonType === BUTTON_TYPES.gradient) {
-      return theme.GradientButton;
-    } else if (buttonType === BUTTON_TYPES.transparent) {
-      return theme.TransparentButton;
+  if (props.buttonType === BUTTON_TYPES.primary) {
+    buttonAttributes = {
+      ...buttonAttributes,
+      titleTextStyle: props.isTitleCapital ? { textTransform: 'uppercase' } : { textTransform: 'capitalize' }
     }
-    return theme.DefaultButton;
   }
 
-  getGradientButton(buttonAttributes) {
-    let { theme } = this.props;
+  return isGradient
+    ? getGradientButton(buttonAttributes)
+    : getNormalButton(buttonAttributes);
+
+  function getGradientButton(buttonAttributes) {
     const { buttonStyle, buttonShape, textColor } = buttonAttributes;
     return (
-      <TouchableOpacity
-        {...this.props}
-        style={[buttonStyle, buttonShape, this.props.style]}
-        disabled={this.props.disabled || false}
-        activeOpacity={1.0}
-        delayPressIn={100}
-        delayPressOut={100}
-        onPressIn={this.buttonPressedIn.bind(this)}
-        onPressOut={this.buttonPressedOut.bind(this)}
-      >
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={[
-            theme.GradientButton.backgroundColorGradientStart,
-            theme.GradientButton.backgroundColorGradientMid,
-            theme.GradientButton.backgroundColorGradientEnd
-          ]}
-          style={[
-            buttonStyle,
-            buttonShape,
-            this.props.gradientStyle
-            // { height: this.props.style.height, width: this.props.style.width }
-          ]}
-        >
-          {renderIf(this.props.content)(
-            <Text
-              style={[
-                ButtonStyles.title,
-                { color: textColor },
-                this.props.titleStyle
-              ]}
-              numberOfLines={1}
-            >
-              {this.props.content}
-            </Text>
+      <View>
+        <TouchableOpacity
+          {...props}
+          disabled={disabled || false}
+          style={[buttonStyle, buttonShape, style]}
+          activeOpacity={1.0}
+          delayPressIn={100}
+          delayPressOut={100}
+          onPressIn={() => btnPressedIn()}
+          onPressOut={() => btnPressedOut()}
+          accessibilityLabel={accessibilityId(
+            getButtonAccessibilityLabel(content || 'icon'), content
           )}
-          {this.props.children}
-        </LinearGradient>
-      </TouchableOpacity>
-    );
+          testID={getButtonAccessibilityLabel(content || 'icon')}
+        >
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={[
+              Theme.GradientButton.backgroundColorGradientStart,
+              Theme.GradientButton.backgroundColorGradientMid,
+              Theme.GradientButton.backgroundColorGradientEnd,
+            ]}
+            style={[
+              buttonStyle,
+              buttonShape,
+              gradientStyle,
+            ]}
+          >
+            {
+              renderIf(content || iconWithBtnText)(
+                <View style={[ButtonStyles.contentWithIcon, contentStyle && contentStyle,
+                { flexDirection: isIconLeftPositioned ? 'row-reverse' : 'row' }]}>
+                  <View style={[ButtonStyles.titleView]}>
+                    <Text
+                      style={[ButtonStyles.title,
+                      { color: textColor },
+                        titleStyle
+                      ]}
+                      numberOfLines={1}
+                    > {content}
+                    </Text>
+                  </View>
+                  <View style={{ justifyContent: 'center' }}>
+                    <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
+                  </View>
+                </View>
+              )
+            }
+            {props.children}
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+    )
   }
 
-  getNormalButton(buttonAttributes) {
+  function getNormalButton(buttonAttributes) {
     const {
       buttonStyle,
       buttonShape,
       textColor,
       buttonBackgroundColor,
-      buttonBorderColor
+      buttonBorderColor,
+      linkTextStyle,
+      titleTextStyle,
+      linkStyle
     } = buttonAttributes;
     return (
-      <TouchableOpacity
-        {...this.props}
-        style={[
-          buttonStyle,
-          buttonShape,
-          {
-            backgroundColor: buttonBackgroundColor,
-            borderColor: buttonBorderColor,
-            opacity: this.props.buttonType === BUTTON_TYPES.disabled ? 0.5 : 1
-          },
-          this.props.style
-        ]}
-        disabled={this.props.disabled ? this.props.disabled : false}
-        activeOpacity={1.0}
-        delayPressIn={100}
-        delayPressOut={100}
-        onPressIn={this.buttonPressedIn.bind(this)}
-        onPressOut={this.buttonPressedOut.bind(this)}
-      >
-        {renderIf(this.props.content)(
-          <Text
-            style={[
-              ButtonStyles.title,
-              { color: textColor },
-              this.props.titleStyle
-            ]}
-            numberOfLines={1}
-          >
-            {this.props.content}
-          </Text>
-        )}
-        {this.props.children}
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          {...props}
+          style={[
+            buttonStyle,
+            buttonShape,
+            passStyles(buttonBackgroundColor, buttonBorderColor),
+            style
+          ]}
+          disabled={disabled ? disabled : false}
+          activeOpacity={1.0}
+          delayPressIn={100}
+          delayPressOut={100}
+          onPressIn={() => btnPressedIn()}
+          onPressOut={() => btnPressedOut()}
+          accessibilityLabel={accessibilityId(
+            getButtonAccessibilityLabel(content || 'icon'), content
+          )}
+          testID={getButtonAccessibilityLabel(content || 'icon')}
+        >
+          {renderIf(content || iconWithBtnText)(
+            <View style={[ButtonStyles.contentWithIcon, contentStyle && contentStyle,
+            { flexDirection: isIconLeftPositioned ? 'row-reverse' : 'row' }]}>
+              <View style={[ButtonStyles.titleView]}>
+                <Text
+                  style={[
+                    ButtonStyles.title,
+                    { color: textColor },
+                    linkTextStyle,
+                    titleTextStyle,
+                    titleStyle,
+                    linkStyle
+                  ]}
+                  numberOfLines={1}
+                >
+                  {content}
+                </Text>
+              </View>
+              <View style={{ justifyContent: 'center' }}>
+                <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
+              </View>
+            </View>
+          )}
+          {props.children}
+        </TouchableOpacity>
+      </View>
     );
   }
 
-  getButtonBackgroundColor() {
-    const buttonTheme = this.getThemeForButtonType();
-    if (this.state.buttonPressedIn) {
-      return buttonTheme.activeBackgroundColor;
-    }
-    return buttonTheme.backgroundColor;
-  }
-
-  getButtonBorderColor() {
-    const buttonTheme = this.getThemeForButtonType();
-    if (this.state.buttonPressedIn) {
-      return buttonTheme.activeBorderColor;
-    }
-    return buttonTheme.borderColor;
-  }
-
-  getTextColor() {
-    const buttonTheme = this.getThemeForButtonType();
-    let textColor = buttonTheme.textColor;
-    if (this.state.buttonPressedIn) {
-      textColor = buttonTheme.activeTextColor;
-    }
-    return textColor;
-  }
-
-  buttonPressedIn() {
-    if (!this.props.disabled) {
-      this.setState({ buttonPressedIn: true });
-    }
-    if (this.props.onPressIn !== undefined) {
-      this.props.onPressIn();
+  function passStyles() {
+    return {
+      backgroundColor: buttonBackgroundColor,
+      borderColor: buttonBorderColor,
+      opacity: buttonType === BUTTON_TYPES.disabled ? 0.5 : 1,
     }
   }
 
-  buttonPressedOut() {
-    if (!this.props.disabled) {
-      this.setState({ buttonPressedIn: false });
+  function btnPressedIn() {
+    if (!disabled) {
+      setButtonPressedIn(true)
     }
-    if (this.props.onPressOut !== undefined) {
-      this.props.onPressOut();
+    if (onPressIn !== undefined) {
+      onPressIn()
+    }
+  }
+
+  function btnPressedOut() {
+    if (!disabled) {
+      setButtonPressedIn(false)
+    }
+    if (onPressOut !== undefined) {
+      onPressOut();
     }
   }
 }
 
-const ButtonStyles = StyleSheet.create({
-  primaryButton: {
-    height: 60,
-    backgroundColor: Theme.PrimaryButton.backgroundColor,
-    borderRadius: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  secondaryButton: {
-    height: 60,
-    backgroundColor: Theme.SecondaryButton.backgroundColor,
-    borderWidth: 1,
-    borderColor: Theme.SecondaryButton.borderColor,
-    borderRadius: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  gradientButton: {
-    height: 60,
-    backgroundColor: Theme.GradientButton.backgroundColorGradientStart,
-    borderRadius: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  transparentButton: {
-    flex: 0,
-    backgroundColor: Theme.TransparentButton.backgroundColor,
-    borderWidth: 0,
-    borderColor: Theme.TransparentButton.borderColor,
-    borderRadius: 0,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  defaultButtonType: {
-    height: 60,
-    backgroundColor: Theme.DefaultButton.backgroundColor,
-    borderWidth: 1,
-    borderColor: Theme.DefaultButton.borderColor,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  defaultShapeButton: {
-    borderRadius: 30
-  },
-  roundedEdgeButton: {
-    borderRadius: 10
-  },
-  roundButton: {
-    borderRadius: 30
-  },
-  squareButton: {
-    borderRadius: 0
-  },
-  title: {
-    textAlign: 'center',
-    fontFamily: Fonts.Heavy,
-    fontSize: FontSize.Large2,
-    backgroundColor: 'transparent'
+function getButtonBackgroundColor(buttonType, isDisabled) {
+  const buttonTheme = getThemeForButtonType(buttonType, isDisabled)
+  return buttonTheme.backgroundColor
+}
+
+function getTextColor(buttonPressedIn, buttonType, isDisabled) {
+  const buttonTheme = getThemeForButtonType(buttonType, isDisabled)
+  let textColor = buttonTheme.textColor;
+  if (buttonPressedIn) {
+    textColor = buttonTheme.activeTextColor;
   }
-});
+  return textColor
+}
+
+function getImageColor(buttonType, isDisabled) {
+  const buttonTheme = getThemeForButtonType(buttonType, isDisabled)
+  let iconColor = buttonTheme.tintColor
+  return iconColor
+}
+
+function getThemeForButtonType(buttonType, isDisabled) {
+  if (buttonType === BUTTON_TYPES.primary) {
+    return isDisabled ? Theme.DisabledButton : Theme.PrimaryButton
+  } else if (buttonType === BUTTON_TYPES.secondary) {
+    return isDisabled ? Theme.DisabledSecondaryButton : Theme.SecondaryButton;
+  } else if (buttonType === BUTTON_TYPES.disabled) {
+    return Theme.DisabledButton;
+  } else if (buttonType === BUTTON_TYPES.gradient) {
+    return Theme.GradientButton;
+  } else if (buttonType === BUTTON_TYPES.link) {
+    return Theme.LinkButton
+  }
+  return Theme.DefaultButton;
+}
+
+function getButtonBorderColor(buttonType, isDisabled) {
+  const buttonTheme = getThemeForButtonType(buttonType, isDisabled);
+  return buttonTheme.borderColor;
+}
+
+function getButtonAccessibilityLabel(content) {
+  let label = ''
+  label = `${replaceSpaceWithUnderscore(content)}_button`
+  return label
+}
+
+UIButton.defaultProps = {
+  theme: Theme
+};
+
+export default UIButton

@@ -1,7 +1,3 @@
-/**
- *
- */
-
 export const Fonts = {
   Roman: 'AvenirLTStd-Roman',
   Heavy: 'AvenirLTStd-Heavy',
@@ -51,18 +47,19 @@ export const Colors = {
   darkGray: '#6a6c6e',
 
   /* button style */
-  buttonBgColor: '#202859',
-  buttonTextColor: '#fff',
+  buttonBgColor: '#FE0095',
+  buttonTextColor: '#FFFFFF',
+  disabledBtnBgColor: '#E2E2E2',
+  disabledSecondaryBtnTextColor: '#A9A9A9',
+  disabledBtnTextColor: '#bfbfc0',
 
   /* link text style */
   linkColor: '#70cff3',
+  linkTextColor: '#007AFF',
 
   noteColor: '#888888',
 
   formTitleColor: '#000',
-
-  disabledBtnBgColor: '#f2f2f2',
-  disabledBtnTextColor: '#bfbfc0',
 
   errMessageColor: '#d40000',
 
@@ -90,7 +87,7 @@ export const Colors = {
   Green: '#57b578',
   Blue: '#202859',
   BlueLight: '#52a8dd',
-  grayMedium: '#e4e4e4',
+  Gray: '#e4e4e4',
   Disable: '#9b9b9b',
   White: '#ffffff',
   DenimBlue: '#354087',
@@ -115,7 +112,7 @@ export const Colors = {
   FieldBlueColor: '#46aeee',
   TextColor: '#a7a7a7',
   timelineDotLight: '#08abdf',
-  LightText: '#c1c1c1',
+  instaLightText: '#c1c1c1',
   timeLineBorderColor: '#ebebeb',
   transactionSummarySeparator: '#efefef',
   cardBorder: '#efefef',
@@ -167,28 +164,48 @@ export const Colors = {
 export const Themes = {
   Light: {
     PrimaryButton: {
-      textColor: Colors.White,
+      textColor: Colors.buttonTextColor,
       backgroundColor: Colors.buttonBgColor,
       borderColor: Colors.buttonBgColor,
-      activeTextColor: Colors.White,
+      activeTextColor: Colors.buttonTextColor,
       activeBackgroundColor: Colors.buttonBgColor,
-      activeBorderColor: Colors.buttonBgColor
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonTextColor
     },
     SecondaryButton: {
       textColor: Colors.buttonBgColor,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.buttonTextColor,
       borderColor: Colors.buttonBgColor,
       activeTextColor: Colors.buttonBgColor,
-      activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.buttonBgColor
+      activeBackgroundColor: Colors.buttonTextColor,
+      activeBorderColor: Colors.buttonBgColor,
+      tintColor: Colors.buttonBgColor
     },
     DisabledButton: {
-      textColor: Colors.greyMid,
-      backgroundColor: Colors.transparent,
-      borderColor: Colors.greyMid,
-      activeTextColor: Colors.greyMid,
-      activeBackgroundColor: Colors.transparent,
-      activeBorderColor: Colors.greyMid
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor
+    },
+    DisabledPrimaryButton: {
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.disabledBtnBgColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.disabledBtnBgColor,
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.buttonTextColor
+    },
+    DisabledSecondaryButton: {
+      textColor: Colors.disabledSecondaryBtnTextColor,
+      backgroundColor: Colors.buttonTextColor,
+      borderColor: Colors.disabledBtnBgColor,
+      activeTextColor: Colors.disabledSecondaryBtnTextColor,
+      activeBackgroundColor: Colors.buttonTextColor,
+      activeBorderColor: Colors.disabledBtnBgColor,
+      tintColor: Colors.disabledSecondaryBtnTextColor
     },
     GradientButton: {
       textColor: Colors.White,
@@ -199,6 +216,14 @@ export const Themes = {
       activeBackgroundColor: Colors.buttonBgColor,
       activeBorderColor: Colors.buttonBgColor
     },
+    LinkButton: {
+      textColor: Colors.linkTextColor,
+      backgroundColor: Colors.transparent,
+      borderColor: Colors.transparent,
+      activeTextColor: Colors.linkTextColor,
+      activeBackgroundColor: Colors.transparent,
+      activeBorderColor: Colors.transparent,
+    },
     TransparentButton: {
       textColor: Colors.buttonBgColor,
       backgroundColor: Colors.transparent,
@@ -208,12 +233,12 @@ export const Themes = {
       activeBorderColor: Colors.transparent
     },
     DefaultButton: {
-      textColor: Colors.DenimBlue,
-      backgroundColor: Colors.White,
-      borderColor: Colors.White,
-      activeTextColor: Colors.DenimBlue,
-      activeBackgroundColor: Colors.White,
-      activeBorderColor: Colors.White
+      textColor: Colors.buttonTextColor,
+      backgroundColor: Colors.buttonBgColor,
+      borderColor: Colors.buttonBgColor,
+      activeTextColor: Colors.buttonTextColor,
+      activeBackgroundColor: Colors.buttonBgColor,
+      activeBorderColor: Colors.buttonBgColor
     },
     Overlay: {
       backgroundColor: Colors.cardOverlay
