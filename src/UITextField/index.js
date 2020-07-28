@@ -20,6 +20,7 @@ import cancelIcon from '../../assets/images/button/cancelIcon.png';
 import showIcon from '../../assets/images/button/hideIconGray.png';
 import hideIcon from '../../assets/images/button/hideIconGray.png';
 import searchIcon from '../../assets/images/button/searchIcon.png';
+import { replaceSpaceWithUnderscore, accessibilityId } from '../utils/index'
 
 export default function UITextField(props) {
 
@@ -137,8 +138,8 @@ export default function UITextField(props) {
     };
 
     function getRightSideClearButton() {
-        const { input, theme, showClearButton, clearButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme, showClearButton, clearButton } = props;
+        const textFieldNotEmpty = value && value !== '';
         const isClearButton = clearButton && typeof clearButton === 'function';
 
         if ( showClearButton || isClearButton ) {
@@ -163,8 +164,8 @@ export default function UITextField(props) {
     };
 
     function getRightSideShowButton() {
-        const { input, theme, showButton, hideButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme, showButton, hideButton } = props;
+        const textFieldNotEmpty = value && value !== '';
 
         const isShowButton = showButton && typeof showButton === 'function';
         const isHideButton = hideButton && typeof hideButton === 'function';
@@ -177,7 +178,7 @@ export default function UITextField(props) {
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={showHideSecureText}>
                     {
-                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButtonImage() :
+                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButton() :
                         <Image
                             style={[styles.image, props.clearButtonStyle,
                                 { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
@@ -204,8 +205,8 @@ export default function UITextField(props) {
     }
 
     function getLeftButton() {
-        const { input, theme , showLeftSearchButton, leftButton } = props;
-        const textFieldNotEmpty = input.value && input.value !== '';
+        const { value, theme , showLeftSearchButton, leftButton } = props;
+        const textFieldNotEmpty = value && value !== '';
         const isleftButton = leftButton && typeof leftButton === 'function';
 
         if (showLeftSearchButton || isleftButton) {
@@ -243,9 +244,10 @@ export default function UITextField(props) {
     };
 
     function onTextChanged(text) {
-        const { input: { onChange } } = props;
+        const { input } = props;
         let refinedText = handleChange(text);
-        onChange(text);
+        if(input.onChange && typeof input.onChange === 'function')
+            input.onChange(text);
         if (props.onChangeText) {
             props.onChangeText(refinedText);
         }
@@ -274,6 +276,11 @@ export default function UITextField(props) {
             props.onSecureTextModeChange(shouldEncryptedTextBeVisible);
         }
     };
+    function getAccessibilityLabel(name) {
+        let label = ''
+        label = `${replaceSpaceWithUnderscore(name)}`
+        return label
+    }
 
     const {
         theme,
@@ -303,6 +310,9 @@ export default function UITextField(props) {
         errorMessageStyle,
         disabled,
         tintColor,
+        errorColor,
+        accessibilityLabel,
+        testID,
         input: { value: preProcessedValue },
     } = props;
 
@@ -344,6 +354,7 @@ export default function UITextField(props) {
                                 : null
                         }
                         error={errorMessage || null}
+                        errorColor={errorColor || theme.TextField.errorColor}
                         title={descriptionMessage || null}
                         renderRightAccessory={() => getAccessoryView()}
                         renderLeftAccessory={() => getLeftAccessoryView()}
@@ -367,6 +378,10 @@ export default function UITextField(props) {
                         maxLength={
                             props.maxLength || getMaxLength(props.type)
                         }
+                        accessibilityLabel={ accessibilityLabel ? accessibilityLabel: accessibilityId(
+                            testID ? testID :getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
+                          )}
+                        testID={testID ? testID: getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
                     >
                         {props.children}
                     </TextField>
@@ -403,7 +418,7 @@ const styles = StyleSheet.create({
         alignContent: 'flex-end'
     },
     text: {
-        fontFamily: Fonts.Light,
+        fontFamily: Fonts.Regular,
         fontSize: FontSize.Large1,
         ...Platform.select({
             android: {
@@ -414,7 +429,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 2
     },
     descriptionStyle: {
-        fontFamily: Fonts.Light,
+        fontFamily: Fonts.Regular,
         fontSize: FontSize.Mini,
         ...Platform.select({
             android: {
@@ -529,6 +544,7 @@ UITextField.propTypes = {
     clearButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     showButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     hideButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    leftButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
-
+    leftButtonImage: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    accessibilityLabel: PropTypes.string,
+    testID: PropTypes.string
 };

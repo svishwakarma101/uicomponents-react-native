@@ -250,13 +250,13 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.DenimBlue,
-    fontFamily: Fonts.Roman,
+    fontFamily: Fonts.Bold,
     fontSize: FontSize.Large1,
     marginTop: 25
   },
   description: {
     color: Colors.grayShadeText,
-    fontFamily: Fonts.Roman,
+    fontFamily: Fonts.Bold,
     fontSize: FontSize.Small
   },
   alertDismissButton: {
