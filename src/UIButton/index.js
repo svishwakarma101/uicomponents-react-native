@@ -21,7 +21,8 @@ function UIButton(props) {
     titleStyle,
     iconStyle,
     contentStyle,
-    onPressOut } = props
+    onPressOut,
+  linkStyle } = props
   const [buttonPressedIn, setButtonPressedIn] = useState(false)
   var buttonStyle
   var buttonShape = buttonShape || 'default'
@@ -103,7 +104,8 @@ function UIButton(props) {
       textColor: ButtonStyles.linkButtonTextStyle.color,
       buttonBackgroundColor: 'transparent',
       buttonBorderColor: 'transparent',
-      linkTextStyle: ButtonStyles.linkButtonTextStyle
+      linkTextStyle: ButtonStyles.linkButtonTextStyle,
+      linkStyle: linkStyle
     }
   }
 
@@ -185,7 +187,8 @@ function UIButton(props) {
       buttonBackgroundColor,
       buttonBorderColor,
       linkTextStyle,
-      titleTextStyle
+      titleTextStyle,
+      linkStyle
     } = buttonAttributes;
     return (
       <View>
@@ -218,7 +221,8 @@ function UIButton(props) {
                     { color: textColor },
                     linkTextStyle,
                     titleTextStyle,
-                    titleStyle
+                    titleStyle,
+                    linkStyle
                   ]}
                   numberOfLines={1}
                 >

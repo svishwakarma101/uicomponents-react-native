@@ -88,7 +88,6 @@ export const ButtonStyles = StyleSheet.create({
     linkButtonTextStyle: {
       // fontFamily: Fonts.BrandSemibold,
       fontSize: getAdjustedFontSize(FontSize.Medium),
-      textDecorationLine: 'underline',
       color: Colors.linkTextColor
     },
     title: {
