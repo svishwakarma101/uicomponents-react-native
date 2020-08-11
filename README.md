@@ -31,6 +31,10 @@ react-native-material-textfield
 import { UITextField, Button } from 'uicomponents-react-native';
 ```
 
+UIListView:
+Provide theme object to manage themes
+In order to use default searchbar pass showSearchBar={true} & pass a search function to handleSearch
+
 ## Components
 
 ```bash
@@ -44,6 +48,7 @@ UIAttributedText
 UIStreamInputField
 UISnackBar
 UINetworkSnackBar
+UIListView
 ```
 
 ## License

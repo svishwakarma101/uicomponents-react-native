@@ -8,6 +8,7 @@ import UIAttributedText from './src/UIAttributedText';
 import UIStreamInputField from './src/UIStreamInputField';
 import UISnackBar from './src/UISnackBar';
 import UINetworkSnackBar from './src/UISnackBar/UINetworkSnackBar';
+import UIListView from './src/UIListView';
 
 export {
   UITextField,
@@ -19,5 +20,6 @@ export {
   UIAttributedText,
   UIStreamInputField,
   UISnackBar,
-  UINetworkSnackBar
+  UINetworkSnackBar,
+  UIListView
 };

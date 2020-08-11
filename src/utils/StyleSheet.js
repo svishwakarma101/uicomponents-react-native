@@ -81,7 +81,7 @@ export const Colors = {
   TextBg: '#46aeee',
   DarkBlue: '#354087',
   SkyBlue: '#46aeee',
-  Black: '#000',
+  Black: '#000000',
   PageTitle: '#354087',
   BtnBgColor: '#354087',
   BorderSeparatorColor: '#bfbfbf',
@@ -144,8 +144,11 @@ export const Colors = {
   brandYellow: '#FED931',
   brandPink: '#00DBD8',
 
-  errorRedColor: '#FE0000',
-
+  separatorDark: '#333333',
+  lightGray: '#A9A9A9',
+  lightWhite: '#F0F0F0',
+  underlineAquaColor: '#48FAFF',
+  errorRed: '#FE0000'
 };
 
 export const Themes = {
@@ -247,13 +250,13 @@ export const Themes = {
     },
     TextField: {
       backgroundColor: Colors.transparent,
-      borderColor: Colors.blueGrayBorderLight,
-      underLineColor: Colors.blueGrayBorderLight,
-      underLineColorFocus: Colors.blueGrayBorderLight,
-      placeholderTextColor: Colors.blueGray,
-      textColor: Colors.DenimBlue,
-      tintColor: Colors.blueGrayBorderLight,
-      errorColor: Colors.errorRedColor
+      borderColor: Colors.lightGray,
+      underLineColor: Colors.Black,
+      underLineColorFocus: Colors.underlineAquaColor,
+      placeholderTextColor: Colors.lightGray,
+      textColor: Colors.Black, 
+      tintColor: Colors.underlineAquaColor,
+      errorColor: Colors.errorRed
     },
     Alert: {
       textColor: Colors.blueGradientMid,
@@ -285,6 +288,10 @@ export const Themes = {
       nativeBackgroundColor: Colors.grayDark,
       nativeTextColor: Colors.White,
       nativeButtonTitleColor: Colors.Orange
+    },
+    ListView: {
+      seperatorColor: Colors.lightWhite,
+      lineColor: Colors.lightGray
     }
   },
 
@@ -386,13 +393,13 @@ export const Themes = {
     },
     TextField: {
       backgroundColor: Colors.transparent,
-      borderColor: Colors.blueGrayBorderLight,
-      underLineColor: Colors.blueGrayBorderLight,
-      underLineColorFocus: Colors.blueGrayBorderLight,
-      placeholderTextColor: Colors.blueGray,
-      textColor: Colors.blueGradientMid,
-      tintColor: Colors.blueGrayBorderLight,
-      errorColor: Colors.errorRedColor
+      borderColor: Colors.lightWhite,
+      underLineColor: Colors.lightWhite,
+      underLineColorFocus: Colors.underlineAquaColor,
+      placeholderTextColor: Colors.lightGray,
+      textColor: Colors.lightWhite,
+      tintColor: Colors.underlineAquaColor,
+      errorColor: Colors.errorRed
     },
     Alert: {
       textColor: Colors.blueGradientMid,
@@ -424,6 +431,10 @@ export const Themes = {
       nativeBackgroundColor: Colors.grayDark,
       nativeTextColor: Colors.White,
       nativeButtonTitleColor: Colors.Orange
+    },
+    ListView: {
+      seperatorColor: Colors.separatorDark,
+      lineColor: Colors.lightGray
     }
   }
 };

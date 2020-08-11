@@ -216,7 +216,7 @@ export default function UITextField(props) {
                     {  isleftButton ? leftButton() :
                         <Image
                             style={[styles.image, props.leftButtonStyle,
-                            { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
+                            { tintColor: showPlaceHolderForFloating && textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
                             source={showLeftSearchButton}
                             resizeMode='contain'
                         />
@@ -480,7 +480,7 @@ UITextField.defaultProps = {
         source: '',
         resizeMode: 'center'
     },
-    blurOnSubmit: false
+    blurOnSubmit: true
 };
 
 UITextField.propTypes = {
