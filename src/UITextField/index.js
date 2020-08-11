@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     StyleSheet,
     Image,
@@ -27,7 +27,7 @@ export default function UITextField(props) {
     const [autoFocusEnabled, setAutoFocusEnabled] = useState(props.autoFocus || false);
     const [shouldEncryptedTextBeVisible, setShouldEncryptedTextBeVisible] = useState(props.isSecureText || false);
     const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] = useState(false);
-    const inputRef = React.createRef();
+    const inputRef = props.refField ? props.refField : useRef(null);
 
     function getMaxLength(type) {
         let length = 0;
@@ -93,29 +93,6 @@ export default function UITextField(props) {
         ]);
     };
 
-    function getTextFieldUnderline() {
-        if (
-            props.shape === TEXTFIELD_SHAPES.rectangular &&
-            props.underlineType === TEXTFIELD_UNDERLINESTYLE.custom
-        ) {
-            const backgroundColor =
-                props.autoFocus === false
-                    ? props.theme.TextField.underLineColor
-                    : props.theme.TextField.underLineColor;
-            return (
-                <View
-                    style={[
-                        styles.underline,
-                        { backgroundColor },
-                        { backgroundColor: props.underLineColor },
-                        props.underlineStyle
-                    ]}
-                />
-            );
-        }
-        return null;
-    }
-
     function getAccessoryView() {
         if (props.rightAccessoryView && typeof props.rightAccessoryView === 'function') {
             return props.rightAccessoryView()
@@ -142,21 +119,21 @@ export default function UITextField(props) {
         const textFieldNotEmpty = value && value !== '';
         const isClearButton = clearButton && typeof clearButton === 'function';
 
-        if ( showClearButton || isClearButton ) {
+        if (showClearButton || isClearButton) {
             let clearButtonSource = props.clearButtonImage || cancelIcon;
 
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={clearText}>
                     {
                         isClearButton ? clearButton() :
-                        <Image
-                            style={[styles.image, props.clearButtonStyle,
-                            { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
-                            source={clearButtonSource}
-                            resizeMode='contain'
-                        />          
+                            <Image
+                                style={[styles.image, props.clearButtonStyle,
+                                { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
+                                source={clearButtonSource}
+                                resizeMode='contain'
+                            />
                     }
-                    
+
                 </TouchableOpacity>
             );
         }
@@ -171,49 +148,49 @@ export default function UITextField(props) {
         const isHideButton = hideButton && typeof hideButton === 'function';
 
 
-        if (props.showShowHideButton || (isShowButton && isHideButton )) {
+        if (props.showShowHideButton || (isShowButton && isHideButton)) {
             let hideButtonSource = props.hideButtonImage || hideIcon;
             let showButtonSource = props.showButtonImage || showIcon;
 
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={showHideSecureText}>
                     {
-                        (isShowButton && isHideButton ) ? shouldEncryptedTextBeVisible ? hideButton() : showButton() :
-                        <Image
-                            style={[styles.image, props.clearButtonStyle,
+                        (isShowButton && isHideButton) ? shouldEncryptedTextBeVisible ? hideButton() : showButton() :
+                            <Image
+                                style={[styles.image, props.clearButtonStyle,
                                 { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
-                            source={
-                                shouldEncryptedTextBeVisible
-                                    ? hideButtonSource
-                                    : showButtonSource
-                            }
-                            resizeMode='contain'
-                        />
+                                source={
+                                    shouldEncryptedTextBeVisible
+                                        ? hideButtonSource
+                                        : showButtonSource
+                                }
+                                resizeMode='contain'
+                            />
                     }
-                    
+
                 </TouchableOpacity>
             );
         }
         return null;
     };
 
-    function getLeftAccessoryView(){
+    function getLeftAccessoryView() {
         if (props.leftAccessoryView && typeof props.leftAccessoryView === 'function') {
             return props.leftAccessoryView()
         }
-        else  return getLeftButton()
+        else return getLeftButton()
     }
 
     function getLeftButton() {
-        const { value, theme , showLeftSearchButton, leftButton } = props;
+        const { value, theme, showLeftSearchButton, leftButton } = props;
         const textFieldNotEmpty = value && value !== '';
-        const isleftButton = leftButton && typeof leftButton === 'function';
+        const isleftButton = leftButton && (typeof leftButton === 'function');
 
         if (showLeftSearchButton || isleftButton) {
             let showLeftSearchButton = props.leftButtonImage || searchIcon;
             return (
                 <TouchableOpacity style={[styles.rightAccessory, styles.leftAccessory, props.rightAccessoryStyle]} onPress={() => { }}>
-                    {  isleftButton ? leftButton() :
+                    {isleftButton ? leftButton() :
                         <Image
                             style={[styles.image, props.leftButtonStyle,
                             { tintColor: showPlaceHolderForFloating || textFieldNotEmpty ? theme.TextField.textColor : theme.TextField.placeholderTextColor }]}
@@ -246,7 +223,7 @@ export default function UITextField(props) {
     function onTextChanged(text) {
         const { input } = props;
         let refinedText = handleChange(text);
-        if(input.onChange && typeof input.onChange === 'function')
+        if (input.onChange && typeof input.onChange === 'function')
             input.onChange(text);
         if (props.onChangeText) {
             props.onChangeText(refinedText);
@@ -265,10 +242,6 @@ export default function UITextField(props) {
     function clear() {
         inputRef.current.clear();
     }
-
-    function focus() {
-        inputRef.current.focus();
-    };
 
     function showHideSecureText() {
         setShouldEncryptedTextBeVisible(!shouldEncryptedTextBeVisible)
@@ -313,6 +286,7 @@ export default function UITextField(props) {
         errorColor,
         accessibilityLabel,
         testID,
+        underLineType,
         input: { value: preProcessedValue },
     } = props;
 
@@ -324,69 +298,66 @@ export default function UITextField(props) {
     return (
         <View style={[getTextFieldStyle()]}>
             <View style={styles.underlineContainerView}>
-                <View style={[styles.textInputContainerView]}>
-
-                    <TextField
-                        {...props}
-                        labelTextStyle={[styles.text, textStyle, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle]}
-                        style={[styles.text, textStyle]}
-                        labelPadding={!isFloating ? 0 : labelPadding || 4}
-                        labelHeight={!isFloating ? 0 : labelHeight || 32}
-                        inputContainerPadding={
-                            !isFloating ? inputContainerPadding || 0 : inputContainerPadding || 8
-                        }
-                        titleTextStyle={[styles.descriptionStyle, errorMessage ? errorMessageStyle : descriptionStyle]}
-                        label={isFloating ? floatingLabel || '' : null}
-                        labelFontSize={labelFontSize || 12}
-                        labelOffset={labelOffset || null}
-                        textColor={textColor || theme.TextField.textColor}
-                        tintColor={tintColor || theme.TextField.tintColor || theme.TextField.placeholderTextColor}
-                        labelColor={!disabled ? labelColor || theme.TextField.textColor : placeholderColor || theme.TextField.placeholderTextColor}
-                        baseColor={
-                            placeholderColor || theme.TextField.placeholderTextColor
-                        }
-                        lineWidth={isTintedUnderlineRequired ? 1 : 0}
-                        activeLineWidth={isTintedUnderlineRequired ? 1 : 0}
-                        placeholder={
-                            !isFloating || isStaticLabel ||
-                                (isFloating && showPlaceHolderForFloating)
-                                ? placeholder
-                                : null
-                        }
-                        error={errorMessage || null}
-                        errorColor={errorColor || theme.TextField.errorColor}
-                        title={descriptionMessage || null}
-                        renderRightAccessory={() => getAccessoryView()}
-                        renderLeftAccessory={() => getLeftAccessoryView()}
-                        ref={inputRef}
-                        placeholderTextColor={!isFloating ? placeholderColor || '' : placeholderColor || null}
-                        underlineColorAndroid='transparent'
-                        multiline={multiline}
-                        disabledLineType={'solid'}
-                        secureTextEntry={shouldEncryptedTextBeVisible}
-                        numberOfLines={multiline ? numberOfLines : 1}
-                        returnKeyType={returnKeyType}
-                        onChangeText={(value) => onTextChanged(value)}
-                        value={value}
-                        onFocus={onFocus.bind(this)}
-                        onBlur={onBlur.bind(this)}
-                        responsive={false}
-                        blurOnSubmit={blurOnSubmit}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        autoCompleteType={'off'}
-                        maxLength={
-                            props.maxLength || getMaxLength(props.type)
-                        }
-                        accessibilityLabel={ accessibilityLabel ? accessibilityLabel: accessibilityId(
-                            testID ? testID :getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
-                          )}
-                        testID={testID ? testID: getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
-                    >
-                        {props.children}
-                    </TextField>
-                </View>
-                {getTextFieldUnderline()}
+                <TextField
+                    {...props}
+                    labelTextStyle={[styles.text, textStyle, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle]}
+                    style={[styles.text, textStyle]}
+                    labelPadding={!isFloating ? 0 : labelPadding || 4}
+                    labelHeight={!isFloating ? 0 : labelHeight || 32}
+                    inputContainerPadding={
+                        !isFloating ? inputContainerPadding || 0 : inputContainerPadding || 8
+                    }
+                    titleTextStyle={[styles.descriptionStyle, errorMessage ? errorMessageStyle : descriptionStyle]}
+                    label={isFloating ? floatingLabel || '' : null}
+                    labelFontSize={labelFontSize || 12}
+                    labelOffset={labelOffset || null}
+                    textColor={textColor || theme.TextField.textColor}
+                    tintColor={tintColor || theme.TextField.tintColor || theme.TextField.placeholderTextColor}
+                    labelColor={!disabled ? labelColor || theme.TextField.textColor : placeholderColor || theme.TextField.placeholderTextColor}
+                    baseColor={
+                        placeholderColor || theme.TextField.placeholderTextColor
+                    }
+                    lineWidth={isTintedUnderlineRequired ? 1 : 0}
+                    activeLineWidth={isTintedUnderlineRequired ? 1 : 0}
+                    placeholder={
+                        !isFloating || isStaticLabel ||
+                            (isFloating && showPlaceHolderForFloating)
+                            ? placeholder
+                            : null
+                    }
+                    error={errorMessage || null}
+                    errorColor={errorColor || theme.TextField.errorColor}
+                    title={descriptionMessage || null}
+                    renderRightAccessory={() => getAccessoryView()}
+                    renderLeftAccessory={() => getLeftAccessoryView()}
+                    ref={inputRef}
+                    placeholderTextColor={!isFloating ? placeholderColor || '' : placeholderColor || null}
+                    underlineColorAndroid='transparent'
+                    lineType={underLineType || 'solid'}
+                    multiline={multiline}
+                    disabledLineType={'solid'}
+                    secureTextEntry={shouldEncryptedTextBeVisible}
+                    numberOfLines={multiline ? numberOfLines : 1}
+                    returnKeyType={returnKeyType}
+                    onChangeText={(value) => onTextChanged(value)}
+                    value={value}
+                    onFocus={onFocus.bind(this)}
+                    onBlur={onBlur.bind(this)}
+                    responsive={false}
+                    blurOnSubmit={blurOnSubmit}
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    autoCompleteType={'off'}
+                    maxLength={
+                        props.maxLength || getMaxLength(props.type)
+                    }
+                    accessibilityLabel={accessibilityLabel ? accessibilityLabel : accessibilityId(
+                        testID ? testID : getAccessibilityLabel(floatingLabel || props.name || 'textfield'), (floatingLabel || props.name)
+                    )}
+                    testID={testID ? testID : getAccessibilityLabel(floatingLabel || props.name || 'textfield')}
+                >
+                    {props.children}
+                </TextField>
             </View>
         </View>
     );
