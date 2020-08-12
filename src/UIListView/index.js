@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View, FlatList, StyleSheet, ViewPropTypes, Appearance } from "react-native";
+import { View, FlatList, StyleSheet, ViewPropTypes, Appearance, Text } from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
@@ -39,7 +39,7 @@ const UIListView = (props) => {
 
   const _renderSeparator = () => {
     if (separatorComponent) {
-      return separatorComponent;
+      return separatorComponent();
     } else if (hideSeparator) {
       return null;
     } else {
@@ -54,13 +54,13 @@ const UIListView = (props) => {
 
   const _renderHeader = () => {
     if (headerComponent) {
-      return headerComponent;
+      return headerComponent();
     } else return null;
   };
 
   const _renderEmptyComponent = () => {
     if (emptyComponent) {
-      return emptyComponent;
+      return emptyComponent();
     } else if (showDefaultEmptyComponent) {
       return (
         <View style={styles.emptyContainer}>
@@ -125,6 +125,7 @@ const UIListView = (props) => {
 const styles = StyleSheet.create({
   containerView: {
     paddingBottom: 20,
+    flex: 1
   },
   separatorStyle: {
     height: 1,
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
   emptyContainer: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 1
   },
   emptyText: {
     fontFamily: Fonts.Regular,
