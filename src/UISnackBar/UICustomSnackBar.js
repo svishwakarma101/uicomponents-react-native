@@ -15,7 +15,8 @@ export default class UICustomSnackBar extends Component {
   componentDidMount() {
     Animated.timing(this.animation, {
       toValue: 10,
-      duration: 500
+      duration: 500,
+      useNativeDriver: false,
     }).start();
   }
 
