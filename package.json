@@ -26,6 +26,7 @@
     "react-test-renderer": "^16.13.1",
     "react": "16.10.2",
     "react-native": "0.61.2",
+    "react-native-gesture-handler": "^1.7.0",
     "react-native-linear-gradient": "2.5.4",
     "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
     "react-native-snap-carousel": "3.8.0",
