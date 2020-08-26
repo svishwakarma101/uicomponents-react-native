@@ -1,5 +1,11 @@
 import React, { useRef, useState } from "react";
-import { View, FlatList, StyleSheet, ViewPropTypes, Appearance, Text } from "react-native";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  ViewPropTypes,
+  Text,
+} from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
@@ -38,13 +44,20 @@ const UIListView = (props) => {
   } = props;
 
   const _renderSeparator = () => {
-    if (separatorComponent) {
-      return separatorComponent();
-    } else if (hideSeparator) {
-      return null;
-    } else {
-      return <View style={{...styles.separatorStyle, backgroundColor: theme.ListView.seperatorColor}} />;
-    }
+      if (separatorComponent) {
+        return separatorComponent();
+      } else if (hideSeparator) {
+        return null;
+      } else {
+        return (
+          <View
+            style={{
+              ...styles.separatorStyle,
+              backgroundColor: theme.ListView.seperatorColor,
+            }}
+          />
+        );
+      }
   };
 
   const _handleSearch = (text) => {
@@ -64,14 +77,18 @@ const UIListView = (props) => {
     } else if (showDefaultEmptyComponent) {
       return (
         <View style={styles.emptyContainer}>
-          <Text style={{...styles.emptyText, color: theme.TextField.textColor}}>{"The list is empty"}</Text>
+          <Text
+            style={{ ...styles.emptyText, color: theme.TextField.textColor }}
+          >
+            {"The list is empty"}
+          </Text>
         </View>
       );
     } else return null;
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1}}>
       {showSearchBar && (
         <UITextField
           theme={theme}
@@ -125,7 +142,7 @@ const UIListView = (props) => {
 const styles = StyleSheet.create({
   containerView: {
     paddingBottom: 20,
-    flex: 1
+    flexGrow: 1
   },
   separatorStyle: {
     height: 1,
@@ -138,7 +155,7 @@ const styles = StyleSheet.create({
   emptyContainer: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 1
+    flex: 1,
   },
   emptyText: {
     fontFamily: Fonts.Regular,
