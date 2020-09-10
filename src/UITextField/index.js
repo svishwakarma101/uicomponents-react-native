@@ -255,6 +255,15 @@ export default function UITextField(props) {
         return label
     }
 
+    function getLabelAccessory(){
+        if (props.renderLabelRightAccessory && typeof props.renderLabelRightAccessory === 'function') {
+            return props.renderLabelRightAccessory();
+        }
+        else {
+            return null
+        }
+    }
+
     const {
         theme,
         floatingLabel,
@@ -328,6 +337,7 @@ export default function UITextField(props) {
                     error={errorMessage || null}
                     errorColor={errorColor || theme.TextField.errorColor}
                     title={descriptionMessage || null}
+                    renderLabelRightAccessory={() => getLabelAccessory() }
                     renderRightAccessory={() => getAccessoryView()}
                     renderLeftAccessory={() => getLeftAccessoryView()}
                     ref={inputRef}
@@ -485,6 +495,7 @@ UITextField.propTypes = {
 
     leftAccessoryView: PropTypes.func,
     rightAccessoryView: PropTypes.func,
+    renderLabelRightAccessory: PropTypes.func,
     leftButton: PropTypes.func,
     clearButton: PropTypes.func,
     showButton: PropTypes.func,
