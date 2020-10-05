@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   View,
   FlatList,
@@ -14,6 +14,7 @@ import { accessibilityId } from "../utils/index";
 
 const UIListView = (props) => {
   const flatListRef = useRef(null);
+  const inputRef = useRef(null);
   const [searchText, setSearchText] = useState("");
 
   const {
@@ -41,7 +42,12 @@ const UIListView = (props) => {
     showDefaultEmptyComponent,
     accessibilityLabel,
     testID,
+    placeholder
   } = props;
+
+  useEffect(() => {
+    if(showSearchBar) inputRef.current.focus();
+  }, [showSearchBar])
 
   const _renderSeparator = () => {
       if (separatorComponent) {
@@ -92,9 +98,10 @@ const UIListView = (props) => {
       {showSearchBar && (
         <UITextField
           theme={theme}
+          refField={inputRef}
           value={searchText}
           input={{ value: searchText }}
-          placeholder={"Name"}
+          placeholder={placeholder}
           isFloating={true}
           isStaticLabel={true}
           labelFontSize={14}
@@ -105,6 +112,7 @@ const UIListView = (props) => {
           labelTextStyle={{ fontWeight: "bold" }}
           underlineType={"textMatch"}
           blurOnSubmit={true}
+          autoFocus={true}
         />
       )}
       <FlatList

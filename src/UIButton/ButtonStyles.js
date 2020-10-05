@@ -97,7 +97,7 @@ export const ButtonStyles = StyleSheet.create({
     },
     titleView: {
       justifyContent: 'center',
-      marginHorizontal: '10%'
+      // marginHorizontal: '10%'
     },
     buttonContainer: {
       alignItems: 'center',
