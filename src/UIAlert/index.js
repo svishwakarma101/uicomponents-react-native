@@ -110,6 +110,7 @@ export default function UIAlert(props) {
     secondaryButtonType,
     secondaryButtonAction,
     secondaryButtonShape,
+    seperatorRequired,
   } = props;
 
   return (
@@ -139,19 +140,22 @@ export default function UIAlert(props) {
         {props.children}
 
         <View style={styles.buttonContainer}>
-          <View style={[styles.seperator, seperatorStyle]} />
+          {renderIf(seperatorRequired)(
+            <View style={[styles.seperator, seperatorStyle]} />
+          )}
 
-          <UIButton
-            theme={theme}
-            buttonType={primaryButtonType}
-            buttonShape={primaryButtonShape}
-            onPressIn={primaryButtonAction}
-            // onPressOut={navigateToNext.bind(this)}
-            content={primaryButtonTitle}
-            titleStyle={primaryButtonTitleStyle}
-            style={[styles.button, primaryButtonStyle]}
-          />
-
+          {renderIf(primaryButtonAction)(
+            <UIButton
+              theme={theme}
+              buttonType={primaryButtonType}
+              buttonShape={primaryButtonShape}
+              onPressIn={primaryButtonAction}
+              // onPressOut={navigateToNext.bind(this)}
+              content={primaryButtonTitle}
+              titleStyle={primaryButtonTitleStyle}
+              style={[styles.button, primaryButtonStyle]}
+            />
+          )}
           {renderIf(secondaryButtonTitle !== undefined)(
             <UIButton
               theme={theme}
@@ -178,6 +182,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: Colors.White,
     elevation: 5,
+    shadowColor: Colors.grayDark,
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    shadowOffset: {
+      height: 5,
+      width: 0.25,
+    },
   },
   dismissButtonContainer: {
     flex: 0,
@@ -248,6 +259,7 @@ UIAlert.proptypes = {
   description: PropTypes.string,
   descriptionStyle: PropTypes.string,
   seperatorStyle: PropTypes.string,
+  seperatorRequired: PropTypes.bool,
   customDescription: PropTypes.element,
   primaryButtonTitle: PropTypes.string,
   primaryButtonTitleStyle: PropTypes.shape({
@@ -278,4 +290,5 @@ UIAlert.defaultProps = {
   primaryButtonShape: BUTTON_SHAPES.default,
   secondaryButtonType: BUTTON_TYPES.link,
   secondaryButtonShape: BUTTON_SHAPES.default,
+  seperatorRequired: true,
 };
