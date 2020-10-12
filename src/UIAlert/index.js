@@ -95,7 +95,7 @@ export default function UIAlert(props) {
     description,
     descriptionStyle,
     containerStyle,
-    seperatorStyle,
+    separatorStyle,
     isIconRequired,
     isDismissButtonRequired,
     primaryButtonTitle,
@@ -110,7 +110,7 @@ export default function UIAlert(props) {
     secondaryButtonType,
     secondaryButtonAction,
     secondaryButtonShape,
-    seperatorRequired,
+    separatorRequired,
   } = props;
 
   return (
@@ -140,8 +140,8 @@ export default function UIAlert(props) {
         {props.children}
 
         <View style={styles.buttonContainer}>
-          {renderIf(seperatorRequired)(
-            <View style={[styles.seperator, seperatorStyle]} />
+          {renderIf(separatorRequired)(
+            <View style={[styles.separator, separatorStyle]} />
           )}
 
           {renderIf(primaryButtonAction)(
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 46,
   },
-  seperator: {
+  separator: {
     height: 1,
     backgroundColor: Colors.lightWhite,
     marginVertical: 16,
@@ -258,8 +258,8 @@ UIAlert.proptypes = {
   titleStyle: PropTypes.string,
   description: PropTypes.string,
   descriptionStyle: PropTypes.string,
-  seperatorStyle: PropTypes.string,
-  seperatorRequired: PropTypes.bool,
+  separatorStyle: PropTypes.string,
+  separatorRequired: PropTypes.bool,
   customDescription: PropTypes.element,
   primaryButtonTitle: PropTypes.string,
   primaryButtonTitleStyle: PropTypes.shape({
@@ -290,5 +290,5 @@ UIAlert.defaultProps = {
   primaryButtonShape: BUTTON_SHAPES.default,
   secondaryButtonType: BUTTON_TYPES.link,
   secondaryButtonShape: BUTTON_SHAPES.default,
-  seperatorRequired: true,
+  separatorRequired: true,
 };
