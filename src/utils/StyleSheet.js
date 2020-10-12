@@ -273,11 +273,11 @@ export const Themes = {
       errorColor: Colors.errorRed,
     },
     Alert: {
-      textColor: Colors.blueGradientMid,
+      textColor: Colors.darkBanner,
       backgroundColor: Colors.transparent,
-      primaryTickColor: Colors.blueGradientMid,
-      secondaryTickColor: Colors.blueGradientMid,
-      secondaryTickBackgroundColor: Colors.blueGradientMid,
+      primaryTickColor: Colors.underlineAquaColor,
+      secondaryTickColor: Colors.underlineAquaColor,
+      secondaryTickBackgroundColor: Colors.underlineAquaColor,
     },
     StreamInputField: {
       backgroundColor: Colors.LightestGray,
@@ -421,11 +421,11 @@ export const Themes = {
       errorColor: Colors.errorRed,
     },
     Alert: {
-      textColor: Colors.blueGradientMid,
+      textColor: Colors.darkBanner,
       backgroundColor: Colors.transparent,
-      primaryTickColor: Colors.blueGradientMid,
-      secondaryTickColor: Colors.blueGradientMid,
-      secondaryTickBackgroundColor: Colors.blueGradientMid,
+      primaryTickColor: Colors.underlineAquaColor,
+      secondaryTickColor: Colors.underlineAquaColor,
+      secondaryTickBackgroundColor: Colors.underlineAquaColor,
     },
     StreamInputField: {
       backgroundColor: Colors.LightestGray,
