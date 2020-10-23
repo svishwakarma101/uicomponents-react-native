@@ -111,8 +111,9 @@ export default function UIAlert(props) {
     secondaryButtonAction,
     secondaryButtonShape,
     separatorRequired,
+    messageContainerStyle
   } = props;
-
+  
   return (
     <View style={[styles.container, containerStyle]}>
       {renderIf(isDismissButtonRequired)(
@@ -127,7 +128,7 @@ export default function UIAlert(props) {
         </View>
       )}
 
-      <View style={styles.alertMessageContainer}>
+      <View style={[styles.alertMessageContainer, messageContainerStyle]}>
         {renderIf(isIconRequired)(<View>{header()}</View>)}
         <Text
           style={[styles.title, { color: theme.Alert.textColor }, titleStyle]}
