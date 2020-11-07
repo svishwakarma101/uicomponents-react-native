@@ -110,7 +110,7 @@ function UIButton(props) {
   function getGradientButton(buttonAttributes) {
     const { buttonStyle, buttonShape, textColor } = buttonAttributes;
     return (
-      <View>
+      <>
         <TouchableOpacity
           {...props}
           disabled={disabled || false}
@@ -155,16 +155,18 @@ function UIButton(props) {
                     </Text>
                   </View>
                   )}
-                  <View style={{ justifyContent: 'center' }}>
-                    <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
-                  </View>
+                  {renderIf(iconWithBtnText)(
+                    <View style={{ justifyContent: 'center' }}>
+                      {iconWithBtnText}
+                    </View>
+                  )}
                 </View>
               )
             }
             {props.children}
           </LinearGradient>
         </TouchableOpacity>
-      </View>
+      </>
     )
   }
 
@@ -180,7 +182,7 @@ function UIButton(props) {
       linkStyle
     } = buttonAttributes;
     return (
-      <View>
+      <>
         <TouchableOpacity
           {...props}
           style={[
@@ -222,14 +224,16 @@ function UIButton(props) {
                 </Text>
               </View>
               )}
-              <View style={{ justifyContent: 'center' }}>
-                <Image source={iconWithBtnText} style={[{ tintColor: iconColor }, iconStyle]} />
-              </View>
+              {renderIf(iconWithBtnText)(
+                <View style={{ justifyContent: 'center' }}>
+                  {iconWithBtnText}
+                </View>
+              )}
             </View>
           )}
           {props.children}
         </TouchableOpacity>
-      </View>
+      </>
     );
   }
 
