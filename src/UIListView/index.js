@@ -1,11 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  ViewPropTypes,
-  Text,
-} from "react-native";
+import { View, FlatList, StyleSheet, ViewPropTypes, Text } from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
@@ -42,28 +36,29 @@ const UIListView = (props) => {
     showDefaultEmptyComponent,
     accessibilityLabel,
     testID,
-    placeholder
+    placeholder,
+    searchFieldProps,
   } = props;
 
   useEffect(() => {
-    if(showSearchBar) inputRef.current.focus();
-  }, [showSearchBar])
+    if (showSearchBar) inputRef.current.focus();
+  }, [showSearchBar]);
 
   const _renderSeparator = () => {
-      if (separatorComponent) {
-        return separatorComponent();
-      } else if (hideSeparator) {
-        return null;
-      } else {
-        return (
-          <View
-            style={{
-              ...styles.separatorStyle,
-              backgroundColor: theme.ListView.seperatorColor,
-            }}
-          />
-        );
-      }
+    if (separatorComponent) {
+      return separatorComponent();
+    } else if (hideSeparator) {
+      return null;
+    } else {
+      return (
+        <View
+          style={{
+            ...styles.separatorStyle,
+            backgroundColor: theme.ListView.seperatorColor,
+          }}
+        />
+      );
+    }
   };
 
   const _handleSearch = (text) => {
@@ -94,7 +89,7 @@ const UIListView = (props) => {
   };
 
   return (
-    <View style={{ flex: 1}}>
+    <View style={{ flex: 1 }}>
       {showSearchBar && (
         <UITextField
           theme={theme}
@@ -113,6 +108,7 @@ const UIListView = (props) => {
           underlineType={"textMatch"}
           blurOnSubmit={true}
           autoFocus={true}
+          {...searchFieldProps}
         />
       )}
       <FlatList
@@ -150,7 +146,7 @@ const UIListView = (props) => {
 const styles = StyleSheet.create({
   containerView: {
     paddingBottom: 20,
-    flexGrow: 1
+    flexGrow: 1,
   },
   separatorStyle: {
     height: 1,
