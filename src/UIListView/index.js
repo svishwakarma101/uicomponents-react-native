@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ViewPropTypes,
   Text,
+  Animated,
 } from "react-native";
 import PropTypes from "prop-types";
 
@@ -42,28 +43,29 @@ const UIListView = (props) => {
     showDefaultEmptyComponent,
     accessibilityLabel,
     testID,
-    placeholder
+    placeholder,
+    searchFieldProps,
   } = props;
 
   useEffect(() => {
-    if(showSearchBar) inputRef.current.focus();
-  }, [showSearchBar])
+    if (showSearchBar) inputRef.current.focus();
+  }, [showSearchBar]);
 
   const _renderSeparator = () => {
-      if (separatorComponent) {
-        return separatorComponent();
-      } else if (hideSeparator) {
-        return null;
-      } else {
-        return (
-          <View
-            style={{
-              ...styles.separatorStyle,
-              backgroundColor: theme.ListView.seperatorColor,
-            }}
-          />
-        );
-      }
+    if (separatorComponent) {
+      return separatorComponent();
+    } else if (hideSeparator) {
+      return null;
+    } else {
+      return (
+        <View
+          style={{
+            ...styles.separatorStyle,
+            backgroundColor: theme.ListView.seperatorColor,
+          }}
+        />
+      );
+    }
   };
 
   const _handleSearch = (text) => {
@@ -94,30 +96,35 @@ const UIListView = (props) => {
   };
 
   return (
-    <View style={{ flex: 1}}>
+    <View style={{ flex: 1 }}>
       {showSearchBar && (
-        <UITextField
-          theme={theme}
-          refField={inputRef}
-          value={searchText}
-          input={{ value: searchText }}
-          placeholder={placeholder}
-          isFloating={true}
-          isStaticLabel={true}
-          labelFontSize={14}
-          onChangeText={_handleSearch}
-          showLeftSearchButton
-          containerStyle={styles.searchbarContainer}
-          inputContainerStyle={styles.inputTextContainer}
-          labelTextStyle={{ fontWeight: "bold" }}
-          underlineType={"textMatch"}
-          blurOnSubmit={true}
-          autoFocus={true}
-        />
+        <View>
+          <Animated.View style={[styles.shadowView, props.shadowStyle]}>
+            <UITextField
+              {...searchFieldProps}
+              theme={theme}
+              refField={inputRef}
+              value={searchText}
+              input={{ value: searchText }}
+              placeholder={placeholder}
+              isFloating={true}
+              isStaticLabel={true}
+              labelFontSize={14}
+              onChangeText={_handleSearch}
+              showLeftSearchButton
+              containerStyle={[styles.searchbarContainer]}
+              inputContainerStyle={styles.inputTextContainer}
+              labelTextStyle={{ fontWeight: "bold" }}
+              underlineType={"textMatch"}
+              blurOnSubmit={true}
+              autoFocus={true}
+            />
+          </Animated.View>
+        </View>
       )}
-      <FlatList
+      <Animated.FlatList
         {...props}
-        ref={flatListRef}
+        ref={props.ref || flatListRef}
         keyExtractor={(item, index) => `${index}`}
         horizontal={isHorizontal}
         numColumns={numColumns}
@@ -150,7 +157,7 @@ const UIListView = (props) => {
 const styles = StyleSheet.create({
   containerView: {
     paddingBottom: 20,
-    flexGrow: 1
+    flexGrow: 1,
   },
   separatorStyle: {
     height: 1,
@@ -171,6 +178,13 @@ const styles = StyleSheet.create({
   },
   inputTextContainer: {
     height: 40,
+  },
+  shadowView: {
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
   },
 });
 
