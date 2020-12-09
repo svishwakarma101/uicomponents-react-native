@@ -309,7 +309,7 @@ export default function UITextField(props) {
             <View style={styles.underlineContainerView}>
                 <TextField
                     {...props}
-                    labelTextStyle={[styles.text, textStyle, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle]}
+                    labelTextStyle={[styles.text, showLeftSearchButton ? styles.labelTextStyle : null, labelTextStyle ]}
                     style={[styles.text, textStyle]}
                     labelPadding={!isFloating ? 0 : labelPadding || 4}
                     labelHeight={!isFloating ? 0 : labelHeight || 32}
@@ -461,7 +461,9 @@ UITextField.defaultProps = {
         source: '',
         resizeMode: 'center'
     },
-    blurOnSubmit: true
+    blurOnSubmit: true,
+    labelOffset: {y1: -5},
+    contentInset: {input: 10}
 };
 
 UITextField.propTypes = {

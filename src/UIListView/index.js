@@ -1,12 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  ViewPropTypes,
-  Text,
-  Animated,
-} from "react-native";
+import { View, StyleSheet, ViewPropTypes, Text, Animated } from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
