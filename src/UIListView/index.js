@@ -94,7 +94,6 @@ const UIListView = (props) => {
         <View>
           <Animated.View style={[styles.shadowView, props.shadowStyle]}>
             <UITextField
-              {...searchFieldProps}
               theme={theme}
               refField={inputRef}
               value={searchText}
@@ -111,6 +110,7 @@ const UIListView = (props) => {
               underlineType={"textMatch"}
               blurOnSubmit={true}
               autoFocus={true}
+              {...searchFieldProps}
             />
           </Animated.View>
         </View>
