@@ -1,10 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
-import { View, StyleSheet, ViewPropTypes, Text, Animated } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ViewPropTypes,
+  Text,
+  Animated,
+  Image,
+} from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
 import { Fonts, FontSize } from "../utils/StyleSheet";
 import { accessibilityId } from "../utils/index";
+import searchIcon from "../../assets/images/button/searchIcon.png";
 
 const UIListView = (props) => {
   const flatListRef = useRef(null);
@@ -103,13 +111,31 @@ const UIListView = (props) => {
               isStaticLabel={true}
               labelFontSize={14}
               onChangeText={_handleSearch}
-              showLeftSearchButton
+              // showLeftSearchButton
               containerStyle={[styles.searchbarContainer]}
               inputContainerStyle={styles.inputTextContainer}
               labelTextStyle={{ fontWeight: "bold" }}
               underlineType={"textMatch"}
               blurOnSubmit={true}
               autoFocus={true}
+              rightAccessoryView={() => {
+                return (
+                  <Image
+                    style={[
+                      styles.image,
+                      props.leftButtonStyle,
+                      {
+                        tintColor:
+                          searchText && searchText !== ""
+                            ? theme.TextField.textColor
+                            : theme.TextField.placeholderTextColor,
+                      },
+                    ]}
+                    source={searchIcon}
+                    resizeMode="contain"
+                  />
+                );
+              }}
               {...searchFieldProps}
             />
           </Animated.View>
@@ -178,6 +204,11 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
+  },
+  image: {
+    marginTop: 10,
+    width: 20,
+    height: 20,
   },
 });
 
