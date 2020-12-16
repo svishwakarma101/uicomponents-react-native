@@ -37,6 +37,8 @@ import {
 export const UINotifier: NotifierInterface = {
   showNotification: () => {},
   hideNotification: () => {},
+  showNotificationForModal: () => {},
+  hideNotificationForModal: () => {},
 };
 
 export class NotifierRoot extends React.PureComponent<
@@ -102,8 +104,13 @@ export class NotifierRoot extends React.PureComponent<
     this.showNotification = this.showNotification.bind(this);
     this.hideNotification = this.hideNotification.bind(this);
 
-    UINotifier.showNotification = this.showNotification;
-    UINotifier.hideNotification = this.hideNotification;
+    if (props.isForRNModal) {
+      UINotifier.showNotificationForModal = this.showNotification;
+      UINotifier.hideNotificationForModal = this.hideNotification;
+    } else {
+      UINotifier.showNotification = this.showNotification;
+      UINotifier.hideNotification = this.hideNotification;
+    }
   }
 
   componentWillUnmount() {
