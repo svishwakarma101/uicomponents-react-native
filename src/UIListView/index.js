@@ -97,49 +97,53 @@ const UIListView = (props) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <Animated.View
+      style={[
+        !showSearchBar && styles.animatedShadow,
+        !showSearchBar && props.shadowStyle,
+        { flex: 1 },
+      ]}
+    >
       {showSearchBar && (
-        <View>
-          <Animated.View style={[styles.shadowView, props.shadowStyle]}>
-            <UITextField
-              theme={theme}
-              refField={inputRef}
-              value={searchText}
-              input={{ value: searchText }}
-              placeholder={placeholder}
-              isFloating={true}
-              isStaticLabel={true}
-              labelFontSize={14}
-              onChangeText={_handleSearch}
-              // showLeftSearchButton
-              containerStyle={[styles.searchbarContainer]}
-              inputContainerStyle={styles.inputTextContainer}
-              labelTextStyle={{ fontWeight: "bold" }}
-              underlineType={"textMatch"}
-              blurOnSubmit={true}
-              autoFocus={true}
-              rightAccessoryView={() => {
-                return (
-                  <Image
-                    style={[
-                      styles.image,
-                      props.leftButtonStyle,
-                      {
-                        tintColor:
-                          searchText && searchText !== ""
-                            ? theme.TextField.textColor
-                            : theme.TextField.placeholderTextColor,
-                      },
-                    ]}
-                    source={searchIcon}
-                    resizeMode="contain"
-                  />
-                );
-              }}
-              {...searchFieldProps}
-            />
-          </Animated.View>
-        </View>
+        <Animated.View style={[styles.shadowView, props.shadowStyle]}>
+          <UITextField
+            theme={theme}
+            refField={inputRef}
+            value={searchText}
+            input={{ value: searchText }}
+            placeholder={placeholder}
+            isFloating={true}
+            isStaticLabel={true}
+            labelFontSize={14}
+            onChangeText={_handleSearch}
+            // showLeftSearchButton
+            containerStyle={[styles.searchbarContainer]}
+            inputContainerStyle={styles.inputTextContainer}
+            labelTextStyle={{ fontWeight: "bold" }}
+            underlineType={"textMatch"}
+            blurOnSubmit={true}
+            autoFocus={true}
+            rightAccessoryView={() => {
+              return (
+                <Image
+                  style={[
+                    styles.image,
+                    props.leftButtonStyle,
+                    {
+                      tintColor:
+                        searchText && searchText !== ""
+                          ? theme.TextField.textColor
+                          : theme.TextField.placeholderTextColor,
+                    },
+                  ]}
+                  source={searchIcon}
+                  resizeMode="contain"
+                />
+              );
+            }}
+            {...searchFieldProps}
+          />
+        </Animated.View>
       )}
       <Animated.FlatList
         {...props}
@@ -169,7 +173,7 @@ const UIListView = (props) => {
         }
         testID={testID ? testID : "listView"}
       />
-    </View>
+    </Animated.View>
   );
 };
 
@@ -209,6 +213,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 20,
     height: 20,
+  },
+  animatedShadow: {
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
   },
 });
 
