@@ -91,6 +91,10 @@ export interface ShowNotificationParams extends ShowParams {
   /** Notification theme
    * @default light */
   colorTheme?: ColorTheme;
+
+  /** Is for React native Modal
+   * @default light */
+  isForRNModal?: boolean;
 }
 
 export interface StateInterface {
@@ -108,4 +112,6 @@ export type EndCallback = (result: EndResult) => void;
 export interface NotifierInterface {
   showNotification: (params: ShowNotificationParams) => void;
   hideNotification: (onHidden?: EndCallback) => void;
+  showNotificationForModal: (params: ShowNotificationParams) => void;
+  hideNotificationForModal: (onHidden?: EndCallback) => void;
 }
