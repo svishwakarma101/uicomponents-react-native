@@ -123,7 +123,7 @@ const UIListView = (props) => {
             labelFontSize={14}
             onChangeText={_handleSearch}
             showLeftSearchButton={showLeftSearchButton}
-            containerStyle={[styles.searchbarContainer]}
+            containerStyle={styles.searchbarContainer}
             inputContainerStyle={styles.inputTextContainer}
             labelTextStyle={{ fontWeight: "bold" }}
             underlineType={"textMatch"}
