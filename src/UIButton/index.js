@@ -13,7 +13,6 @@ import { ButtonStyles } from "./ButtonStyles";
 import PropTypes from "prop-types";
 import LinearGradient from "react-native-linear-gradient";
 import { replaceSpaceWithUnderscore, accessibilityId } from "../utils/index";
-
 function UIButton(props) {
   var {
     content,
@@ -99,12 +98,11 @@ function UIButton(props) {
 
   if (buttonType === BUTTON_TYPES.link) {
     buttonAttributes = {
+      ...buttonAttributes,
       buttonStyle: ButtonStyles.linkButtonStyle,
       buttonShape: null,
-      textColor: ButtonStyles.linkButtonTextStyle.color,
       buttonBackgroundColor: "transparent",
       buttonBorderColor: "transparent",
-      linkTextStyle: ButtonStyles.linkButtonTextStyle,
       linkStyle: linkStyle,
     };
   }

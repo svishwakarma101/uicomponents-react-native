@@ -120,7 +120,7 @@ export default function UITextField(props) {
         const isClearButton = clearButton && typeof clearButton === 'function';
 
         if (showClearButton || isClearButton) {
-            let clearButtonSource = props.clearButtonImage || cancelIcon;
+            let clearButtonSource = props.clearButtonImage ? props.clearButtonImage : cancelIcon;
 
             return (
                 <TouchableOpacity style={[styles.rightAccessory, props.rightAccessoryStyle]} onPress={clearText}>

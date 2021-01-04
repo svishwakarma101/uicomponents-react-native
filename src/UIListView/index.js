@@ -5,7 +5,6 @@ import {
   ViewPropTypes,
   Text,
   Animated,
-  Image,
 } from "react-native";
 import PropTypes from "prop-types";
 
@@ -13,11 +12,13 @@ import UITextField from "../UITextField/index";
 import { Fonts, FontSize } from "../utils/StyleSheet";
 import { accessibilityId } from "../utils/index";
 import searchIcon from "../../assets/images/button/searchIcon.png";
+import cancelIcon from "../../assets/images/button/cancelIcon.png";
 
 const UIListView = (props) => {
   const flatListRef = useRef(null);
   const inputRef = useRef(null);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
+  const [showCancelButton, setShowCancelButton] = useState(false);
 
   const {
     theme,
@@ -46,6 +47,8 @@ const UIListView = (props) => {
     testID,
     placeholder,
     searchFieldProps,
+    showLeftSearchButton,
+    showCancelIcon,
   } = props;
 
   useEffect(() => {
@@ -71,6 +74,8 @@ const UIListView = (props) => {
 
   const _handleSearch = (text) => {
     setSearchText(text);
+    if(text?.length) setShowCancelButton(true);
+    else setShowCancelButton(false);
     if (handleSearch) handleSearch(text);
   };
 
@@ -96,14 +101,15 @@ const UIListView = (props) => {
     } else return null;
   };
 
+
   return (
-    <Animated.View
-      style={[
-        !showSearchBar && styles.animatedShadow,
-        !showSearchBar && props.shadowStyle,
-        { flex: 1 },
-      ]}
-    >
+     <Animated.View
+       style={[
+         !showSearchBar && styles.animatedShadow,
+         !showSearchBar && props.shadowStyle,
+         { flex: 1 },
+       ]}
+     >
       {showSearchBar && (
         <Animated.View style={[styles.shadowView, props.shadowStyle]}>
           <UITextField
@@ -116,35 +122,22 @@ const UIListView = (props) => {
             isStaticLabel={true}
             labelFontSize={14}
             onChangeText={_handleSearch}
-            // showLeftSearchButton
+            showLeftSearchButton={showLeftSearchButton}
             containerStyle={[styles.searchbarContainer]}
             inputContainerStyle={styles.inputTextContainer}
             labelTextStyle={{ fontWeight: "bold" }}
             underlineType={"textMatch"}
             blurOnSubmit={true}
             autoFocus={true}
-            rightAccessoryView={() => {
-              return (
-                <Image
-                  style={[
-                    styles.image,
-                    props.leftButtonStyle,
-                    {
-                      tintColor:
-                        searchText && searchText !== ""
-                          ? theme.TextField.textColor
-                          : theme.TextField.placeholderTextColor,
-                    },
-                  ]}
-                  source={searchIcon}
-                  resizeMode="contain"
-                />
-              );
-            }}
+            showClearButton={true}
+            searchIcon={true}
+            clearButtonImage={showCancelButton ? cancelIcon : searchIcon}
+            disabledClear={showCancelButton ? false : true}
             {...searchFieldProps}
           />
         </Animated.View>
       )}
+      {props.children}
       <Animated.FlatList
         {...props}
         ref={props.ref || flatListRef}
@@ -173,7 +166,7 @@ const UIListView = (props) => {
         }
         testID={testID ? testID : "listView"}
       />
-    </Animated.View>
+     </Animated.View>
   );
 };
 
