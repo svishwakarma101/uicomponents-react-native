@@ -1,11 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  ViewPropTypes,
-  Text,
-  Animated,
-} from "react-native";
+import { View, StyleSheet, ViewPropTypes, Text, Animated } from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
@@ -17,7 +11,7 @@ import cancelIcon from "../../assets/images/button/cancelIcon.png";
 const UIListView = (props) => {
   const flatListRef = useRef(null);
   const inputRef = useRef(null);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [showCancelButton, setShowCancelButton] = useState(false);
 
   const {
@@ -74,7 +68,7 @@ const UIListView = (props) => {
 
   const _handleSearch = (text) => {
     setSearchText(text);
-    if(text?.length) setShowCancelButton(true);
+    if (text?.length) setShowCancelButton(true);
     else setShowCancelButton(false);
     if (handleSearch) handleSearch(text);
   };
@@ -101,15 +95,8 @@ const UIListView = (props) => {
     } else return null;
   };
 
-
   return (
-     <Animated.View
-       style={[
-         !showSearchBar && styles.animatedShadow,
-         !showSearchBar && props.shadowStyle,
-         { flex: 1 },
-       ]}
-     >
+    <View style={{ flex: 1 }}>
       {showSearchBar && (
         <Animated.View style={[styles.shadowView, props.shadowStyle]}>
           <UITextField
@@ -135,38 +122,48 @@ const UIListView = (props) => {
             disabledClear={showCancelButton ? false : true}
             {...searchFieldProps}
           />
+          {props.children}
         </Animated.View>
       )}
-      {props.children}
-      <Animated.FlatList
-        {...props}
-        ref={props.ref || flatListRef}
-        keyExtractor={(item, index) => `${index}`}
-        horizontal={isHorizontal}
-        numColumns={numColumns}
-        contentContainerStyle={[styles.containerView, contentContainerStyle]}
-        data={data}
-        extraData={extraData}
-        renderItem={renderListItem}
-        ListEmptyComponent={_renderEmptyComponent}
-        ItemSeparatorComponent={_renderSeparator}
-        ListHeaderComponent={_renderHeader}
-        ListHeaderComponentStyle={headerComponentStyle}
-        ListFooterComponent={renderFooter}
-        ListFooterComponentStyle={footerComponentStyle}
-        columnWrapperStyle={columnWrapperStyle}
-        onRefresh={handleRefresh}
-        refreshing={shouldRefresh}
-        onEndReached={handleLoadMore}
-        onEndReachedThreshold={thresholdValue}
-        accessibilityLabel={
-          accessibilityLabel
-            ? accessibilityLabel
-            : accessibilityId(testID ? testID : "listView")
-        }
-        testID={testID ? testID : "listView"}
-      />
-     </Animated.View>
+      {/* added here to maintain shadow opacity */}
+      {!showSearchBar && props.children}
+      <Animated.View
+        style={[
+          !showSearchBar && styles.animatedShadow,
+          !showSearchBar && props.shadowStyle,
+          { flex: 1 },
+        ]}
+      >
+        <Animated.FlatList
+          {...props}
+          ref={props.ref || flatListRef}
+          keyExtractor={(item, index) => `${index}`}
+          horizontal={isHorizontal}
+          numColumns={numColumns}
+          contentContainerStyle={[styles.containerView, contentContainerStyle]}
+          data={data}
+          extraData={extraData}
+          renderItem={renderListItem}
+          ListEmptyComponent={_renderEmptyComponent}
+          ItemSeparatorComponent={_renderSeparator}
+          ListHeaderComponent={_renderHeader}
+          ListHeaderComponentStyle={headerComponentStyle}
+          ListFooterComponent={renderFooter}
+          ListFooterComponentStyle={footerComponentStyle}
+          columnWrapperStyle={columnWrapperStyle}
+          onRefresh={handleRefresh}
+          refreshing={shouldRefresh}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={thresholdValue}
+          accessibilityLabel={
+            accessibilityLabel
+              ? accessibilityLabel
+              : accessibilityId(testID ? testID : "listView")
+          }
+          testID={testID ? testID : "listView"}
+        />
+      </Animated.View>
+    </View>
   );
 };
 
