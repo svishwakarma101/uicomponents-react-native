@@ -11,7 +11,7 @@ import cancelIcon from "../../assets/images/button/cancelIcon.png";
 const UIListView = (props) => {
   const flatListRef = useRef(null);
   const inputRef = useRef(null);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(props.serachValue || '');
   const [showCancelButton, setShowCancelButton] = useState(false);
 
   const {
@@ -42,12 +42,16 @@ const UIListView = (props) => {
     placeholder,
     searchFieldProps,
     showLeftSearchButton,
-    showCancelIcon,
   } = props;
 
   useEffect(() => {
     if (showSearchBar) inputRef.current.focus();
   }, [showSearchBar]);
+
+  useEffect(() => {
+    setSearchText(props.serachValue);
+    if(props.serachValue?.length) setShowCancelButton(true);
+  }, [props.serachValue]);
 
   const _renderSeparator = () => {
     if (separatorComponent) {
@@ -70,6 +74,9 @@ const UIListView = (props) => {
     setSearchText(text);
     if (text?.length) setShowCancelButton(true);
     else setShowCancelButton(false);
+    if (props.onChangeText) {
+      props.onChangeText(text);
+    }
     if (handleSearch) handleSearch(text);
   };
 
