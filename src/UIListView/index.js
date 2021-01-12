@@ -143,7 +143,7 @@ const UIListView = (props) => {
       >
         <Animated.FlatList
           {...props}
-          ref={props.ref || flatListRef}
+          ref={props.scrollRef || flatListRef}
           keyExtractor={(item, index) => `${index}`}
           horizontal={isHorizontal}
           numColumns={numColumns}
