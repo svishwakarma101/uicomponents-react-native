@@ -360,6 +360,10 @@ export default function UITextField(props) {
     underlineType === TEXTFIELD_UNDERLINESTYLE.textMatch &&
     props.shape === TEXTFIELD_SHAPES.rectangular;
 
+  let errorMessageColor = descriptionMessage
+    ? descriptionStyle?.color
+    : errorColor;
+
   return (
     <View style={[getTextFieldStyle()]}>
       <View style={styles.underlineContainerView}>
@@ -407,7 +411,7 @@ export default function UITextField(props) {
               : null
           }
           error={errorMessage || null}
-          errorColor={errorColor || theme.TextField.errorColor}
+          errorColor={errorMessageColor || theme.TextField.errorColor}
           title={descriptionMessage || null}
           renderLabelRightAccessory={() => getLabelAccessory()}
           renderRightAccessory={() => getAccessoryView()}
