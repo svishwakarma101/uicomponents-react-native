@@ -94,6 +94,7 @@ export default function UITextField(props) {
           props.backgroundColor || props.theme.TextField.backgroundColor,
         borderColor: props.borderColor || props.theme.TextField.borderColor,
       },
+      errorMessage&&{marginBottom:(errorMessage.length/35)*10}
     ]);
   }
 
