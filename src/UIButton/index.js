@@ -29,6 +29,8 @@ function UIButton(props) {
     contentStyle,
     onPressOut,
     linkStyle,
+    accessibilityLabel,
+    testID,
     buttonOpacity,
   } = props;
 
@@ -134,11 +136,6 @@ function UIButton(props) {
           delayPressOut={100}
           onPressIn={() => btnPressedIn()}
           onPressOut={() => btnPressedOut()}
-          accessibilityLabel={accessibilityId(
-            getButtonAccessibilityLabel(content || "icon"),
-            content
-          )}
-          testID={getButtonAccessibilityLabel(content || "icon")}
         >
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -163,6 +160,11 @@ function UIButton(props) {
                 {renderIf(content)(
                   <View style={[ButtonStyles.titleView]}>
                     <Text
+                    accessibilityLabel={accessibilityLabel ? accessibilityLabel : accessibilityId(
+                      getButtonAccessibilityLabel(content || "icon"),
+                      content || "Icon Button"
+                    )}
+                    testID={testID ? testID : getButtonAccessibilityLabel(content || "icon")}
                       style={[
                         ButtonStyles.title,
                         { color: textColor },
@@ -216,11 +218,6 @@ function UIButton(props) {
           delayPressOut={100}
           onPressIn={() => btnPressedIn()}
           onPressOut={() => btnPressedOut()}
-          accessibilityLabel={accessibilityId(
-            getButtonAccessibilityLabel(content || "icon"),
-            content
-          )}
-          testID={getButtonAccessibilityLabel(content || "icon")}
         >
           {renderIf(content || iconWithBtnText)(
             <View
@@ -240,6 +237,11 @@ function UIButton(props) {
                   ]}
                 >
                   <Text
+                  accessibilityLabel={accessibilityLabel ? accessibilityLabel : accessibilityId(
+                    getButtonAccessibilityLabel(content || "icon"),
+                    content || "Icon Button"
+                  )}
+                  testID={testID ? testID : getButtonAccessibilityLabel(content || "icon")}
                     style={[
                       ButtonStyles.title,
                       { color: textColor },
@@ -364,6 +366,8 @@ UIButton.propTypes = {
   iconLeftPositioned: PropTypes.bool,
   onPressIn: PropTypes.func,
   onPressOut: PropTypes.func,
+  accessibilityLabel: PropTypes.string,
+  testID: PropTypes.string
 };
 
 UIButton.defaultProps = {
