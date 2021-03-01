@@ -29,6 +29,7 @@ function UIButton(props) {
     contentStyle,
     onPressOut,
     linkStyle,
+    buttonOpacity,
   } = props;
 
   const [buttonPressedIn, setButtonPressedIn] = useState(false);
@@ -128,7 +129,7 @@ function UIButton(props) {
           {...props}
           disabled={disabled || false}
           style={[buttonStyle, buttonShape, style]}
-          activeOpacity={1.0}
+          activeOpacity={buttonOpacity || 1.0}
           delayPressIn={100}
           delayPressOut={100}
           onPressIn={() => btnPressedIn()}
@@ -210,7 +211,7 @@ function UIButton(props) {
             style,
           ]}
           disabled={disabled ? disabled : false}
-          activeOpacity={1.0}
+          activeOpacity={buttonOpacity || 1.0}
           delayPressIn={100}
           delayPressOut={100}
           onPressIn={() => btnPressedIn()}
