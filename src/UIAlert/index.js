@@ -112,6 +112,7 @@ export default function UIAlert(props) {
     secondaryButtonShape,
     separatorRequired,
     messageContainerStyle,
+    dismissAction,
   } = props;
 
   return (
@@ -120,7 +121,7 @@ export default function UIAlert(props) {
         <View style={styles.dismissButtonContainer}>
           <TouchableOpacity
             activeOpacity={1}
-            onPress={primaryButtonAction}
+            onPress={dismissAction || primaryButtonAction}
             style={styles.alertDismissButton}
           >
             {dismissIcon()}

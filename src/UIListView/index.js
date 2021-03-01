@@ -1,23 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  ViewPropTypes,
-  Text,
-  Animated,
-  Image,
-} from "react-native";
+import { View, StyleSheet, ViewPropTypes, Text, Animated } from "react-native";
 import PropTypes from "prop-types";
 
 import UITextField from "../UITextField/index";
 import { Fonts, FontSize } from "../utils/StyleSheet";
 import { accessibilityId } from "../utils/index";
 import searchIcon from "../../assets/images/button/searchIcon.png";
+import cancelIcon from "../../assets/images/button/cancelIcon.png";
 
 const UIListView = (props) => {
   const flatListRef = useRef(null);
   const inputRef = useRef(null);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(props.serachValue || '');
+  const [showCancelButton, setShowCancelButton] = useState(false);
 
   const {
     theme,
@@ -46,11 +41,17 @@ const UIListView = (props) => {
     testID,
     placeholder,
     searchFieldProps,
+    showLeftSearchButton,
   } = props;
 
   useEffect(() => {
     if (showSearchBar) inputRef.current.focus();
   }, [showSearchBar]);
+
+  useEffect(() => {
+    setSearchText(props.serachValue);
+    if(props.serachValue?.length) setShowCancelButton(true);
+  }, [props.serachValue]);
 
   const _renderSeparator = () => {
     if (separatorComponent) {
@@ -71,6 +72,11 @@ const UIListView = (props) => {
 
   const _handleSearch = (text) => {
     setSearchText(text);
+    if (text?.length) setShowCancelButton(true);
+    else setShowCancelButton(false);
+    if (props.onChangeText) {
+      props.onChangeText(text);
+    }
     if (handleSearch) handleSearch(text);
   };
 
@@ -99,76 +105,71 @@ const UIListView = (props) => {
   return (
     <View style={{ flex: 1 }}>
       {showSearchBar && (
-        <View>
-          <Animated.View style={[styles.shadowView, props.shadowStyle]}>
-            <UITextField
-              theme={theme}
-              refField={inputRef}
-              value={searchText}
-              input={{ value: searchText }}
-              placeholder={placeholder}
-              isFloating={true}
-              isStaticLabel={true}
-              labelFontSize={14}
-              onChangeText={_handleSearch}
-              // showLeftSearchButton
-              containerStyle={[styles.searchbarContainer]}
-              inputContainerStyle={styles.inputTextContainer}
-              labelTextStyle={{ fontWeight: "bold" }}
-              underlineType={"textMatch"}
-              blurOnSubmit={true}
-              autoFocus={true}
-              rightAccessoryView={() => {
-                return (
-                  <Image
-                    style={[
-                      styles.image,
-                      props.leftButtonStyle,
-                      {
-                        tintColor:
-                          searchText && searchText !== ""
-                            ? theme.TextField.textColor
-                            : theme.TextField.placeholderTextColor,
-                      },
-                    ]}
-                    source={searchIcon}
-                    resizeMode="contain"
-                  />
-                );
-              }}
-              {...searchFieldProps}
-            />
-          </Animated.View>
-        </View>
+        <Animated.View style={[styles.shadowView, props.shadowStyle]}>
+          <UITextField
+            theme={theme}
+            refField={inputRef}
+            value={searchText}
+            input={{ value: searchText }}
+            placeholder={placeholder}
+            isFloating={true}
+            isStaticLabel={true}
+            labelFontSize={14}
+            onChangeText={_handleSearch}
+            showLeftSearchButton={showLeftSearchButton}
+            containerStyle={styles.searchbarContainer}
+            inputContainerStyle={styles.inputTextContainer}
+            labelTextStyle={{ fontWeight: "bold" }}
+            underlineType={"textMatch"}
+            blurOnSubmit={true}
+            autoFocus={true}
+            showClearButton={true}
+            searchIcon={true}
+            clearButtonImage={showCancelButton ? cancelIcon : searchIcon}
+            disabledClear={showCancelButton ? false : true}
+            {...searchFieldProps}
+          />
+          {props.children}
+        </Animated.View>
       )}
-      <Animated.FlatList
-        {...props}
-        ref={props.ref || flatListRef}
-        keyExtractor={(item, index) => `${index}`}
-        horizontal={isHorizontal}
-        numColumns={numColumns}
-        contentContainerStyle={[styles.containerView, contentContainerStyle]}
-        data={data}
-        extraData={extraData}
-        renderItem={renderListItem}
-        ListEmptyComponent={_renderEmptyComponent}
-        ItemSeparatorComponent={_renderSeparator}
-        ListHeaderComponent={_renderHeader}
-        ListHeaderComponentStyle={headerComponentStyle}
-        ListFooterComponent={renderFooter}
-        ListFooterComponentStyle={footerComponentStyle}
-        columnWrapperStyle={columnWrapperStyle}
-        onRefresh={handleRefresh}
-        refreshing={shouldRefresh}
-        onEndReached={handleLoadMore}
-        onEndReachedThreshold={thresholdValue}
-        accessibilityLabel={
-          accessibilityLabel
-            ? accessibilityLabel
-            : accessibilityId(testID ? testID : "listView")
-        }
-        testID={testID ? testID : "listView"}
-      />
+      {/* added here to maintain shadow opacity */}
+      {!showSearchBar && props.children}
+      <Animated.View
+        style={[
+          !showSearchBar && styles.animatedShadow,
+          !showSearchBar && props.shadowStyle,
+          { flex: 1 },
+        ]}
+      >
+        <Animated.FlatList
+          {...props}
+          ref={props.scrollRef || flatListRef}
+          keyExtractor={(item, index) => `${index}`}
+          horizontal={isHorizontal}
+          numColumns={numColumns}
+          contentContainerStyle={[styles.containerView, contentContainerStyle]}
+          data={data}
+          extraData={extraData}
+          renderItem={renderListItem}
+          ListEmptyComponent={_renderEmptyComponent}
+          ItemSeparatorComponent={_renderSeparator}
+          ListHeaderComponent={_renderHeader}
+          ListHeaderComponentStyle={headerComponentStyle}
+          ListFooterComponent={renderFooter}
+          ListFooterComponentStyle={footerComponentStyle}
+          columnWrapperStyle={columnWrapperStyle}
+          onRefresh={handleRefresh}
+          refreshing={shouldRefresh}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={thresholdValue}
+          accessibilityLabel={
+            accessibilityLabel
+              ? accessibilityLabel
+              : accessibilityId(testID ? testID : "listView")
+          }
+          testID={testID ? testID : "listView"}
+        />
+      </Animated.View>
     </View>
   );
 };
@@ -209,6 +210,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 20,
     height: 20,
+  },
+  animatedShadow: {
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
   },
 });
 
