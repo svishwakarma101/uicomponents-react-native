@@ -160,6 +160,7 @@ function UIButton(props) {
                 {renderIf(content)(
                   <View style={[ButtonStyles.titleView]}>
                     <Text
+                    textBreakStrategy={'simple'}
                     accessibilityLabel={accessibilityLabel ? accessibilityLabel : accessibilityId(
                       getButtonAccessibilityLabel(content || "icon"),
                       content || "Icon Button"
@@ -237,6 +238,7 @@ function UIButton(props) {
                   ]}
                 >
                   <Text
+                  textBreakStrategy={'simple'}
                   accessibilityLabel={accessibilityLabel ? accessibilityLabel : accessibilityId(
                     getButtonAccessibilityLabel(content || "icon"),
                     content || "Icon Button"
