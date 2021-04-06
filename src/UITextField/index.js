@@ -372,6 +372,7 @@ export default function UITextField(props) {
           {...props}
           labelTextStyle={[
             styles.text,
+            styles.labelStyle,
             showLeftSearchButton ? styles.labelTextStyle : null,
             labelTextStyle,
           ]}
@@ -500,6 +501,9 @@ const styles = StyleSheet.create({
       },
     }),
     marginHorizontal: 2,
+  },
+  labelStyle:{
+    fontFamily: Fonts.Bold,
   },
   descriptionStyle: {
     fontFamily: Fonts.Regular,

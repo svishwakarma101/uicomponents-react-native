@@ -38,7 +38,6 @@ export const ButtonStyles = StyleSheet.create({
       alignSelf: 'stretch',
       justifyContent: 'center',
       borderWidth: 2,
-      fontWeight: 'bold',
     },
     gradientButton: {
       height: 60,
@@ -84,16 +83,15 @@ export const ButtonStyles = StyleSheet.create({
       borderRadius: 0,
     },
     linkButtonTextStyle: {
-      // fontFamily: Fonts.BrandSemibold,
+      fontFamily: Fonts.Bold,
       fontSize: getAdjustedFontSize(FontSize.Medium),
       color: Colors.linkTextColor
     },
     title: {
       textAlign: 'center',
-      // fontFamily: Fonts.Heavy,
+      fontFamily: Fonts.Bold,
       fontSize: FontSize.Medium,
       backgroundColor: 'transparent',
-      fontWeight: 'bold'
     },
     titleView: {
       justifyContent: 'center',
