@@ -1,0 +1,1120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UIListView  Renders UIListView for default scenarios 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={0}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    refreshing={false}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    stickyHeaderIndices={Array []}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+      />
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#F0F0F0",
+              "height": 0.5,
+              "width": "90%",
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders after threshold value reached 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders horizontally correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders list item correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with empty list correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with footer correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with header component correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    headerComponent={[MockFunction]}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with header correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with mutilple columns correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={4}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with pull to refresh correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with searchbar correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <UITextField
+    autoCorrect={false}
+    autoFocus={false}
+    blurOnSubmit={true}
+    containerStyle={
+      Object {
+        "paddingHorizontal": 10,
+      }
+    }
+    editable={true}
+    input={
+      Object {
+        "value": "",
+      }
+    }
+    inputContainerStyle={
+      Object {
+        "height": 40,
+      }
+    }
+    isFloating={true}
+    isStaticLabel={true}
+    labelFontSize={14}
+    labelTextStyle={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+    leftAccessoryImage={
+      Object {
+        "resizeMode": "center",
+        "source": "",
+      }
+    }
+    numberOfLines={1}
+    onChangeText={[Function]}
+    placeholder="Name"
+    placeholderColor="#A9A9A9"
+    returnKeyType="done"
+    shape="rectangular"
+    showClearButton={false}
+    showLeftSearchButton={true}
+    showShowHideButton={false}
+    theme={
+      Object {
+        "Alert": Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "primaryTickColor": "#253494",
+          "secondaryTickBackgroundColor": "#253494",
+          "secondaryTickColor": "#253494",
+          "textColor": "#253494",
+        },
+        "AttributedText": Object {
+          "attributedTextColor": "#253494",
+          "textColor": "#8FA3C1",
+        },
+        "DefaultButton": Object {
+          "activeBackgroundColor": "#FE0095",
+          "activeBorderColor": "#FE0095",
+          "activeTextColor": "#FFFFFF",
+          "backgroundColor": "#FE0095",
+          "borderColor": "#FE0095",
+          "textColor": "#FFFFFF",
+        },
+        "DisabledButton": Object {
+          "activeBackgroundColor": "#E2E2E2",
+          "activeBorderColor": "#E2E2E2",
+          "activeTextColor": "#FFFFFF",
+          "backgroundColor": "#E2E2E2",
+          "borderColor": "#E2E2E2",
+          "textColor": "#FFFFFF",
+        },
+        "DisabledPrimaryButton": Object {
+          "activeBackgroundColor": "#E2E2E2",
+          "activeBorderColor": "#E2E2E2",
+          "activeTextColor": "#FFFFFF",
+          "backgroundColor": "#E2E2E2",
+          "borderColor": "#E2E2E2",
+          "textColor": "#FFFFFF",
+          "tintColor": "#FFFFFF",
+        },
+        "DisabledSecondaryButton": Object {
+          "activeBackgroundColor": "#FFFFFF",
+          "activeBorderColor": "#E2E2E2",
+          "activeTextColor": "#A9A9A9",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E2E2E2",
+          "textColor": "#A9A9A9",
+          "tintColor": "#A9A9A9",
+        },
+        "GradientButton": Object {
+          "activeBackgroundColor": "#FE0095",
+          "activeBorderColor": "#FE0095",
+          "activeTextColor": "#ffffff",
+          "backgroundColorGradientEnd": "#1F2C80",
+          "backgroundColorGradientMid": "#253494",
+          "backgroundColorGradientStart": "#2974D2",
+          "textColor": "#ffffff",
+        },
+        "LinkButton": Object {
+          "activeBackgroundColor": "rgba(0,0,0,0)",
+          "activeBorderColor": "rgba(0,0,0,0)",
+          "activeTextColor": "#007AFF",
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderColor": "rgba(0,0,0,0)",
+          "textColor": "#007AFF",
+        },
+        "ListView": Object {
+          "lineColor": "#A9A9A9",
+          "seperatorColor": "#F0F0F0",
+          "textColor": "#000000",
+        },
+        "Onboarding": Object {
+          "backgroundColor": "#253494",
+          "currentPageIndicatorTintColor": "#ffffff",
+          "pageIndicatorTintColor": "#ffffff",
+          "textColor": "#ffffff",
+        },
+        "Overlay": Object {
+          "backgroundColor": "rgba(0, 19, 45, 0.8)",
+        },
+        "PrimaryButton": Object {
+          "activeBackgroundColor": "#FE0095",
+          "activeBorderColor": "#FE0095",
+          "activeTextColor": "#FFFFFF",
+          "backgroundColor": "#FE0095",
+          "borderColor": "#FE0095",
+          "textColor": "#FFFFFF",
+          "tintColor": "#FFFFFF",
+        },
+        "SecondaryButton": Object {
+          "activeBackgroundColor": "#FFFFFF",
+          "activeBorderColor": "#FE0095",
+          "activeTextColor": "#FE0095",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#FE0095",
+          "textColor": "#FE0095",
+          "tintColor": "#FE0095",
+        },
+        "SnackBar": Object {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#253494",
+          "buttonBackgroundColor": "#253494",
+          "buttonTitleColor": "#ffffff",
+          "nativeBackgroundColor": "#393939",
+          "nativeButtonTitleColor": "#f7a454",
+          "nativeTextColor": "#ffffff",
+          "shadowColor": "#b6b6b6",
+          "textColor": "#253494",
+        },
+        "StreamInputField": Object {
+          "activeBackgroundColor": "#253494",
+          "activeBorderColor": "#253494",
+          "backgroundColor": "#f5f5f5",
+          "borderColor": "#9b9b9b",
+          "placeholderTextColor": "#9b9b9b",
+          "secondaryTextColor": "#ffffff",
+          "textColor": "#253494",
+        },
+        "Swiper": Object {
+          "currentPageIndicatorTintColor": "#253494",
+          "pageIndicatorTintColor": "#746F9F",
+        },
+        "TabBar": Object {
+          "activeTintColor": "#253494",
+          "backgroundColor": "#ffffff",
+          "inactiveTintColor": "#746F9F",
+        },
+        "TextField": Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderColor": "#A9A9A9",
+          "errorColor": "#FE0000",
+          "placeholderTextColor": "#A9A9A9",
+          "textColor": "#000000",
+          "tintColor": "#48FAFF",
+          "underLineColor": "#000000",
+          "underLineColorFocus": "#48FAFF",
+        },
+        "TransparentButton": Object {
+          "activeBackgroundColor": "rgba(0,0,0,0)",
+          "activeBorderColor": "rgba(0,0,0,0)",
+          "activeTextColor": "#FE0095",
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderColor": "rgba(0,0,0,0)",
+          "textColor": "#FE0095",
+        },
+      }
+    }
+    type="default"
+    underlineType="textMatch"
+    value=""
+  />
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={true}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders with separatorComponent correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders without header correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    headerComponent={null}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders without searchbar correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={false}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`UIListView  To verify UIListView renders without separator correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <FlatList
+    ItemSeparatorComponent={[Function]}
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    _renderSeparator={[MockFunction]}
+    contentContainerStyle={
+      Array [
+        Object {
+          "paddingBottom": 20,
+        },
+        undefined,
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "name": "test",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    hideSeparator={true}
+    horizontal={false}
+    initialNumToRender={10}
+    isHorizontal={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={0}
+    onEndReachedThreshold={0}
+    refreshing={false}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    shouldRefresh={false}
+    showDefaultEmptyComponent={false}
+    showSearchBar={false}
+    testID="listView"
+    thresholdValue={0}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

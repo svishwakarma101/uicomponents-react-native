@@ -20,7 +20,8 @@ export default class UINativeSnackBar extends Component {
   componentDidMount() {
     Animated.timing(this.animation, {
       toValue: -100,
-      duration: 1000
+      duration: 1000,
+      useNativeDriver: false,
     }).start();
   }
 
@@ -36,13 +37,15 @@ export default class UINativeSnackBar extends Component {
       Animated.timing(this.animation, {
         duration: 1000,
         toValue: 0,
-        easing: easing_values.entry
+        easing: easing_values.entry,
+        useNativeDriver: false,
       }).start();
     } else if (!nextProps.visible && this.props.visible) {
       Animated.timing(this.animation, {
         duration: 1000,
         toValue: -100,
-        easing: easing_values.exit
+        easing: easing_values.exit,
+        useNativeDriver: false,
       }).start();
     }
   }
