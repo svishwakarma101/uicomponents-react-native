@@ -83,6 +83,7 @@ export default function UITextField(props) {
   }
 
   function getTextFieldStyle() {
+    let errorOffset=errorMessage?Math.trunc((errorMessage.length/35)*15):0;    
     return StyleSheet.flatten([
       styles.containerView,
       props.shape === TEXTFIELD_SHAPES.rounded
@@ -94,7 +95,7 @@ export default function UITextField(props) {
           props.backgroundColor || props.theme.TextField.backgroundColor,
         borderColor: props.borderColor || props.theme.TextField.borderColor,
       },
-      errorMessage&&{marginBottom:(errorMessage.length/35)*15>10?(errorMessage.length/35)*15:10}
+      errorMessage&&{marginBottom:errorOffset>10?errorOffset:0}
     ]);
   }
 
