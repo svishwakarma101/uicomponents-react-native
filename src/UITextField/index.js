@@ -82,8 +82,15 @@ export default function UITextField(props) {
     return textTemp;
   }
 
-  function getTextFieldStyle() {
-    let errorOffset=errorMessage?Math.trunc((errorMessage.length/35)*15):0;    
+  function getTextFieldStyle(oneLine) {
+    let numberOfErrorLines = Math.ceil(
+      errorMessage?.length / oneLineMaxCharacter
+    );
+    let errorOffset = 0;
+    if (numberOfErrorLines > 0) {
+      errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
+    }
+
     return StyleSheet.flatten([
       styles.containerView,
       props.shape === TEXTFIELD_SHAPES.rounded
@@ -95,7 +102,7 @@ export default function UITextField(props) {
           props.backgroundColor || props.theme.TextField.backgroundColor,
         borderColor: props.borderColor || props.theme.TextField.borderColor,
       },
-      errorMessage&&{marginBottom:errorOffset>10?errorOffset:0}
+      errorMessage && { marginBottom: errorOffset > 20 ? errorOffset : 0 },
     ]);
   }
 
@@ -349,6 +356,7 @@ export default function UITextField(props) {
     errorMessageStyle,
     disabled,
     tintColor,
+    selectionColor,
     errorColor,
     accessibilityLabel,
     testID,
@@ -366,8 +374,15 @@ export default function UITextField(props) {
     ? descriptionStyle?.color
     : errorColor;
 
+  const [oneLineMaxCharacter, setOneLineMaxCharacter] = useState(0);
   return (
-    <View style={[getTextFieldStyle()]}>
+    <View
+      style={[getTextFieldStyle()]}
+      onLayout={({ nativeEvent }) => {
+        let oneLine = nativeEvent.layout.width / 8;
+        setOneLineMaxCharacter(oneLine);
+      }}
+    >
       <View style={styles.underlineContainerView}>
         <TextField
           {...props}
@@ -396,6 +411,11 @@ export default function UITextField(props) {
           tintColor={
             tintColor ||
             theme.TextField.tintColor ||
+            theme.TextField.placeholderTextColor
+          }
+          selectionColor={
+            selectionColor ||
+            theme.TextField.selectionColor ||
             theme.TextField.placeholderTextColor
           }
           labelColor={
@@ -503,7 +523,7 @@ const styles = StyleSheet.create({
     }),
     marginHorizontal: 2,
   },
-  labelStyle:{
+  labelStyle: {
     fontFamily: Fonts.Bold,
   },
   descriptionStyle: {
