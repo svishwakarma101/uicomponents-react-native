@@ -26,13 +26,10 @@ export default function UITextField(props) {
   const [autoFocusEnabled, setAutoFocusEnabled] = useState(
     props.autoFocus || false
   );
-  const [
-    shouldEncryptedTextBeVisible,
-    setShouldEncryptedTextBeVisible,
-  ] = useState(props.isSecureText || false);
-  const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] = useState(
-    false
-  );
+  const [shouldEncryptedTextBeVisible, setShouldEncryptedTextBeVisible] =
+    useState(props.isSecureText || false);
+  const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] =
+    useState(false);
   const inputRef = props.refField ? props.refField : useRef(null);
 
   function getMaxLength(type) {
@@ -82,13 +79,16 @@ export default function UITextField(props) {
     return textTemp;
   }
 
-  function getTextFieldStyle(oneLine) {
-    let numberOfErrorLines = Math.ceil(
-      errorMessage?.length / oneLineMaxCharacter
-    );
+  function getTextFieldStyle() {
     let errorOffset = 0;
-    if (numberOfErrorLines > 0) {
-      errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
+
+    if (oneLineMaxCharacter > 0) {
+      let numberOfErrorLines = Math.ceil(
+        errorMessage?.length / oneLineMaxCharacter
+      );
+      if (numberOfErrorLines > 0 && numberOfErrorLines < 4) {
+        errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
+      }
     }
 
     return StyleSheet.flatten([
