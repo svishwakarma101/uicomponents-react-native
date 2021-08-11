@@ -29,11 +29,10 @@
     "react-native-gesture-handler": "^1.7.0",
     "react-native-linear-gradient": "2.5.6",
     "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
-    "react-native-snap-carousel": "3.8.0",
-    "prop-types": "15.6.2"
+    "react-native-snap-carousel": "3.8.0"
   },
   "peerDependencies": {
-    "prop-types": "15.6.2",
+    "prop-types": "15.7.2",
     "react-native-linear-gradient": "2.5.6",
     "react-native-snap-carousel": "3.8.0",
     "react-native-material-textfield": "git+https://github.com/Poojapandey89/react-native-material-textfield.git",
