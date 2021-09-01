@@ -112,6 +112,7 @@ const UIListView = (props) => {
             value={searchText}
             input={{ value: searchText }}
             placeholder={placeholder}
+            name={"textfield"}
             isFloating={true}
             isStaticLabel={true}
             labelFontSize={14}
