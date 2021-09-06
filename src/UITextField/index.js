@@ -86,7 +86,7 @@ export default function UITextField(props) {
       let numberOfErrorLines = Math.ceil(
         errorMessage?.length / oneLineMaxCharacter
       );
-      if (numberOfErrorLines > 0 && numberOfErrorLines < 4) {
+      if (numberOfErrorLines > 0 && numberOfErrorLines < 5) {
         errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
       }
     }
