@@ -24,14 +24,14 @@
  import UIButton from "../UIButton";
  import cancelImage from "../../assets/images/button/cancelIcon.png";
  import UICircleWithTick from "../UICircleWithTick";
- 
+
  export default function UIAlert(props) {
    const animatedValue = new Animated.Value(0);
- 
+
    useEffect(() => {
      startAnimation();
    }, []);
- 
+
    function startAnimation() {
      Animated.timing(animatedValue, {
        duration: 650,
@@ -41,7 +41,7 @@
        toValue: 1,
      }).start();
    }
- 
+
    const header = () => {
      let {
        isIconPrimary,
@@ -73,7 +73,7 @@
        );
      }
    };
- 
+
    const dismissIcon = () => {
      if (props.dismissIcon) {
        return props.dismissIcon();
@@ -87,7 +87,7 @@
        );
      }
    };
- 
+
    const {
      theme,
      title,
@@ -116,7 +116,7 @@
      footer,
      footerStyle
    } = props;
- 
+
    return (
      <View style={[styles.container, containerStyle]}>
        {renderIf(isDismissButtonRequired)(
@@ -130,7 +130,7 @@
            </TouchableOpacity>
          </View>
        )}
- 
+
        <View style={[styles.alertMessageContainer, messageContainerStyle]}>
          {renderIf(isIconRequired)(<View>{header()}</View>)}
          {renderIf(title)(
@@ -146,12 +146,12 @@
            </Text>
          )}
          {props.children}
- 
+
          <View style={styles.buttonContainer}>
            {renderIf(separatorRequired)(
              <View style={[styles.separator, separatorStyle]} />
            )}
- 
+
            {renderIf(primaryButtonAction)(
              <UIButton
                theme={theme}
@@ -186,7 +186,7 @@
      </View>
    );
  }
- 
+
  const styles = StyleSheet.create({
    container: {
      flex: 0,
@@ -220,7 +220,7 @@
      fontFamily: Fonts.Bold,
      fontSize: FontSize.Medium,
      lineHeight: LineHeight.Medium,
- 
+
      marginTop: 20,
    },
    description: {
@@ -228,7 +228,7 @@
      fontFamily: Fonts.Regular,
      fontSize: FontSize.Small,
      lineHeight: LineHeight.Small,
- 
+
      marginTop: 10,
    },
    alertDismissButton: {
@@ -254,7 +254,7 @@
      marginVertical: 16,
    }
  });
- 
+
  UIAlert.proptypes = {
    theme: PropTypes.object,
    isIconRequired: PropTypes.bool,
@@ -282,8 +282,8 @@
      ...ViewPropTypes.style,
    }),
    primaryButtonAction: PropTypes.func,
-   primaryButtonType: PropTypes.oneOf(BUTTON_TYPES),
-   primaryButtonShape: PropTypes.oneOf(BUTTON_SHAPES),
+   primaryButtonType: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+   primaryButtonShape: PropTypes.oneOf(Object.keys(BUTTON_SHAPES)),
    secondaryButtonTitle: PropTypes.string,
    secondaryButtonTitleStyle: PropTypes.shape({
      ...ViewPropTypes.style,
@@ -292,10 +292,10 @@
      ...ViewPropTypes.style,
    }),
    secondaryButtonAction: PropTypes.func,
-   secondaryButtonType: PropTypes.oneOf(BUTTON_TYPES),
-   secondaryButtonShape: PropTypes.oneOf(BUTTON_SHAPES),
+   secondaryButtonType: PropTypes.oneOf(Object.keys(BUTTON_TYPES)),
+   secondaryButtonShape: PropTypes.oneOf(Object.keys(BUTTON_SHAPES)),
  };
- 
+
  UIAlert.defaultProps = {
    theme: Theme,
    isIconPrimary: true,
@@ -305,4 +305,3 @@
    secondaryButtonShape: BUTTON_SHAPES.default,
    separatorRequired: true,
  };
- 
