@@ -15,6 +15,7 @@ import {
   TEXTFIELD_TYPES,
   TEXTFIELD_SHAPES,
   TEXTFIELD_UNDERLINESTYLE,
+  STATIC_ACCESSIBILITY_ID,
 } from "../utils/Constants";
 import cancelIcon from "../../assets/images/button/cancelIcon.png";
 import showIcon from "../../assets/images/button/hideIconGray.png";
@@ -131,7 +132,7 @@ export default function UITextField(props) {
   }
 
   function getRightSideClearButton() {
-    const { value, theme, showClearButton, clearButton } = props;
+    const { value, theme, showClearButton, clearButton,clearSearchLabel } = props;
     const textFieldNotEmpty = value && value !== "";
     const isClearButton = clearButton && typeof clearButton === "function";
 
@@ -144,6 +145,8 @@ export default function UITextField(props) {
         <TouchableOpacity
           style={[styles.rightAccessory, props.rightAccessoryStyle]}
           onPress={clearText}
+          accessibilityLabel={clearSearchLabel || STATIC_ACCESSIBILITY_ID.clearSearch}
+          testID={clearSearchLabel || STATIC_ACCESSIBILITY_ID.clearSearch}
         >
           {isClearButton ? (
             clearButton()
