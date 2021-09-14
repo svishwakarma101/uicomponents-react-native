@@ -588,11 +588,11 @@ UITextField.defaultProps = {
 
 UITextField.propTypes = {
   theme: PropTypes.object,
-  type: PropTypes.oneOf(TEXTFIELD_TYPES),
-  shape: PropTypes.oneOf(TEXTFIELD_SHAPES),
+  type: PropTypes.oneOf(Object.keys(TEXTFIELD_TYPES)),
+  shape: PropTypes.oneOf(Object.keys(TEXTFIELD_SHAPES)),
   isFloating: PropTypes.bool,
   isStaticLabel: PropTypes.bool,
-  underlineType: PropTypes.oneOf(TEXTFIELD_UNDERLINESTYLE),
+  underlineType: PropTypes.oneOf(Object.keys(TEXTFIELD_UNDERLINESTYLE)),
   errorMessage: PropTypes.string,
   descriptionMessage: PropTypes.string,
   descriptionStyle: PropTypes.shape({
