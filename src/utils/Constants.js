@@ -74,5 +74,5 @@ export const SNACK_BAR_ACTION = {
 }
 
 export const STATIC_ACCESSIBILITY_ID = {
-  clearSearch: 'clear_search',
+  clearText: 'clear_text',
 }

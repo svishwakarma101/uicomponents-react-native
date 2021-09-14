@@ -132,7 +132,7 @@ export default function UITextField(props) {
   }
 
   function getRightSideClearButton() {
-    const { value, theme, showClearButton, clearButton,clearSearchLabel } = props;
+    const { value, theme, showClearButton, clearButton,clearTextLabel } = props;
     const textFieldNotEmpty = value && value !== "";
     const isClearButton = clearButton && typeof clearButton === "function";
 
@@ -145,8 +145,8 @@ export default function UITextField(props) {
         <TouchableOpacity
           style={[styles.rightAccessory, props.rightAccessoryStyle]}
           onPress={clearText}
-          accessibilityLabel={clearSearchLabel || STATIC_ACCESSIBILITY_ID.clearSearch}
-          testID={clearSearchLabel || STATIC_ACCESSIBILITY_ID.clearSearch}
+          accessibilityLabel={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
+          testID={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
         >
           {isClearButton ? (
             clearButton()
