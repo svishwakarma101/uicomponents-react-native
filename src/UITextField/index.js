@@ -15,6 +15,7 @@ import {
   TEXTFIELD_TYPES,
   TEXTFIELD_SHAPES,
   TEXTFIELD_UNDERLINESTYLE,
+  STATIC_ACCESSIBILITY_ID,
 } from "../utils/Constants";
 import cancelIcon from "../../assets/images/button/cancelIcon.png";
 import showIcon from "../../assets/images/button/hideIconGray.png";
@@ -26,13 +27,10 @@ export default function UITextField(props) {
   const [autoFocusEnabled, setAutoFocusEnabled] = useState(
     props.autoFocus || false
   );
-  const [
-    shouldEncryptedTextBeVisible,
-    setShouldEncryptedTextBeVisible,
-  ] = useState(props.isSecureText || false);
-  const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] = useState(
-    false
-  );
+  const [shouldEncryptedTextBeVisible, setShouldEncryptedTextBeVisible] =
+    useState(props.isSecureText || false);
+  const [showPlaceHolderForFloating, setShowPlaceHolderForFloating] =
+    useState(false);
   const inputRef = props.refField ? props.refField : useRef(null);
 
   function getMaxLength(type) {
@@ -83,6 +81,17 @@ export default function UITextField(props) {
   }
 
   function getTextFieldStyle() {
+    let errorOffset = 0;
+
+    if (oneLineMaxCharacter > 0) {
+      let numberOfErrorLines = Math.ceil(
+        errorMessage?.length / oneLineMaxCharacter
+      );
+      if (numberOfErrorLines > 0 && numberOfErrorLines < 5) {
+        errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
+      }
+    }
+
     return StyleSheet.flatten([
       styles.containerView,
       props.shape === TEXTFIELD_SHAPES.rounded
@@ -94,7 +103,7 @@ export default function UITextField(props) {
           props.backgroundColor || props.theme.TextField.backgroundColor,
         borderColor: props.borderColor || props.theme.TextField.borderColor,
       },
-      errorMessage&&{marginBottom:(errorMessage.length/35)*15>10?(errorMessage.length/35)*15:10}
+      errorMessage && { marginBottom: errorOffset > 20 ? errorOffset : 0 },
     ]);
   }
 
@@ -123,7 +132,7 @@ export default function UITextField(props) {
   }
 
   function getRightSideClearButton() {
-    const { value, theme, showClearButton, clearButton } = props;
+    const { value, theme, showClearButton, clearButton,clearTextLabel } = props;
     const textFieldNotEmpty = value && value !== "";
     const isClearButton = clearButton && typeof clearButton === "function";
 
@@ -136,6 +145,8 @@ export default function UITextField(props) {
         <TouchableOpacity
           style={[styles.rightAccessory, props.rightAccessoryStyle]}
           onPress={clearText}
+          accessibilityLabel={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
+          testID={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
         >
           {isClearButton ? (
             clearButton()
@@ -348,6 +359,7 @@ export default function UITextField(props) {
     errorMessageStyle,
     disabled,
     tintColor,
+    selectionColor,
     errorColor,
     accessibilityLabel,
     testID,
@@ -365,8 +377,15 @@ export default function UITextField(props) {
     ? descriptionStyle?.color
     : errorColor;
 
+  const [oneLineMaxCharacter, setOneLineMaxCharacter] = useState(0);
   return (
-    <View style={[getTextFieldStyle()]}>
+    <View
+      style={[getTextFieldStyle()]}
+      onLayout={({ nativeEvent }) => {
+        let oneLine = nativeEvent.layout.width / 8;
+        setOneLineMaxCharacter(oneLine);
+      }}
+    >
       <View style={styles.underlineContainerView}>
         <TextField
           {...props}
@@ -395,6 +414,11 @@ export default function UITextField(props) {
           tintColor={
             tintColor ||
             theme.TextField.tintColor ||
+            theme.TextField.placeholderTextColor
+          }
+          selectionColor={
+            selectionColor ||
+            theme.TextField.selectionColor ||
             theme.TextField.placeholderTextColor
           }
           labelColor={
@@ -502,7 +526,7 @@ const styles = StyleSheet.create({
     }),
     marginHorizontal: 2,
   },
-  labelStyle:{
+  labelStyle: {
     fontFamily: Fonts.Bold,
   },
   descriptionStyle: {
@@ -564,11 +588,11 @@ UITextField.defaultProps = {
 
 UITextField.propTypes = {
   theme: PropTypes.object,
-  type: PropTypes.oneOf(TEXTFIELD_TYPES),
-  shape: PropTypes.oneOf(TEXTFIELD_SHAPES),
+  type: PropTypes.oneOf(Object.keys(TEXTFIELD_TYPES)),
+  shape: PropTypes.oneOf(Object.keys(TEXTFIELD_SHAPES)),
   isFloating: PropTypes.bool,
   isStaticLabel: PropTypes.bool,
-  underlineType: PropTypes.oneOf(TEXTFIELD_UNDERLINESTYLE),
+  underlineType: PropTypes.oneOf(Object.keys(TEXTFIELD_UNDERLINESTYLE)),
   errorMessage: PropTypes.string,
   descriptionMessage: PropTypes.string,
   descriptionStyle: PropTypes.shape({
