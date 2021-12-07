@@ -105,12 +105,6 @@ const UIListView = (props) => {
     } else return null;
   };
 
-  const _renderSectionHeader = () => {
-    if (sectionHeaderComponent) {
-      return sectionHeaderComponent();
-    } else return null;
-  };
-
   return (
     <View style={{ flex: 1 }}>
       {showSearchBar && (
@@ -184,29 +178,29 @@ const UIListView = (props) => {
           />
         ) : (
           <Animated.SectionList
-          {...props}
-          ref={props.scrollRef || sectionListRef}
-          keyExtractor={(item, index) => item + index}
-          horizontal={isHorizontal}
-          contentContainerStyle={[styles.containerView, contentContainerStyle]}
-          sections={data}
-          extraData={extraData}
-          renderItem={renderListItem}
-          ListEmptyComponent={_renderEmptyComponent}
-          ItemSeparatorComponent={_renderSeparator}
-          ListHeaderComponent={_renderHeader}
-          ListFooterComponent={renderFooter}
-          renderSectionHeader={_renderSectionHeader}
-          onRefresh={handleRefresh}
-          refreshing={shouldRefresh}
-          onEndReached={handleLoadMore}
-          onEndReachedThreshold={thresholdValue}
-          accessibilityLabel={
-            accessibilityLabel
-              ? accessibilityLabel
-              : accessibilityId(testID ? testID : "sectionListView")
-          }
-          testID={testID ? testID : "sectionListView"}
+            {...props}
+            ref={props.scrollRef || sectionListRef}
+            keyExtractor={(item, index) => item + index}
+            horizontal={isHorizontal}
+            contentContainerStyle={[styles.containerView, contentContainerStyle]}
+            sections={data}
+            extraData={extraData}
+            renderItem={renderListItem}
+            ListEmptyComponent={_renderEmptyComponent}
+            ItemSeparatorComponent={_renderSeparator}
+            ListHeaderComponent={_renderHeader}
+            ListFooterComponent={renderFooter}
+            renderSectionHeader={sectionHeaderComponent}
+            onRefresh={handleRefresh}
+            refreshing={shouldRefresh}
+            onEndReached={handleLoadMore}
+            onEndReachedThreshold={thresholdValue}
+            accessibilityLabel={
+              accessibilityLabel
+                ? accessibilityLabel
+                : accessibilityId(testID ? testID : "sectionListView")
+            }
+            testID={testID ? testID : "sectionListView"}
         /> 
         )}
       </Animated.View>
