@@ -11,7 +11,6 @@ import cancelIcon from "../../assets/images/button/cancelIcon.png";
 const UIListView = (props) => {
   const flatListRef = useRef(null);
   const inputRef = useRef(null);
-  const sectionListRef = useRef(null);
   const [searchText, setSearchText] = useState(props.serachValue || '');
   const [showCancelButton, setShowCancelButton] = useState(false);
 
@@ -43,8 +42,6 @@ const UIListView = (props) => {
     placeholder,
     searchFieldProps,
     showLeftSearchButton,
-    sectionHeaderComponent,
-    isSectionList,
   } = props;
 
   useEffect(() => {
@@ -147,62 +144,34 @@ const UIListView = (props) => {
           { flex: 1 },
         ]}
       >
-        {!isSectionList ? (
-          <Animated.FlatList
-            {...props}
-            ref={props.scrollRef || flatListRef}
-            keyExtractor={(item, index) => `${index}`}
-            horizontal={isHorizontal}
-            numColumns={numColumns}
-            contentContainerStyle={[styles.containerView, contentContainerStyle]}
-            data={data}
-            extraData={extraData}
-            renderItem={renderListItem}
-            ListEmptyComponent={_renderEmptyComponent}
-            ItemSeparatorComponent={_renderSeparator}
-            ListHeaderComponent={_renderHeader}
-            ListHeaderComponentStyle={headerComponentStyle}
-            ListFooterComponent={renderFooter}
-            ListFooterComponentStyle={footerComponentStyle}
-            columnWrapperStyle={columnWrapperStyle}
-            onRefresh={handleRefresh}
-            refreshing={shouldRefresh}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={thresholdValue}
-            accessibilityLabel={
-              accessibilityLabel
-                ? accessibilityLabel
-                : accessibilityId(testID ? testID : "listView")
-            }
-            testID={testID ? testID : "listView"}
-          />
-        ) : (
-          <Animated.SectionList
-            {...props}
-            ref={props.scrollRef || sectionListRef}
-            keyExtractor={(item, index) => item + index}
-            horizontal={isHorizontal}
-            contentContainerStyle={[styles.containerView, contentContainerStyle]}
-            sections={data}
-            extraData={extraData}
-            renderItem={renderListItem}
-            ListEmptyComponent={_renderEmptyComponent}
-            ItemSeparatorComponent={_renderSeparator}
-            ListHeaderComponent={_renderHeader}
-            ListFooterComponent={renderFooter}
-            renderSectionHeader={sectionHeaderComponent}
-            onRefresh={handleRefresh}
-            refreshing={shouldRefresh}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={thresholdValue}
-            accessibilityLabel={
-              accessibilityLabel
-                ? accessibilityLabel
-                : accessibilityId(testID ? testID : "sectionListView")
-            }
-            testID={testID ? testID : "sectionListView"}
-        /> 
-        )}
+        <Animated.FlatList
+          {...props}
+          ref={props.scrollRef || flatListRef}
+          keyExtractor={(item, index) => `${index}`}
+          horizontal={isHorizontal}
+          numColumns={numColumns}
+          contentContainerStyle={[styles.containerView, contentContainerStyle]}
+          data={data}
+          extraData={extraData}
+          renderItem={renderListItem}
+          ListEmptyComponent={_renderEmptyComponent}
+          ItemSeparatorComponent={_renderSeparator}
+          ListHeaderComponent={_renderHeader}
+          ListHeaderComponentStyle={headerComponentStyle}
+          ListFooterComponent={renderFooter}
+          ListFooterComponentStyle={footerComponentStyle}
+          columnWrapperStyle={columnWrapperStyle}
+          onRefresh={handleRefresh}
+          refreshing={shouldRefresh}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={thresholdValue}
+          accessibilityLabel={
+            accessibilityLabel
+              ? accessibilityLabel
+              : accessibilityId(testID ? testID : "listView")
+          }
+          testID={testID ? testID : "listView"}
+        />
       </Animated.View>
     </View>
   );
@@ -262,7 +231,6 @@ UIListView.defaultProps = {
   hideSeparator: false,
   showSearchBar: false,
   showDefaultEmptyComponent: false,
-  isSectionList: false,
 };
 
 UIListView.propTypes = {
@@ -283,8 +251,6 @@ UIListView.propTypes = {
   thresholdValue: PropTypes.number,
   emptyComponent: PropTypes.func,
   showDefaultEmptyComponent: PropTypes.bool,
-  isSectionList: PropTypes.bool,
-  sectionHeaderComponent: PropTypes.func,
   footerComponentStyle: PropTypes.shape({
     ...ViewPropTypes.style,
   }),
