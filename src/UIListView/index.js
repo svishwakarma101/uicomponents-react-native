@@ -121,6 +121,9 @@ const UIListView = (props) => {
             value={searchText}
             input={{ value: searchText }}
             placeholder={placeholder}
+            name={"textfield"}
+            accessibilityLabel={accessibilityLabel||'textfield'}
+            testID={testID||'textfield'}
             isFloating={true}
             isStaticLabel={true}
             labelFontSize={14}

@@ -15,6 +15,7 @@ import {
   TEXTFIELD_TYPES,
   TEXTFIELD_SHAPES,
   TEXTFIELD_UNDERLINESTYLE,
+  STATIC_ACCESSIBILITY_ID,
 } from "../utils/Constants";
 import cancelIcon from "../../assets/images/button/cancelIcon.png";
 import showIcon from "../../assets/images/button/hideIconGray.png";
@@ -86,7 +87,7 @@ export default function UITextField(props) {
       let numberOfErrorLines = Math.ceil(
         errorMessage?.length / oneLineMaxCharacter
       );
-      if (numberOfErrorLines > 0 && numberOfErrorLines < 4) {
+      if (numberOfErrorLines > 0 && numberOfErrorLines < 5) {
         errorOffset = Math.trunc(numberOfErrorLines * FontSize.Medium);
       }
     }
@@ -131,7 +132,7 @@ export default function UITextField(props) {
   }
 
   function getRightSideClearButton() {
-    const { value, theme, showClearButton, clearButton } = props;
+    const { value, theme, showClearButton, clearButton,clearTextLabel } = props;
     const textFieldNotEmpty = value && value !== "";
     const isClearButton = clearButton && typeof clearButton === "function";
 
@@ -144,6 +145,8 @@ export default function UITextField(props) {
         <TouchableOpacity
           style={[styles.rightAccessory, props.rightAccessoryStyle]}
           onPress={clearText}
+          accessibilityLabel={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
+          testID={clearTextLabel || STATIC_ACCESSIBILITY_ID.clearText}
         >
           {isClearButton ? (
             clearButton()
@@ -585,11 +588,11 @@ UITextField.defaultProps = {
 
 UITextField.propTypes = {
   theme: PropTypes.object,
-  type: PropTypes.oneOf(TEXTFIELD_TYPES),
-  shape: PropTypes.oneOf(TEXTFIELD_SHAPES),
+  type: PropTypes.oneOf(Object.keys(TEXTFIELD_TYPES)),
+  shape: PropTypes.oneOf(Object.keys(TEXTFIELD_SHAPES)),
   isFloating: PropTypes.bool,
   isStaticLabel: PropTypes.bool,
-  underlineType: PropTypes.oneOf(TEXTFIELD_UNDERLINESTYLE),
+  underlineType: PropTypes.oneOf(Object.keys(TEXTFIELD_UNDERLINESTYLE)),
   errorMessage: PropTypes.string,
   descriptionMessage: PropTypes.string,
   descriptionStyle: PropTypes.shape({

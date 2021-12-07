@@ -72,3 +72,7 @@ export const PAGINATION_DOT_POSITION = {
 export const SNACK_BAR_ACTION = {
   HIDE_SNACK_BAR: 'HIDE_SNACK_BAR'
 }
+
+export const STATIC_ACCESSIBILITY_ID = {
+  clearText: 'clear_text',
+}
