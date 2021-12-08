@@ -194,7 +194,8 @@ const UIListView = (props) => {
             onRefresh={handleRefresh}
             refreshing={shouldRefresh}
             onEndReached={handleLoadMore}
-            onEndReachedThreshold={thresholdValue}
+            onEndReachedThreshold={0.01}
+            stickySectionHeadersEnabled={false}
             accessibilityLabel={
               accessibilityLabel
                 ? accessibilityLabel
